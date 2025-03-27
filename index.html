@@ -856,119 +856,121 @@
             }
         }
 
-        /* Estilos para la aventura de texto */
+        /* Actualizamos los estilos para un ambiente más perturbador */
         .text-adventure-section {
             margin-top: 4rem;
             max-width: 1000px;
             width: 90%;
             margin-left: auto;
             margin-right: auto;
+            position: relative;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.2);
         }
 
         .terminal-title {
+            font-family: 'Special Elite', cursive;
             color: var(--gold);
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            text-align: center;
-            padding: 0.5rem;
-            border-bottom: 1px solid var(--gold);
+            text-shadow: 0 0 5px var(--gold);
+            padding: 1rem;
+            border-bottom: 1px dashed var(--gold);
+            opacity: 0.8;
+            animation: flicker 4s infinite;
         }
 
         .game-content {
             padding: 2rem;
-            background-color: rgba(0, 0, 0, 0.9);
+            background: 
+                linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+                url('paper-texture.png');
+            position: relative;
         }
 
         .location-name {
             color: var(--gold);
-            font-family: var(--font-accent);
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+            font-family: 'Creepster', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.5);
             letter-spacing: 2px;
-            border-bottom: 1px dashed var(--gold);
-            padding-bottom: 0.5rem;
+            animation: textShadowPulse 4s infinite;
         }
 
         #story-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--gold);
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
-            line-height: 1.6;
+            text-shadow: 0 0 2px var(--gold);
             margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: textAppear 1s ease-out;
-        }
-
-        #choices-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            position: relative;
         }
 
         .choice-btn {
-            background-color: transparent;
-            border: none;
-            color: var(--gold);
-            font-family: 'Courier New', monospace;
-            font-size: 1rem;
+            width: 100%;
             text-align: left;
-            padding: 0.8rem 1rem;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Special Elite', cursive;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
+        .choice-btn:hover {
+            background: rgba(139, 0, 0, 0.2);
+            transform: translateX(10px);
+            text-shadow: 0 0 5px var(--gold);
+        }
+
         .choice-btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background-color: var(--gold);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 215, 0, 0.2),
+                transparent
+            );
+            transition: 0.5s;
         }
 
-        .choice-btn:hover {
-            color: #000000;
-            background-color: var(--gold);
-            transform: translateX(10px);
+        .choice-btn:hover::before {
+            left: 100%;
         }
 
-        .choice-prefix {
-            color: inherit;
-            margin-right: 0.5rem;
-            opacity: 0.7;
+        @keyframes textShadowPulse {
+            0% { text-shadow: 0 0 4px var(--gold); }
+            50% { text-shadow: 0 0 12px var(--gold); }
+            100% { text-shadow: 0 0 4px var(--gold); }
         }
 
-        @keyframes textAppear {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 0.9;
-                transform: translateY(0);
-            }
-        }
-
-        /* Efectos de scanline y CRT */
-        .crt-screen::after {
+        /* Efecto de papel viejo */
+        .game-content::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%,
-                rgba(0, 0, 0, 0.25) 50%
-            );
-            background-size: 100% 4px;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    rgba(139, 0, 0, 0.05),
+                    rgba(139, 0, 0, 0.05) 2px,
+                    transparent 2px,
+                    transparent 8px
+                );
             pointer-events: none;
         }
     </style>
@@ -1172,63 +1174,128 @@
 
         const storyData = {
             start: {
-                text: "El aire está cargado con un aroma dulzón y metálico. Frente a ti, la puerta principal de la mansión Victorian se alza imponente. A tu derecha, una ventana rota parece lo suficientemente grande para entrar. A tu izquierda, hay un jardín con estatuas inquietantes.",
+                location: "El Jardín de las Muñecas",
+                text: "Mamá siempre dice que no debemos hablar con extraños... pero ¿qué pasa cuando los extraños se parecen a personas que conocemos? Juno lo descubrió una noche, mientras investigaba la desaparición de Alice. Frente a ella, entre la niebla del jardín, había muñecas. Docenas de muñecas con rostros familiares, todas sentadas en círculo alrededor de una mesa de té. Y en el centro... un conejo blanco con botones por ojos.",
                 choices: {
-                    door: "Intentar abrir la puerta principal",
-                    window: "Investigar la ventana rota",
-                    garden: "Explorar el jardín de estatuas"
+                    approach: "Acercarse a la mesa de té",
+                    examine: "Mirar los rostros de las muñecas",
+                    run: "Dar media vuelta y correr"
                 }
             },
-            door: {
-                text: "La puerta está cerrada, pero notas algo extraño: hay marcas de garras en la madera. Un susurro escalofriante emerge desde el otro lado...",
+            approach: {
+                location: "La Mesa del Té Eterno",
+                text: "'¿Te gustaría tomar el té, querida?', susurró el conejo, su voz como papel de lija. Sus patas sostenían una taza que goteaba algo espeso y oscuro. Las muñecas giraron sus cabezas al unísono, sus botones brillando en la oscuridad. '¿O prefieres... ser parte de nuestra colección? Alice lo prefirió así'. Una de las muñecas, con un vestido azul manchado, sonrió con hilos sueltos.",
                 choices: {
-                    listen: "Acercar el oído a la puerta",
-                    window: "Mejor revisar la ventana",
-                    garden: "Mejor explorar el jardín"
+                    accept: "Aceptar la taza de té",
+                    question: "Preguntar por Alice",
+                    refuse: "Rechazar la invitación"
                 }
             },
-            window: {
-                text: "Te acercas a la ventana rota. Entre los cristales, ves una nota manchada de sangre. También notas que podrías entrar, aunque los vidrios parecen peligrosos.",
+            question: {
+                location: "El Círculo de las Verdades",
+                text: "El conejo inclinó su cabeza en un ángulo imposible. 'Oh, Alice está aquí... todas las Alices están aquí'. Sus palabras hicieron eco mientras las muñecas comenzaron a cantar una nana desafinada. Una por una, empezaron a descoser sus propios rostros, revelando debajo... más botones. '¿No es hermoso? Nunca más estarán solas. Nunca más llorarán. ¿No quieres ser hermosa también, Juno?'",
                 choices: {
-                    enter: "Arriesgarte a entrar",
-                    note: "Intentar alcanzar la nota",
-                    back: "Retroceder"
+                    fight: "Enfrentar al conejo",
+                    scream: "Gritar hasta despertar",
+                    submit: "Extender la mano hacia los botones"
                 }
             },
-            garden: {
-                text: "Las estatuas parecen seguirte con la mirada. Una de ellas sostiene un libro antiguo. Otra parece haber sido movida recientemente...",
+            fight: {
+                location: "La Danza de los Hilos",
+                text: "Las agujas surgieron de la nada, brillando como estrellas muertas. El conejo se alzó, cada vez más alto, sus hilos extendiéndose como telarañas negras. 'Todas pelean al principio, querida. Pero al final...' Su risa sonaba como tijeras cortando seda. '...al final todas entienden que es mejor así. Pregúntale al gato, si no me crees'. Y allí, entre las sombras, un gato sonreía con dientes de aguja, sus propios botones brillando con lágrimas de hilo.",
                 choices: {
-                    book: "Examinar el libro",
-                    statue: "Investigar la estatua movida",
-                    back: "Volver a la entrada"
+                    trust_cat: "Confiar en el gato sonriente",
+                    cut_strings: "Cortar los hilos del conejo",
+                    close_eyes: "Cerrar los ojos y desear despertar"
+                }
+            },
+            trust_cat: {
+                location: "El Teatro de Sombras",
+                text: "'Sus botones mienten', ronroneó el gato, sus costuras abriéndose para mostrar el vacío dentro. 'Pero mis cicatrices dicen la verdad. Cada Alice que toma su té se convierte en una muñeca más en su colección. Cada sonrisa cosida esconde un grito. ¿Quieres ver lo que hay realmente en esas tazas, detective?' El gato extendió una pata descosida, ofreciendo mostrar la verdad detrás del telón.",
+                choices: {
+                    see_truth: "Ver la verdad detrás del telón",
+                    save_alice: "Intentar salvar a las muñecas",
+                    escape: "Buscar una salida"
+                }
+            },
+            see_truth: {
+                location: "El Cuarto de las Agujas",
+                text: "El telón cayó, y con él, la ilusión. No era una mesa de té, era una mesa de costura. No eran tazas, eran dedales llenos de hilo negro. Y el conejo... el conejo era una masa de agujas y tijeras con forma de conejo, un costurero viviente que tejía pesadillas. 'Ahora que has visto', dijo el gato, sus costuras deshaciéndose, 'debes elegir: ¿te convertirás en una historia para asustar a los niños, o en la pesadilla que asusta a las pesadillas?'",
+                choices: {
+                    become_nightmare: "Convertirse en pesadilla",
+                    save_all: "Salvar a todas las muñecas",
+                    wake_up: "Despertar al mundo real"
+                }
+            },
+            wake_up: {
+                location: "El Despertar",
+                text: "Juno despertó en su cama, su corazón latiendo como un pájaro atrapado. Pero algo era diferente. En su muñeca había una pequeña cicatriz en forma de botón, y en su espejo... ¿era su reflejo el que sonreía, o era ella? Y en la esquina de su habitación, un gato de ojos brillantes la observaba, mientras un hilo negro serpenteaba bajo su puerta...",
+                choices: {
+                    restart: "Volver a dormir",
+                    investigate: "Seguir el hilo negro",
+                    forget: "Intentar olvidar todo"
                 }
             }
         };
 
-        let currentScene = 'start';
+        // Agregamos efectos de sonido sutiles
+        const audioEffects = {
+            buttonClick: new Audio('soft-click.mp3'),
+            pageChange: new Audio('page-turn.mp3'),
+            creepyAmbient: new Audio('ambient-horror.mp3')
+        };
 
+        // Función para actualizar la escena con efectos visuales y sonoros
         function updateScene(scene) {
+            if (!storyData[scene]) return;
+            
             const container = document.getElementById('story-container');
+            const locationName = document.querySelector('.location-name');
             const storyText = document.getElementById('story-text');
             const choicesContainer = document.getElementById('choices-container');
             
-            // Actualizar texto
-            storyText.style.opacity = '0';
+            // Efecto de transición
+            container.style.opacity = '0';
+            
             setTimeout(() => {
-                storyText.textContent = storyData[scene].text;
-                storyText.style.opacity = '0.9';
-            }, 300);
+                // Actualizar ubicación
+                locationName.textContent = storyData[scene].location;
+                
+                // Actualizar texto con efecto de máquina de escribir
+                storyText.textContent = '';
+                typeWriter(storyText, storyData[scene].text);
+                
+                // Actualizar opciones con delay
+                choicesContainer.innerHTML = '';
+                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                    setTimeout(() => {
+                        const button = document.createElement('button');
+                        button.className = 'choice-btn';
+                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                        button.dataset.choice = key;
+                        button.onclick = () => {
+                            audioEffects.buttonClick.play();
+                            updateScene(key);
+                        };
+                        choicesContainer.appendChild(button);
+                    }, index * 300);
+                });
+                
+                container.style.opacity = '1';
+            }, 500);
+        }
 
-            // Actualizar opciones
-            choicesContainer.innerHTML = '';
-            Object.entries(storyData[scene].choices).forEach(([key, text]) => {
-                const button = document.createElement('button');
-                button.className = 'choice-btn';
-                button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
-                button.dataset.choice = key;
-                button.onclick = () => updateScene(key);
-                choicesContainer.appendChild(button);
-            });
+        // Efecto de máquina de escribir
+        function typeWriter(element, text, speed = 30) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
         }
 
         // Inicializar la primera escena
