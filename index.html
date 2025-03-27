@@ -973,6 +973,98 @@
                 );
             pointer-events: none;
         }
+
+        .game-title {
+            color: var(--gold);
+            font-size: 3rem;
+            text-shadow: 0 0 10px var(--gold);
+            margin-bottom: 2rem;
+            font-family: 'Special Elite', cursive;
+            animation: titlePulse 3s infinite;
+        }
+
+        @keyframes titlePulse {
+            0% { text-shadow: 0 0 10px var(--gold); }
+            50% { text-shadow: 0 0 20px var(--gold), 0 0 30px var(--dark-gold); }
+            100% { text-shadow: 0 0 10px var(--gold); }
+        }
+
+        .menu-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .menu-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-family: 'Special Elite', cursive;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            width: 250px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .menu-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .menu-btn:not(:disabled):hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 215, 0, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .menu-btn:not(:disabled):hover::before {
+            left: 100%;
+        }
+
+        #game-container {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #game-container.active {
+            opacity: 1;
+        }
+
+        .choice-btn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1089,30 +1181,23 @@
                             <button class="window-control" aria-label="Maximizar">□</button>
                             <button class="window-control" aria-label="Minimizar">─</button>
                         </div>
-                        <div class="terminal-title">C:\WHERE_ARE_THE_ALICES\DEMO.exe</div>
+                        <div class="terminal-title">C:\\WHERE_ARE_THE_ALICES\\DEMO.exe</div>
                     </div>
                     
-                    <div class="game-content">
+                    <div id="game-menu" class="game-content">
+                        <h1 class="game-title">Where are the Alices?</h1>
+                        <div class="menu-options">
+                            <button class="menu-btn start-game">Iniciar Juego</button>
+                            <button class="menu-btn continue-game" disabled>Continuar</button>
+                            <button class="menu-btn show-credits">Créditos</button>
+                        </div>
+                    </div>
+
+                    <div id="game-container" class="game-content" style="display: none;">
                         <div id="story-container">
                             <div class="location-name">Mansión Abandonada - Entrada Principal</div>
-                            <div id="story-text">
-                                El aire está cargado con un aroma dulzón y metálico. Frente a ti, la puerta principal de la mansión Victorian se alza imponente. A tu derecha, una ventana rota parece lo suficientemente grande para entrar. A tu izquierda, hay un jardín con estatuas inquietantes.
-                            </div>
-                            
-                            <div id="choices-container">
-                                <button class="choice-btn" data-choice="door">
-                                    <span class="choice-prefix">> </span>
-                                    Intentar abrir la puerta principal
-                                </button>
-                                <button class="choice-btn" data-choice="window">
-                                    <span class="choice-prefix">> </span>
-                                    Investigar la ventana rota
-                                </button>
-                                <button class="choice-btn" data-choice="garden">
-                                    <span class="choice-prefix">> </span>
-                                    Explorar el jardín de estatuas
-                                </button>
-                            </div>
+                            <div id="story-text"></div>
+                            <div id="choices-container"></div>
                         </div>
                     </div>
                 </div>
@@ -1245,63 +1330,123 @@
             creepyAmbient: new Audio('ambient-horror.mp3')
         };
 
-        // Función para actualizar la escena con efectos visuales y sonoros
-        function updateScene(scene) {
-            if (!storyData[scene]) return;
-            
-            const container = document.getElementById('story-container');
-            const locationName = document.querySelector('.location-name');
-            const storyText = document.getElementById('story-text');
-            const choicesContainer = document.getElementById('choices-container');
-            
-            // Efecto de transición
-            container.style.opacity = '0';
-            
-            setTimeout(() => {
-                // Actualizar ubicación
-                locationName.textContent = storyData[scene].location;
+        // Actualizamos el script del juego
+        document.addEventListener('DOMContentLoaded', () => {
+            // Función typeWriter que faltaba
+            function typeWriter(element, text, speed = 30) {
+                let i = 0;
+                element.textContent = '';
                 
-                // Actualizar texto con efecto de máquina de escribir
-                storyText.textContent = '';
-                typeWriter(storyText, storyData[scene].text);
-                
-                // Actualizar opciones con delay
-                choicesContainer.innerHTML = '';
-                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
-                    setTimeout(() => {
-                        const button = document.createElement('button');
-                        button.className = 'choice-btn';
-                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
-                        button.dataset.choice = key;
-                        button.onclick = () => {
-                            audioEffects.buttonClick.play();
-                            updateScene(key);
-                        };
-                        choicesContainer.appendChild(button);
-                    }, index * 300);
-                });
-                
-                container.style.opacity = '1';
-            }, 500);
-        }
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
 
-        // Efecto de máquina de escribir
-        function typeWriter(element, text, speed = 30) {
-            let i = 0;
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
+            const gameMenu = document.getElementById('game-menu');
+            const gameContainer = document.getElementById('game-container');
+            const startButton = document.querySelector('.start-game');
+            const creditsButton = document.querySelector('.show-credits');
+            
+            let currentScene = 'start';
+            let gameStarted = false;
+
+            // Función para iniciar el juego
+            function startGame() {
+                if (gameStarted) return;
+                
+                gameMenu.style.display = 'none';
+                gameContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    gameContainer.classList.add('active');
+                    updateScene('start');
+                }, 100);
+                
+                gameStarted = true;
+                
+                // Iniciar música de ambiente si existe
+                if (audioEffects.creepyAmbient) {
+                    audioEffects.creepyAmbient.loop = true;
+                    audioEffects.creepyAmbient.volume = 0.3;
+                    audioEffects.creepyAmbient.play().catch(() => {});
                 }
             }
-            type();
-        }
 
-        // Inicializar la primera escena
-        document.addEventListener('DOMContentLoaded', () => {
-            updateScene('start');
+            // Función para mostrar créditos
+            function showCredits() {
+                const creditsText = `
+                    <h2>Créditos</h2>
+                    <p>Where are the Alices?</p>
+                    <p>Un juego de terror psicológico</p>
+                    <p>Creado por ZimmZimmGames</p>
+                    <br>
+                    <button class="menu-btn back-to-menu">Volver al Menú</button>
+                `;
+                gameMenu.innerHTML = creditsText;
+                
+                document.querySelector('.back-to-menu').addEventListener('click', () => {
+                    location.reload();
+                });
+            }
+
+            // Función para actualizar la escena
+            function updateScene(scene) {
+                if (!storyData[scene]) return;
+                
+                const container = document.getElementById('story-container');
+                const locationName = document.querySelector('.location-name');
+                const storyText = document.getElementById('story-text');
+                const choicesContainer = document.getElementById('choices-container');
+                
+                // Efecto de transición
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    locationName.textContent = storyData[scene].location;
+                    
+                    // Efecto de máquina de escribir
+                    typeWriter(storyText, storyData[scene].text);
+                    
+                    // Actualizar opciones con animación
+                    choicesContainer.innerHTML = '';
+                    Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                        setTimeout(() => {
+                            const button = document.createElement('button');
+                            button.className = 'choice-btn';
+                            button.style.animationDelay = `${index * 0.2}s`;
+                            button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                            button.dataset.choice = key;
+                            button.onclick = () => {
+                                playSound('buttonClick');
+                                updateScene(key);
+                            };
+                            choicesContainer.appendChild(button);
+                        }, index * 300);
+                    });
+                    
+                    container.style.opacity = '1';
+                    playSound('pageChange');
+                }, 500);
+            }
+
+            // Función para reproducir efectos de sonido
+            function playSound(soundType) {
+                if (audioEffects[soundType]) {
+                    audioEffects[soundType].currentTime = 0;
+                    audioEffects[soundType].play().catch(() => {});
+                }
+            }
+
+            // Event listeners para los botones del menú
+            startButton.addEventListener('click', startGame);
+            creditsButton.addEventListener('click', showCredits);
         });
     </script>
 </body>
 </html>
+
