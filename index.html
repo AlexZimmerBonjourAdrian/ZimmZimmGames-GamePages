@@ -1361,6 +1361,70 @@
                 font-size: 1rem;
             }
         }
+
+        /* Agregar en la sección de estilos */
+        .language-selector {
+            position: fixed;
+            top: 15px;
+            right: 80px;
+            z-index: 1000;
+        }
+
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-accent);
+            transition: all 0.3s ease;
+        }
+
+        .language-btn:hover,
+        .language-option:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+
+        .language-btn.current {
+            background-color: rgba(255, 215, 0, 0.2);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid var(--gold);
+            display: none;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .language-selector:hover .language-dropdown {
+            display: flex;
+        }
+
+        .language-option {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            padding: 5px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-accent);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                right: 60px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1381,6 +1445,16 @@
             <a href="#demo">DEMO</a>
             <a href="#merch">MERCH</a>
             <a href="#faq">FAQ / CONTACT</a>
+        </div>
+
+        <!-- Agregar dentro del nav, después del menu-items -->
+        <div class="language-selector">
+            <button class="language-btn current" data-lang="en">EN</button>
+            <div class="language-dropdown">
+                <button class="language-option" data-lang="es">ES</button>
+                <button class="language-option" data-lang="ja">JA</button>
+                <button class="language-option" data-lang="ru">RU</button>
+            </div>
         </div>
     </nav>
 
@@ -1805,6 +1879,184 @@
             // Event listeners para los botones del menú
             startButton.addEventListener('click', startGame);
             creditsButton.addEventListener('click', showCredits);
+        });
+
+        const translations = {
+            en: {
+                about: "ABOUT",
+                demo: "DEMO",
+                merch: "MERCH",
+                faq: "FAQ / CONTACT",
+                startGame: "Start Game",
+                continue: "Continue",
+                credits: "Credits",
+                downloadDemo: "Download Demo",
+                joinDiscord: "Join Discord",
+                comingSoon: "Coming Soon",
+                demoAvailable: "Demo available soon",
+                supportTitle: "Support Development",
+                supportSubtitle: "Help us bring more nightmares to reality",
+                dareToEnter: "Dare to Enter?",
+                dareText: "Enter a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.",
+                startNightmare: "Begin the Nightmare",
+                tryDemo: "Try the Demo",
+                exploreChapter: "Explore the first chapter of Where are the Alices?",
+                rabbitHoleTitle: "Enter the Rabbit Hole",
+                rabbitHoleSubtitle: "Talk to nightmares made real",
+                communityTitle: "Join the Community",
+                communitySubtitle: "Share your theories and uncover secrets with other investigators",
+                discordTitle: "Official Discord Server",
+                discordText: "Join our detective community and share your findings about the disappearances. Can you solve the mystery before it's too late?",
+                copyright: "© 2024 ZimmZimmGames. All rights reserved."
+            },
+            es: {
+                about: "SOBRE",
+                demo: "DEMO",
+                merch: "TIENDA",
+                faq: "FAQ / CONTACTO",
+                startGame: "Iniciar Juego",
+                continue: "Continuar",
+                credits: "Créditos",
+                downloadDemo: "Descargar Demo",
+                joinDiscord: "Unirse a Discord",
+                comingSoon: "Próximamente",
+                demoAvailable: "Demo disponible próximamente",
+                supportTitle: "Apoya el Desarrollo",
+                supportSubtitle: "Ayúdanos a traer más pesadillas a la realidad",
+                dareToEnter: "¿Te Atreves a Entrar?",
+                dareText: "Adéntrate en un mundo donde las pesadillas cobran vida y las muñecas guardan secretos oscuros. Descubre qué les sucedió realmente a las Alices... si te atreves.",
+                startNightmare: "Comenzar la Pesadilla",
+                tryDemo: "Prueba la Demo",
+                exploreChapter: "¡Explora el primer capítulo de Where are the Alices?",
+                rabbitHoleTitle: "Adéntrate en la Madriguera del Conejo",
+                rabbitHoleSubtitle: "Habla con las pesadillas hechas realidad",
+                communityTitle: "Únete a la Comunidad",
+                communitySubtitle: "Comparte tus teorías y descubre los secretos con otros investigadores",
+                discordTitle: "Servidor Oficial de Discord",
+                discordText: "Únete a nuestra comunidad de detectives y comparte tus descubrimientos sobre las desapariciones. ¿Podrás resolver el misterio antes de que sea demasiado tarde?",
+                copyright: "© 2024 ZimmZimmGames. Todos los derechos reservados."
+            },
+            ja: {
+                about: "概要",
+                demo: "デモ",
+                merch: "ショップ",
+                faq: "FAQ / お問い合わせ",
+                startGame: "ゲームを始める",
+                continue: "続ける",
+                credits: "クレジット",
+                downloadDemo: "デモをダウンロード",
+                joinDiscord: "Discordに参加",
+                comingSoon: "近日公開",
+                demoAvailable: "デモ版は近日公開予定",
+                supportTitle: "開発をサポート",
+                supportSubtitle: "より多くの悪夢を現実にするためにご協力ください",
+                dareToEnter: "入る勇気はありますか？",
+                dareText: "悪夢が現実となり、人形が暗い秘密を守る世界へ。アリスたちの真実を明らかにしましょう...もし勇気があれば。",
+                startNightmare: "悪夢を始める",
+                tryDemo: "デモを試す",
+                exploreChapter: "「Where are the Alices?」の第一章を体験しよう",
+                rabbitHoleTitle: "ウサギの穴へ潜入",
+                rabbitHoleSubtitle: "現実となった悪夢と会話する",
+                communityTitle: "コミュニティに参加",
+                communitySubtitle: "他の探偵たちと理論を共有し、秘密を解き明かそう",
+                discordTitle: "公式Discordサーバー",
+                discordText: "探偵コミュニティに参加して、失踪事件についての発見を共有しましょう。時間切れになる前に謎を解けますか？",
+                copyright: "© 2024 ZimmZimmGames. 全ての権利を保有"
+            },
+            ru: {
+                about: "О ИГРЕ",
+                demo: "ДЕМО",
+                merch: "МАГАЗИН",
+                faq: "FAQ / КОНТАКТЫ",
+                startGame: "Начать игру",
+                continue: "Продолжить",
+                credits: "Титры",
+                downloadDemo: "Скачать демо",
+                joinDiscord: "Присоединиться к Discord",
+                comingSoon: "Скоро",
+                demoAvailable: "Демо версия скоро будет доступна",
+                supportTitle: "Поддержать разработку",
+                supportSubtitle: "Помогите нам воплотить больше кошмаров в реальность",
+                dareToEnter: "Осмелишься войти?",
+                dareText: "Войдите в мир, где кошмары оживают, а куклы хранят темные секреты. Узнайте, что на самом деле случилось с Алисами... если осмелитесь.",
+                startNightmare: "Начать кошмар",
+                tryDemo: "Попробовать демо",
+                exploreChapter: "Исследуйте первую главу Where are the Alices?",
+                rabbitHoleTitle: "Спуститься в Кроличью Нору",
+                rabbitHoleSubtitle: "Поговорите с кошмарами, ставшими реальностью",
+                communityTitle: "Присоединиться к сообществу",
+                communitySubtitle: "Делитесь теориями и раскрывайте секреты вместе с другими исследователями",
+                discordTitle: "Официальный Discord сервер",
+                discordText: "Присоединяйтесь к нашему сообществу детективов и делитесь своими находками о исчезновениях. Сможете ли вы разгадать тайну до того, как станет слишком поздно?",
+                copyright: "© 2024 ZimmZimmGames. Все права защищены."
+            }
+        };
+
+        // Función para cambiar el idioma
+        function changeLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Actualizar todos los elementos traducibles
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    if (element.tagName.toLowerCase() === 'input' || 
+                        element.tagName.toLowerCase() === 'textarea') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Actualizar el botón de idioma actual
+            const currentBtn = document.querySelector('.language-btn.current');
+            currentBtn.classList.remove('current');
+            currentBtn.textContent = lang.toUpperCase();
+            
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('current');
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Inicializar el sistema de idiomas
+        document.addEventListener('DOMContentLoaded', () => {
+            // Agregar atributos data-translate a los elementos que necesitan traducción
+            document.querySelectorAll('.menu-items a').forEach((item, index) => {
+                const keys = ['about', 'demo', 'merch', 'faq'];
+                item.setAttribute('data-translate', keys[index]);
+            });
+
+            // Elementos de la página principal
+            document.querySelector('.coming-soon').setAttribute('data-translate', 'comingSoon');
+            document.querySelector('.demo-available span').setAttribute('data-translate', 'demoAvailable');
+            document.querySelector('.cta-container h2').setAttribute('data-translate', 'dareToEnter');
+            document.querySelector('.cta-text').setAttribute('data-translate', 'dareText');
+            document.querySelector('.cta-btn .btn-text').setAttribute('data-translate', 'startNightmare');
+            
+            // Sección de soporte
+            document.querySelector('.support-section h2').setAttribute('data-translate', 'supportTitle');
+            document.querySelector('.support-section .subtitle').setAttribute('data-translate', 'supportSubtitle');
+            
+            // Sección de demo
+            document.querySelector('.demo-section h2').setAttribute('data-translate', 'tryDemo');
+            document.querySelector('.demo-content p').setAttribute('data-translate', 'exploreChapter');
+            
+            // Sección de la madriguera del conejo
+            document.querySelector('.rabbit-hole-section h2').setAttribute('data-translate', 'rabbitHoleTitle');
+            document.querySelector('.rabbit-hole-section .subtitle').setAttribute('data-translate', 'rabbitHoleSubtitle');
+            
+            // Sección de Discord
+            document.querySelector('.discord-section h2').setAttribute('data-translate', 'communityTitle');
+            document.querySelector('.discord-section .subtitle').setAttribute('data-translate', 'communitySubtitle');
+            document.querySelector('.discord-card h3').setAttribute('data-translate', 'discordTitle');
+            document.querySelector('.discord-card p').setAttribute('data-translate', 'discordText');
+            
+            // Footer
+            document.querySelector('.footer p').setAttribute('data-translate', 'copyright');
+
+            // Inicializar el idioma
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'es';
+            changeLanguage(preferredLanguage);
         });
     </script>
 </body>
