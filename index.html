@@ -3,60 +3,52 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title data-translate-key="page_title">Game Name - Psychological Horror Adventure</title> {/* Placeholder eliminado */}
+      <title data-translate-key="page_title"></title>
       <link rel="stylesheet" href="style.css">
     </head>
     <body>
       <header class="site-header">
-        <div class="header-container">
-          <nav class="main-nav">
-            <ul>
-              <li><a href="#main-game" data-translate-key="nav_game">Game</a></li>
-              <li><a href="#interactive-story" data-translate-key="nav_story">Interactive Story</a></li>
-              <li><a href="#demo" data-translate-key="nav_demo">Demo</a></li>
-              <li><a href="#about" data-translate-key="nav_about">About Me</a></li>
-              <li><a href="#faq" data-translate-key="nav_faq">FAQ</a></li>
-            </ul>
-          </nav>
-          <div class="header-controls">
-            <div class="language-selector">
-              <label for="lang-select" data-translate-key="lang_select_label">Language:</label>
-              <select id="lang-select">
-                <option value="es">Español</option>
-                <option value="en">English</option>
-                <option value="ja">日本語</option>
-                <option value="ru">Русский</option>
-              </select>
-            </div>
-            <button id="chatbot-trigger" class="chatbot-button invisible-button" aria-label="Open Chatbot">
-              &nbsp;
-            </button>
-          </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#main-game" data-translate-key="nav_game"></a></li>
+            <li><a href="#interactive-story" data-translate-key="nav_story"></a></li>
+            <li><a href="#demo" data-translate-key="nav_demo"></a></li>
+            <li><a href="#meet-the-staff" data-translate-key="nav_staff"></a></li>
+            <li><a href="#about" data-translate-key="nav_about"></a></li>
+            <li><a href="#faq" data-translate-key="nav_faq"></a></li>
+            <li><a href="#rabbit-hole" data-translate-key="nav_rabbit_hole"></a></li>
+            <li><a href="#contact-us" data-translate-key="nav_contact"></a></li>
+            <li><a href="#donations" data-translate-key="nav_donations"></a></li>
+          </ul>
+        </nav>
+        <div class="language-selector">
+          <label for="lang-select" data-translate-key="lang_select_label"></label>
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="ja">日本語</option>
+            <option value="ru">Русский</option>
+          </select>
         </div>
       </header>
 
       <main>
         <section id="main-game" class="content-section">
-          {/* Logo añadido encima del título */}
-          <div class="game-logo-container">
-              <img src="game-logo.png" alt="Game Logo" class="game-logo" data-translate-key="game_logo_alt">
-          </div>
-          <h2 data-translate-key="main_game_title">Game Name</h2> {/* Placeholder eliminado */}
+          <h2 data-translate-key="main_game_title"></h2>
           <div class="main-image-container">
             <img src="placeholder-main-image.png" alt="Main game image" class="main-game-image">
           </div>
           <div class="buy-now-container">
-            <button class="buy-button primary-button" data-translate-key="buy_button">Buy Now</button>
+            <button class="buy-button" data-translate-key="buy_button"></button>
           </div>
-
           <div class="platform-buttons">
-            <button class="platform-btn secondary-button">PC</button>
-            <button class="platform-btn secondary-button">PS5</button>
-            <button class="platform-btn secondary-button">Xbox Series X</button>
-            <button class="platform-btn secondary-button">Switch</button>
-          </div>
+            <button class="platform-btn">PC</button>
+         <!--   <button class="platform-btn">PS5</button>
+            <button class="platform-btn">Xbox Series X</button>
+            <button class="platform-btn">Switch</button> -->
 
-          <h3 data-translate-key="concept_art_title">Concept Art</h3>
+          </div>
+          <h3 data-translate-key="concept_art_title"></h3>
           <div class="concept-art-gallery">
             <img src="placeholder-concept-1.png" alt="Concept Art 1">
             <img src="placeholder-concept-2.png" alt="Concept Art 2">
@@ -66,7 +58,7 @@
         </section>
 
         <section id="interactive-story" class="content-section">
-          <h2 data-translate-key="story_title">Interactive Story</h2>
+          <h2 data-translate-key="story_title"></h2>
           <div class="story-container">
             <div id="story-image-container">
               <img id="story-image" src="" alt="Story scene" style="display: none;">
@@ -74,70 +66,157 @@
             <div id="story-text-container">
               <p id="story-text"></p>
             </div>
-            <div id="story-choices">
-              {/* Choices generated by JS */}
-            </div>
+            <div id="story-choices"></div>
           </div>
         </section>
 
         <section id="demo" class="content-section">
-          <h2 data-translate-key="demo_title">Demo</h2>
-          <p data-translate-key="demo_intro">Dare to try a fragment of madness?</p>
-          <p data-translate-key="demo_download_prompt">Download the demo here:</p>
-          <ul class="demo-links-list">
-            <li><a href="#" class="demo-link tertiary-button" data-translate-key="demo_link_steam">Download Demo for PC (Steam)</a></li>
-            <li><a href="#" class="demo-link tertiary-button" data-translate-key="demo_link_itch">Download Demo for PC (Itch.io)</a></li>
-            <li><a href="#" class="demo-link tertiary-button" data-translate-key="demo_link_other">Additional Platform</a></li> {/* Placeholder eliminado */}
+          <h2 data-translate-key="demo_title"></h2>
+          <p data-translate-key="demo_intro"></p>
+          <p data-translate-key="demo_download_prompt"></p>
+          <ul>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_steam"></a></li>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_itch"></a></li>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_other"></a></li>
           </ul>
-          <p data-translate-key="demo_outro">Immerse yourself in the twisted world and experience the suspense...</p>
+          <p data-translate-key="demo_outro"></p>
+        </section>
+
+        <section id="meet-the-staff" class="content-section">
+          <h2 data-translate-key="staff_title"></h2>
+          <p data-translate-key="staff_world_intro"></p>
+          <div class="staff-grid">
+            <div class="staff-member">
+              <img src="placeholder-staff-1.png" alt="Character 1 Portrait">
+              <h4 data-translate-key="staff_char1_name"></h4>
+              <p data-translate-key="staff_char1_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-2.png" alt="Character 2 Portrait">
+              <h4 data-translate-key="staff_char2_name"></h4>
+              <p data-translate-key="staff_char2_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-3.png" alt="Character 3 Portrait">
+              <h4 data-translate-key="staff_char3_name"></h4>
+              <p data-translate-key="staff_char3_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-4.png" alt="Character 4 Portrait">
+              <h4 data-translate-key="staff_char4_name"></h4>
+              <p data-translate-key="staff_char4_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-5.png" alt="Character 5 Portrait">
+              <h4 data-translate-key="staff_char5_name"></h4>
+              <p data-translate-key="staff_char5_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-6.png" alt="Character 6 Portrait">
+              <h4 data-translate-key="staff_char6_name"></h4>
+              <p data-translate-key="staff_char6_desc"></p>
+            </div>
+          </div>
         </section>
 
         <section id="about" class="content-section">
-          <h2 data-translate-key="about_title">About the Developer</h2>
-          <p data-translate-key="about_p1">I am Your Name/Studio Name, an independent developer passionate about creating immersive and unsettling experiences.</p> {/* Placeholder eliminado */}
-          <p data-translate-key="about_p2">My goal with <span data-translate-key="main_game_title">Game Name</span> is to explore the darkest corners of the human psyche, wrapped in a surreal aesthetic inspired by classic tales, but with a macabre twist.</p> {/* Placeholder eliminado */}
-          <p data-translate-key="about_p3">This project is a personal journey into psychological horror, combining narrative, atmosphere, and mystery.</p>
-          <p data-translate-key="about_p4">You can follow the development and my thoughts on my social media.</p>
+          <h2 data-translate-key="about_title"></h2>
+          <p data-translate-key="about_p1"></p>
+          <p data-translate-key="about_p2"></p>
+          <p data-translate-key="about_p3"></p>
+          <p data-translate-key="about_p4"></p>
         </section>
 
         <section id="faq" class="content-section">
-          <h2 data-translate-key="faq_title">Frequently Asked Questions (FAQ)</h2>
+          <h2 data-translate-key="faq_title"></h2>
           <div class="faq-item">
-            <p><strong data-translate-key="faq_q_platforms">Q: What platforms will the game be available on?</strong></p>
-            <p data-translate-key="faq_a_platforms">A: The initial release is planned for PC (Steam). We are exploring the possibility of bringing it to consoles (e.g., PS5, Xbox) in the future.</p> {/* Placeholder más específico */}
+            <p><strong data-translate-key="faq_q_platforms"></strong></p>
+            <p data-translate-key="faq_a_platforms"></p>
           </div>
           <div class="faq-item">
-            <p><strong data-translate-key="faq_q_release">Q: What is the estimated release date?</strong></p>
-            <p data-translate-key="faq_a_release">A: We are currently working hard. The estimated date is "Coming Soon". Follow our networks for updates!</p> {/* Placeholder más específico */}
+            <p><strong data-translate-key="faq_q_release"></strong></p>
+            <p data-translate-key="faq_a_release"></p>
           </div>
           <div class="faq-item">
-            <p><strong data-translate-key="faq_q_langs">Q: Will the game support specific languages?</strong></p> {/* Placeholder eliminado */}
-            <p data-translate-key="faq_a_langs">A: The game will launch in English and Spanish. We are considering adding more languages post-launch based on community interest.</p> {/* Placeholder más específico */}
+            <p><strong data-translate-key="faq_q_langs"></strong></p>
+            <p data-translate-key="faq_a_langs"></p>
           </div>
            <div class="faq-item">
-            <p><strong data-translate-key="faq_q_inspired">Q: What inspired the game's aesthetic?</strong></p>
-            <p data-translate-key="faq_a_inspired">A: The main inspiration is a fusion between the dreamlike and disorienting atmosphere of "Alice in Wonderland" and classic elements of suspense and psychological horror cinema, seeking to create a familiar yet deeply unsettling world.</p>
+            <p><strong data-translate-key="faq_q_inspired"></strong></p>
+            <p data-translate-key="faq_a_inspired"></p>
           </div>
           <div class="faq-item">
-            <p><strong data-translate-key="faq_q_jumpscares">Q: Is it a horror game with jumpscares?</strong></p>
-            <p data-translate-key="faq_a_jumpscares">A: The main focus is on psychological horror, atmosphere, and narrative suspense. There may be startling moments, but it doesn't rely primarily on jumpscares to generate fear.</p>
+            <p><strong data-translate-key="faq_q_jumpscares"></strong></p>
+            <p data-translate-key="faq_a_jumpscares"></p>
+          </div>
+        </section>
+
+        <section id="rabbit-hole" class="content-section">
+          <h2 data-translate-key="rabbit_hole_title"></h2>
+          <div class="rabbit-hole-links">
+            <a href="EXTERNAL_LINK_1" target="_blank" class="rabbit-hole-link">
+              <img src="placeholder-rabbit-hole-1.png" alt="Link Image 1">
+            </a>
+            <a href="EXTERNAL_LINK_2" target="_blank" class="rabbit-hole-link">
+              <img src="placeholder-rabbit-hole-2.png" alt="Link Image 2">
+            </a>
+          </div>
+        </section>
+
+        <section id="contact-us" class="content-section">
+          <h2 data-translate-key="contact_title"></h2>
+          <p data-translate-key="contact_intro"></p>
+          <form id="contact-form" class="contact-form">
+             <div class="form-group">
+              <label for="contact-name" data-translate-key="contact_label_name"></label>
+              <input type="text" id="contact-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email" data-translate-key="contact_label_email"></label>
+              <input type="email" id="contact-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message" data-translate-key="contact_label_message"></label>
+              <textarea id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="submit-button" data-translate-key="contact_button_send"></button>
+            </div>
+          </form>
+          <p id="contact-feedback" style="display: none; margin-top: 15px;"></p>
+        </section>
+
+        <section id="donations" class="content-section">
+          <h2 data-translate-key="donations_title"></h2>
+          <p data-translate-key="donations_intro"></p>
+          <div class="donation-options">
+            <h3 data-translate-key="donations_popular_platforms"></h3>
+            <div class="donation-grid">
+              <a href="URL_PAYPAL" target="_blank" class="donation-button paypal" data-translate-key="donations_paypal"></a>
+              <a href="URL_PATREON" target="_blank" class="donation-button patreon" data-translate-key="donations_patreon"></a>
+              <a href="URL_KOFI" target="_blank" class="donation-button kofi" data-translate-key="donations_kofi"></a>
+            </div>
+            <h3 data-translate-key="donations_direct_title"></h3>
+            <div class="direct-donation">
+              <p data-translate-key="donations_direct_intro"></p>
+              <a href="URL_DONACION_DIRECTA" target="_blank" class="donation-button direct" data-translate-key="donations_direct_button"></a>
+            </div>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
-         <div class="mascot-logo">
+        <div class="mascot-logo">
             <img src="placeholder-mascot.png" alt="Game/Studio Mascot">
         </div>
         <div class="social-links">
-          <a href="#" target="_blank" title="Twitter">Twitter</a> |
-          <a href="#" target="_blank" title="Instagram">Instagram</a> |
-          <a href="#" target="_blank" title="Discord">Discord</a> |
-          <a href="#" target="_blank" title="YouTube">YouTube</a> |
-          <a href="#" target="_blank" title="Steam">Steam</a>
+          <a href="#" target="_blank">Twitter</a> |
+          <a href="#" target="_blank">Instagram</a> |
+          <a href="#" target="_blank">Discord</a> |
+          <a href="#" target="_blank">YouTube</a> |
+          <a href="#" target="_blank">Steam</a>
         </div>
-        {/* Copyright actualizado */}
-        <p class="copyright" data-translate-key="copyright">© 2025 ZIMMZIMM Game Studio. All rights reserved.</p>
+        <p class="copyright" data-translate-key="copyright"></p>
       </footer>
 
       <script src="script.js"></script>
