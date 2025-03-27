@@ -855,6 +855,122 @@
                 height: 150px;
             }
         }
+
+        /* Estilos para la aventura de texto */
+        .text-adventure-section {
+            margin-top: 4rem;
+            max-width: 1000px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .terminal-title {
+            color: var(--gold);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-align: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .game-content {
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .location-name {
+            color: var(--gold);
+            font-family: var(--font-accent);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px dashed var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        #story-text {
+            color: var(--gold);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: textAppear 1s ease-out;
+        }
+
+        #choices-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .choice-btn {
+            background-color: transparent;
+            border: none;
+            color: var(--gold);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            text-align: left;
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .choice-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .choice-btn:hover {
+            color: #000000;
+            background-color: var(--gold);
+            transform: translateX(10px);
+        }
+
+        .choice-prefix {
+            color: inherit;
+            margin-right: 0.5rem;
+            opacity: 0.7;
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        /* Efectos de scanline y CRT */
+        .crt-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%,
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -960,6 +1076,46 @@
                 </div>
             </div>
         </div>
+
+        <!-- Sección de Aventura de Texto -->
+        <div class="text-adventure-section">
+            <div class="crt-frame">
+                <div class="crt-screen">
+                    <div class="game-header">
+                        <div class="window-controls">
+                            <button class="window-control" aria-label="Cerrar">×</button>
+                            <button class="window-control" aria-label="Maximizar">□</button>
+                            <button class="window-control" aria-label="Minimizar">─</button>
+                        </div>
+                        <div class="terminal-title">C:\WHERE_ARE_THE_ALICES\DEMO.exe</div>
+                    </div>
+                    
+                    <div class="game-content">
+                        <div id="story-container">
+                            <div class="location-name">Mansión Abandonada - Entrada Principal</div>
+                            <div id="story-text">
+                                El aire está cargado con un aroma dulzón y metálico. Frente a ti, la puerta principal de la mansión Victorian se alza imponente. A tu derecha, una ventana rota parece lo suficientemente grande para entrar. A tu izquierda, hay un jardín con estatuas inquietantes.
+                            </div>
+                            
+                            <div id="choices-container">
+                                <button class="choice-btn" data-choice="door">
+                                    <span class="choice-prefix">> </span>
+                                    Intentar abrir la puerta principal
+                                </button>
+                                <button class="choice-btn" data-choice="window">
+                                    <span class="choice-prefix">> </span>
+                                    Investigar la ventana rota
+                                </button>
+                                <button class="choice-btn" data-choice="garden">
+                                    <span class="choice-prefix">> </span>
+                                    Explorar el jardín de estatuas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -1012,6 +1168,72 @@
                     toggleMenu();
                 }
             });
+        });
+
+        const storyData = {
+            start: {
+                text: "El aire está cargado con un aroma dulzón y metálico. Frente a ti, la puerta principal de la mansión Victorian se alza imponente. A tu derecha, una ventana rota parece lo suficientemente grande para entrar. A tu izquierda, hay un jardín con estatuas inquietantes.",
+                choices: {
+                    door: "Intentar abrir la puerta principal",
+                    window: "Investigar la ventana rota",
+                    garden: "Explorar el jardín de estatuas"
+                }
+            },
+            door: {
+                text: "La puerta está cerrada, pero notas algo extraño: hay marcas de garras en la madera. Un susurro escalofriante emerge desde el otro lado...",
+                choices: {
+                    listen: "Acercar el oído a la puerta",
+                    window: "Mejor revisar la ventana",
+                    garden: "Mejor explorar el jardín"
+                }
+            },
+            window: {
+                text: "Te acercas a la ventana rota. Entre los cristales, ves una nota manchada de sangre. También notas que podrías entrar, aunque los vidrios parecen peligrosos.",
+                choices: {
+                    enter: "Arriesgarte a entrar",
+                    note: "Intentar alcanzar la nota",
+                    back: "Retroceder"
+                }
+            },
+            garden: {
+                text: "Las estatuas parecen seguirte con la mirada. Una de ellas sostiene un libro antiguo. Otra parece haber sido movida recientemente...",
+                choices: {
+                    book: "Examinar el libro",
+                    statue: "Investigar la estatua movida",
+                    back: "Volver a la entrada"
+                }
+            }
+        };
+
+        let currentScene = 'start';
+
+        function updateScene(scene) {
+            const container = document.getElementById('story-container');
+            const storyText = document.getElementById('story-text');
+            const choicesContainer = document.getElementById('choices-container');
+            
+            // Actualizar texto
+            storyText.style.opacity = '0';
+            setTimeout(() => {
+                storyText.textContent = storyData[scene].text;
+                storyText.style.opacity = '0.9';
+            }, 300);
+
+            // Actualizar opciones
+            choicesContainer.innerHTML = '';
+            Object.entries(storyData[scene].choices).forEach(([key, text]) => {
+                const button = document.createElement('button');
+                button.className = 'choice-btn';
+                button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                button.dataset.choice = key;
+                button.onclick = () => updateScene(key);
+                choicesContainer.appendChild(button);
+            });
+        }
+
+        // Inicializar la primera escena
+        document.addEventListener('DOMContentLoaded', () => {
+            updateScene('start');
         });
     </script>
 </body>
