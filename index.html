@@ -1065,6 +1065,134 @@
                 transform: translateY(0);
             }
         }
+
+        /* Agregar en la sección de estilos */
+        .support-section {
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background-color: rgba(139, 0, 0, 0.1);
+            border: 2px solid var(--gold);
+            max-width: 1200px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .support-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, 
+                    rgba(139, 0, 0, 0.1) 25%, 
+                    transparent 25%),
+                linear-gradient(-45deg, 
+                    rgba(139, 0, 0, 0.1) 25%, 
+                    transparent 25%);
+            background-size: 4px 4px;
+            pointer-events: none;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .support-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-card:hover:not(.disabled) {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .support-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--gold);
+        }
+
+        .support-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .support-card p {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .support-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: var(--font-accent);
+        }
+
+        .support-btn:not(:disabled):hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .support-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .support-card.disabled {
+            opacity: 0.8;
+        }
+
+        .support-card.disabled .coming-soon {
+            margin: 1rem 0;
+            padding: 0.5rem;
+            border: 1px dashed var(--gold);
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1128,6 +1256,54 @@
                 </div>
             </div>
         </section>
+
+        <div class="support-section">
+            <h2>Apoya el Desarrollo</h2>
+            <p class="subtitle">Ayúdanos a traer más pesadillas a la realidad</p>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <i class="fab fa-paypal"></i>
+                    <h3>PayPal</h3>
+                    <p>Contribución única para el desarrollo</p>
+                    <a href="#" class="support-btn">
+                        <span class="btn-text">Donar con PayPal</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <i class="fab fa-patreon"></i>
+                    <h3>Patreon</h3>
+                    <p>Acceso exclusivo al desarrollo y contenido especial</p>
+                    <a href="#" class="support-btn">
+                        <span class="btn-text">Únete en Patreon</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                </div>
+
+                <div class="support-card">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Ko-fi</h3>
+                    <p>Invítanos un café para mantener las pesadillas vivas</p>
+                    <a href="#" class="support-btn">
+                        <span class="btn-text">Comprar un Ko-fi</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                </div>
+
+                <div class="support-card disabled">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Indiegogo</h3>
+                    <p>Campaña de crowdfunding próximamente</p>
+                    <div class="coming-soon">Próximamente</div>
+                    <button class="support-btn" disabled>
+                        <span class="btn-text">Reservar</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <div class="demo-section">
             <h2>Prueba la Demo</h2>
