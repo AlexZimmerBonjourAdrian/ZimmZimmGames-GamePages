@@ -581,3 +581,122 @@
             });
         });
     });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navbar = document.querySelector('.navbar');
+        const sections = document.querySelectorAll('section');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        // Estado del menú
+        let isMenuOpen = false;
+
+        // Función para alternar el menú
+        const toggleMenu = () => {
+            isMenuOpen = !isMenuOpen;
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Animar las líneas del hamburger
+            const spans = hamburger.querySelectorAll('span');
+            if (isMenuOpen) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        };
+
+        // Event listener para el botón hamburger
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Cerrar el menú cuando se hace clic en un enlace
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMenuOpen) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Cerrar el menú cuando se hace clic fuera
+        document.addEventListener('click', (e) => {
+            if (isMenuOpen && !hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                toggleMenu();
+            }
+        });
+
+        // Cambiar el color del navbar al hacer scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Agregar/remover clase para el fondo del navbar
+            if (currentScroll > 50) {
+                navbar.style.backgroundColor = 'rgba(44, 62, 80, 0.95)';
+            } else {
+                navbar.style.backgroundColor = 'var(--primary-color)';
+            }
+
+            // Ocultar/mostrar navbar al hacer scroll
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Animación suave para los enlaces de navegación
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación de aparición para las secciones
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Prevenir el scroll cuando el menú está abierto
+        const preventScroll = (e) => {
+            if (isMenuOpen) {
+                e.preventDefault();
+            }
+        };
+
+        window.addEventListener('scroll', preventScroll, { passive: false });
+    });

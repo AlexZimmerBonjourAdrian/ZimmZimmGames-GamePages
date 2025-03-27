@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where are the Alices? - Historia Interactiva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="InteractiveStorieStyle.CSS">
+</head>
+<body>
+    <section id="interactive-story-section" class="interactive-story-section">
+        <div class="container">
+            <div class="story-container">
+                <div class="crt-frame">
+                    <div class="crt-screen">
+                        <div class="game-header">
+                            <div class="window-controls">
+                                <button class="window-control" aria-label="Cerrar">×</button>
+                                <button class="window-control" aria-label="Maximizar">□</button>
+                                <button class="window-control" aria-label="Minimizar">─</button>
+                            </div>
+                        </div>
+                        <div class="scene-container">
+                            <img id="story-image" src="assets/images/scene1.jpg" alt="Escena de la historia">
+                        </div>
+                        <div class="game-text">
+                            <div class="text-header">
+                                <div class="location-name">La Mansión de los Espejos</div>
+                            </div>
+                            <p>Te encuentras en la entrada de una antigua mansión victoriana. El aire está cargado de misterio y los espejos que cubren las paredes reflejan tu imagen de manera inquietante. ¿Qué decides hacer?</p>
+                        </div>
+                        <div class="game-choices">
+                            <button class="game-choice" data-choice="explore">
+                                <span class="choice-prefix">A.</span>
+                                Explorar la sala principal
+                            </button>
+                            <button class="game-choice" data-choice="mirrors">
+                                <span class="choice-prefix">B.</span>
+                                Examinar los espejos más de cerca
+                            </button>
+                            <button class="game-choice" data-choice="stairs">
+                                <span class="choice-prefix">C.</span>
+                                Subir por la escalera principal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="InteractiveStorie.js"></script>
+</body>
+</html>
