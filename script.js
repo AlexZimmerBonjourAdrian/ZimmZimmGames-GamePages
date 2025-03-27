@@ -411,3 +411,173 @@
             });
         });
     });
+
+    // Configuración de partículas
+    const PARTICLE_CONFIG = {
+        desktop: {
+            count: 50,
+            size: 2,
+            speed: 20
+        },
+        mobile: {
+            count: 20,
+            size: 1,
+            speed: 15
+        }
+    };
+
+    // Clase para manejar las partículas
+    class ParticleManager {
+        constructor() {
+            this.particles = [];
+            this.config = window.innerWidth <= 768 ? PARTICLE_CONFIG.mobile : PARTICLE_CONFIG.desktop;
+            this.init();
+        }
+
+        init() {
+            this.createParticles();
+            this.handleResize();
+        }
+
+        createParticles() {
+            const container = document.querySelector('.hero-section');
+            if (!container) return;
+
+            for (let i = 0; i < this.config.count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${this.config.speed + Math.random() * 5}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(particle);
+                this.particles.push(particle);
+            }
+        }
+
+        handleResize() {
+            window.addEventListener('resize', () => {
+                const newConfig = window.innerWidth <= 768 ? PARTICLE_CONFIG.mobile : PARTICLE_CONFIG.desktop;
+                if (newConfig.count !== this.config.count) {
+                    this.cleanup();
+                    this.config = newConfig;
+                    this.createParticles();
+                }
+            });
+        }
+
+        cleanup() {
+            this.particles.forEach(particle => particle.remove());
+            this.particles = [];
+        }
+    }
+
+    // Clase para manejar el contador regresivo
+    class CountdownTimer {
+        constructor() {
+            this.targetDate = new Date('2025-10-04T00:00:00');
+            this.elements = {
+                days: document.getElementById('days'),
+                hours: document.getElementById('hours'),
+                minutes: document.getElementById('minutes'),
+                seconds: document.getElementById('seconds')
+            };
+            this.init();
+        }
+
+        init() {
+            this.updateTimer();
+            setInterval(() => this.updateTimer(), 1000);
+        }
+
+        updateTimer() {
+            const now = new Date();
+            const difference = this.targetDate - now;
+
+            if (difference <= 0) {
+                this.handleCountdownEnd();
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            this.updateElements(days, hours, minutes, seconds);
+        }
+
+        updateElements(days, hours, minutes, seconds) {
+            this.elements.days.textContent = String(days).padStart(2, '0');
+            this.elements.hours.textContent = String(hours).padStart(2, '0');
+            this.elements.minutes.textContent = String(minutes).padStart(2, '0');
+            this.elements.seconds.textContent = String(seconds).padStart(2, '0');
+        }
+
+        handleCountdownEnd() {
+            // Aquí puedes agregar la lógica para cuando el contador llegue a cero
+            console.log('Countdown ended!');
+        }
+    }
+
+    // Clase para manejar el efecto magnético
+    class MagneticEffect {
+        constructor() {
+            this.elements = document.querySelectorAll('.magnetic-effect');
+            this.init();
+        }
+
+        init() {
+            this.elements.forEach(element => {
+                element.addEventListener('mousemove', (e) => this.handleMouseMove(e, element));
+                element.addEventListener('mouseleave', () => this.handleMouseLeave(element));
+            });
+        }
+
+        handleMouseMove(e, element) {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            element.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        }
+
+        handleMouseLeave(element) {
+            element.style.transform = 'translate(0, 0)';
+        }
+    }
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar el administrador de partículas
+        const particleManager = new ParticleManager();
+
+        // Inicializar el contador regresivo
+        const countdownTimer = new CountdownTimer();
+
+        // Inicializar el efecto magnético
+        const magneticEffect = new MagneticEffect();
+
+        // Manejar el scroll suave
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+
+        // Manejar el scroll suave para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId.length > 1) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    });
