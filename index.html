@@ -3,23 +3,552 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="ZimmZimmGames - Official Website">
+      <meta name="keywords" content="games, indie games, ZimmZimmGames">
+      <meta name="author" content="ZimmZimmGames">
+      <meta name="theme-color" content="#8B0000">
       <title data-translate-key="page_title"></title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="favicon.png">
+      <style>
+        :root {
+            /* Fuentes */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Crimson Text', serif;
+            --font-accent: 'Special Elite', cursive;
+            
+            /* Colores principales */
+            --primary-color: #000000;
+            --secondary-color: #1A1A1A;
+            --accent-color: #2D2D2D;
+            
+            /* Colores de acento */
+            --accent-red: #8B0000;
+            --accent-gold: #D4AF37;
+            
+            /* Fondo principal - Negro profundo */
+            --background-dark: #0A0A0A;
+            
+            /* Fondo secundario - Gris muy oscuro */
+            --background-light: #1A1A1A;
+            
+            /* Texto principal - Gris claro */
+            --text-primary: #CCCCCC;
+            
+            /* Texto secundario - Gris medio */
+            --text-secondary: #999999;
+            
+            /* Color de bordes - Gris oscuro */
+            --border-color: #333333;
+            
+            /* Color de destaque - Rojo sangre */
+            --highlight-color: #8B0000;
+            
+            /* Color de sombras - Negro con transparencia */
+            --shadow-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-body);
+            background-image: 
+                linear-gradient(45deg, rgba(139, 0, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(139, 0, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(139, 0, 0, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(139, 0, 0, 0.05) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0;
+            overflow: hidden;
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 175, 55, 0.1) 2px,
+                rgba(212, 175, 55, 0.1) 4px
+            );
+            pointer-events: none;
+        }
+
+        #main-game::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #interactive-story::before {
+            background: linear-gradient(135deg, #1A1A1A, #333333);
+        }
+
+        #demo::before {
+            background: linear-gradient(135deg, #333333, #000000);
+        }
+
+        #meet-the-staff::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #about::before {
+            background: linear-gradient(135deg, #1A1A1A, #000000);
+        }
+
+        #faq::before {
+            background: linear-gradient(135deg, #333333, #1A1A1A);
+        }
+
+        #rabbit-hole::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #contact-us::before {
+            background: linear-gradient(135deg, #1A1A1A, #333333);
+        }
+
+        #donations::before {
+            background: linear-gradient(135deg, #333333, #000000);
+        }
+
+        /* Estilos para botones generales */
+        .buy-button, .platform-btn, .submit-button, .donation-button {
+            background-color: #000000;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.85em;
+            min-width: 140px;
+            height: 45px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buy-button:hover, .platform-btn:hover, .submit-button:hover, .donation-button:hover {
+            background-color: var(--accent-gold);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Estilos para enlaces */
+        a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--font-accent);
+            letter-spacing: 1px;
+        }
+
+        a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Estilos para la navegación */
+        .main-nav {
+            background-color: #000000;
+            padding: 2rem;
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .nav-section {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .nav-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-section::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent,
+                var(--accent-gold),
+                transparent
+            );
+            opacity: 0.3;
+        }
+
+        .nav-section:last-child::after {
+            display: none;
+        }
+
+        .nav-section-title {
+            color: var(--accent-gold);
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-gold);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .main-nav ul li {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-nav ul li a {
+            font-family: var(--font-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.8rem 1.2rem;
+            background-color: #000000;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 0.85em;
+            margin-top: 8px;
+            text-align: center;
+            min-width: 140px;
+            height: 45px;
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        .main-nav ul li a::after {
+            content: 'CASE FILE';
+            position: absolute;
+            top: -10px;
+            right: 5px;
+            font-size: 0.55em;
+            color: var(--accent-gold);
+            opacity: 0.7;
+            background-color: #000000;
+            padding: 0 5px;
+            letter-spacing: 1px;
+        }
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            .nav-section {
+                margin-bottom: 2.5rem;
+            }
+
+            .main-nav ul {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .main-nav ul li a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.75em;
+                min-width: 120px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-section {
+                margin-bottom: 2rem;
+            }
+
+            .main-nav ul {
+                grid-template-columns: 1fr;
+            }
+
+            .main-nav ul li a {
+                min-width: 100%;
+                height: 45px;
+            }
+        }
+
+        /* Estilos para el encabezado */
+        .site-header {
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Estilos para el selector de idioma */
+        .language-selector {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #000000;
+            padding: 0.5rem;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .language-selector label {
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            margin-right: 0.5rem;
+        }
+
+        #lang-select {
+            background-color: #000000;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.3rem;
+            font-family: var(--font-accent);
+        }
+
+        #lang-select option {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        /* Sello de clasificación */
+        .site-header::after {
+            content: 'CLASSIFIED';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.2rem 0.5rem;
+            transform: rotate(-15deg);
+            background-color: #000000;
+        }
+
+        /* Estilos para el texto de la historia */
+        #story-text {
+            font-family: var(--font-body);
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Estilos para los títulos de sección */
+        .content-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 1.5em;
+            text-align: center;
+            color: var(--accent-gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .content-section h3 {
+            color: var(--text-primary);
+            font-size: 1.8em;
+            margin: 1.5em 0 1em;
+        }
+
+        /* Estilos para el texto secundario */
+        p, li {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Estilos para el contenedor de imagen principal */
+        .main-image-container {
+            position: relative;
+            border: 2px solid var(--accent-gold);
+            overflow: hidden;
+        }
+
+        .main-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.4)
+            );
+            pointer-events: none;
+        }
+
+        /* Estilos para la galería de arte conceptual */
+        .concept-art-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .concept-art-gallery img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .concept-art-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contenedor de botones de plataforma */
+        .platform-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        /* Contenedor de botón de compra */
+        .buy-now-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        /* Contenedor de botones de donación */
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Estilos para el formulario */
+        .form-group label {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
+
+        /* Estilos para el footer */
+        .site-footer {
+            color: var(--text-primary);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            margin: 0 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 1rem;
+        }
+      </style>
     </head>
     <body>
       <header class="site-header">
         <nav class="main-nav">
-          <ul>
-            <li><a href="#main-game" data-translate-key="nav_game"></a></li>
-            <li><a href="#interactive-story" data-translate-key="nav_story"></a></li>
-            <li><a href="#demo" data-translate-key="nav_demo"></a></li>
-            <li><a href="#meet-the-staff" data-translate-key="nav_staff"></a></li>
-            <li><a href="#about" data-translate-key="nav_about"></a></li>
-            <li><a href="#faq" data-translate-key="nav_faq"></a></li>
-            <li><a href="#rabbit-hole" data-translate-key="nav_rabbit_hole"></a></li>
-            <li><a href="#contact-us" data-translate-key="nav_contact"></a></li>
-            <li><a href="#donations" data-translate-key="nav_donations"></a></li>
-          </ul>
+          <div class="nav-section">
+            <div class="nav-section-title">Game</div>
+            <ul>
+              <li><a href="#main-game" data-translate-key="nav_game"></a></li>
+              <li><a href="#demo" data-translate-key="nav_demo"></a></li>
+              <li><a href="#rabbit-hole" data-translate-key="nav_rabbit_hole"></a></li>
+            </ul>
+          </div>
+          <div class="nav-section">
+            <div class="nav-section-title">Story</div>
+            <ul>
+              <li><a href="#interactive-story" data-translate-key="nav_story"></a></li>
+            </ul>
+          </div>
+          <div class="nav-section">
+            <div class="nav-section-title">Development</div>
+            <ul>
+              <li><a href="#meet-the-staff" data-translate-key="nav_staff"></a></li>
+              <li><a href="#about" data-translate-key="nav_about"></a></li>
+              <li><a href="#faq" data-translate-key="nav_faq"></a></li>
+              <li><a href="#contact-us" data-translate-key="nav_contact"></a></li>
+              <li><a href="#donations" data-translate-key="nav_donations"></a></li>
+            </ul>
+          </div>
         </nav>
         <div class="language-selector">
           <label for="lang-select" data-translate-key="lang_select_label"></label>
@@ -35,7 +564,7 @@
       <main>
         <section id="main-game" class="content-section">
           <h2 data-translate-key="main_game_title"></h2>
-          <div class="main-image-container">
+          <div class="main-image-container" style="background-color: var(--background-light); min-height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px solid var(--border-color);">
             <img src="placeholder-main-image.png" alt="Main game image" class="main-game-image">
           </div>
           <div class="buy-now-container">
