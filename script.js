@@ -302,3 +302,112 @@
         });
       });
     });
+
+    // Estado del juego
+    let gameState = {
+        level: 1,
+        points: 0,
+        inventory: [],
+        currentLocation: 'Inicio',
+        storyProgress: 0,
+        achievements: []
+    };
+
+    // Sistema de historias
+    const storySystem = {
+        scenes: {
+            start: {
+                text: "Bienvenido a la historia. Te encuentras en un lugar misterioso...",
+                choices: [
+                    { text: "Explorar el área", nextScene: "explore", points: 10 },
+                    { text: "Buscar pistas", nextScene: "search", points: 15 }
+                ]
+            },
+            explore: {
+                text: "Mientras exploras, encuentras un objeto misterioso...",
+                choices: [
+                    { text: "Recoger el objeto", nextScene: "pickup", points: 20 },
+                    { text: "Examinar más detalladamente", nextScene: "examine", points: 25 }
+                ]
+            },
+            // Agregar más escenas aquí
+        },
+
+        updateScene(sceneId) {
+            const scene = this.scenes[sceneId];
+            if (!scene) return;
+
+            document.getElementById('story-text').textContent = scene.text;
+            document.getElementById('current-location').textContent = sceneId;
+            
+            const choicesContainer = document.getElementById('story-choices');
+            choicesContainer.innerHTML = '';
+            
+            scene.choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.className = 'game-choice';
+                button.innerHTML = `
+                    <span class="choice-prefix">></span>
+                    <span class="choice-text">${choice.text}</span>
+                `;
+                button.addEventListener('click', () => this.makeChoice(choice));
+                choicesContainer.appendChild(button);
+            });
+        },
+
+        makeChoice(choice) {
+            gameState.points += choice.points;
+            this.updateStats();
+            this.updateScene(choice.nextScene);
+        },
+
+        updateStats() {
+            document.getElementById('story-level').textContent = gameState.level;
+            document.getElementById('story-points').textContent = gameState.points;
+            this.updateInventory();
+        },
+
+        updateInventory() {
+            const inventoryContainer = document.getElementById('inventory-items');
+            inventoryContainer.innerHTML = '';
+            
+            gameState.inventory.forEach((item, index) => {
+                const slot = document.createElement('div');
+                slot.className = 'inventory-slot';
+                slot.textContent = item;
+                inventoryContainer.appendChild(slot);
+            });
+        },
+
+        saveGame() {
+            localStorage.setItem('gameState', JSON.stringify(gameState));
+        },
+
+        loadGame() {
+            const savedState = localStorage.getItem('gameState');
+            if (savedState) {
+                gameState = JSON.parse(savedState);
+                this.updateStats();
+                this.updateScene(gameState.currentLocation);
+            }
+        }
+    };
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar el juego
+        storySystem.updateScene('start');
+        storySystem.updateStats();
+
+        // Manejar botones de guardar/cargar
+        document.querySelectorAll('.game-choice').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const choiceText = e.currentTarget.querySelector('.choice-text').textContent;
+                if (choiceText === 'Guardar partida') {
+                    storySystem.saveGame();
+                } else if (choiceText === 'Cargar partida') {
+                    storySystem.loadGame();
+                }
+            });
+        });
+    });

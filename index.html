@@ -8,6 +8,8 @@
       <meta name="author" content="ZimmZimmGames">
       <meta name="theme-color" content="#8B0000">
       <title data-translate-key="page_title"></title>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
@@ -520,6 +522,522 @@
             font-size: 0.9em;
             margin-top: 1rem;
         }
+
+        /* Estilos para el contenedor de historia */
+        .story-container {
+            position: relative;
+            background-color: #000000;
+            border: 2px solid var(--accent-gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+        }
+
+        .crt-frame {
+            position: relative;
+            background: #2a2a2a;
+            border: 30px solid #1a1a1a;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                inset 0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 50px rgba(0, 0, 0, 0.6),
+                0 0 0 2px #333333,
+                0 0 0 4px #1a1a1a;
+            overflow: hidden;
+        }
+
+        .crt-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    45deg,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+        }
+
+        .crt-frame::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    -45deg,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+        }
+
+        .crt-screen {
+            position: relative;
+            background: #000000;
+            padding: 20px;
+            border: 2px solid #333333;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 20px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Controles del monitor */
+        .monitor-controls {
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            background: #1a1a1a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #333333;
+        }
+
+        .monitor-control {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333333;
+            border: 1px solid #444444;
+        }
+
+        .monitor-control.power {
+            background: #ff0000;
+        }
+
+        .crt-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .crt-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* Efecto de líneas magnéticas */
+        .magnetic-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(0, 255, 0, 0.04) 1px,
+                    rgba(0, 255, 0, 0.04) 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(0, 255, 0, 0.04) 1px,
+                    rgba(0, 255, 0, 0.04) 2px
+                );
+            pointer-events: none;
+            z-index: 5;
+            animation: magneticShift 16s linear infinite;
+        }
+
+        /* Efecto de líneas de escaneo */
+        .scan-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.2) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 6;
+            animation: scanLines 0.2s linear infinite;
+        }
+
+        /* Efecto de distorsión magnética */
+        .magnetic-distortion {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(
+                    circle at 50% 50%,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+            z-index: 7;
+            animation: magneticDistortion 8s ease-in-out infinite;
+        }
+
+        .crt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.4) 100%
+                );
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .crt-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #story-image-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-gold);
+            padding: 1rem;
+            background-color: #000000;
+        }
+
+        #story-image {
+            width: 100%;
+            height: auto;
+            filter: grayscale(20%) sepia(20%) contrast(110%) brightness(95%);
+            transition: all 0.3s ease;
+        }
+
+        #story-text-container {
+            position: relative;
+            padding: 1.5rem;
+            background-color: #000000;
+            border: none;
+            margin-bottom: 2rem;
+            box-shadow: none;
+        }
+
+        #story-text {
+            position: relative;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            line-height: 1.6;
+            color: rgba(0, 255, 0, 0.4);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+        }
+
+        #story-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        #story-choices button {
+            background-color: #000000;
+            color: rgba(0, 255, 0, 0.4);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+            box-shadow: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #story-choices button::before {
+            content: 'C:\\>';
+            position: absolute;
+            left: 0.8rem;
+            color: rgba(0, 255, 0, 0.4);
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        #story-choices button span {
+            margin-left: 5rem;
+            position: relative;
+        }
+
+        #story-choices button:hover {
+            background-color: rgba(0, 17, 0, 0.4);
+            color: rgba(0, 255, 0, 0.4);
+            transform: none;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+        }
+
+        #story-choices button:active {
+            transform: none;
+            background-color: rgba(0, 34, 0, 0.4);
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.8; }
+            50% { opacity: 0; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Efectos de aberración cromática */
+        .crt-content::before,
+        .crt-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .crt-content::before {
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(0, 255, 0, 0.04) 50%,
+                transparent 100%
+            );
+            animation: colorShift 3s infinite;
+        }
+
+        .crt-content::after {
+            background: linear-gradient(
+                -45deg,
+                transparent 0%,
+                rgba(0, 255, 0, 0.04) 50%,
+                transparent 100%
+            );
+            animation: colorShift 3s infinite reverse;
+        }
+
+        @keyframes colorShift {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+            100% { opacity: 0.2; }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes scanLines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(1px); }
+        }
+
+        @keyframes magneticShift {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(0.5px) translateY(0.5px); }
+            50% { transform: translateX(-0.5px) translateY(-0.5px); }
+            75% { transform: translateX(0.5px) translateY(-0.5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        @keyframes magneticDistortion {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.01); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+        }
+
+        .game-inventory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inventory-title {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .inventory-slots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .inventory-slot {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 255, 0, 0.4);
+            font-size: 0.8em;
+        }
+
+        .scene-container {
+            position: relative;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+
+        .scene-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.4)
+            );
+            pointer-events: none;
+        }
+
+        .game-text {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+        }
+
+        .text-header {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.4);
+        }
+
+        .location-name {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .game-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game-choice {
+            background: rgba(0, 0, 0, 0.8);
+            color: rgba(0, 255, 0, 0.4);
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            padding: 10px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .choice-prefix {
+            color: rgba(0, 255, 0, 0.4);
+            font-weight: bold;
+        }
+
+        .game-choice:hover {
+            background: rgba(0, 255, 0, 0.1);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+        }
+
+        .game-choice:active {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        #story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) sepia(20%) contrast(110%) brightness(95%);
+        }
       </style>
     </head>
     <body>
@@ -589,13 +1107,46 @@
         <section id="interactive-story" class="content-section">
           <h2 data-translate-key="story_title"></h2>
           <div class="story-container">
-            <div id="story-image-container">
-              <img id="story-image" src="" alt="Story scene" style="display: none;">
+            <div class="crt-frame">
+              <div class="monitor-controls">
+                <div class="monitor-control power"></div>
+                <div class="monitor-control"></div>
+                <div class="monitor-control"></div>
+              </div>
+              <div class="crt-screen">
+                <div class="magnetic-lines"></div>
+                <div class="scan-lines"></div>
+                <div class="magnetic-distortion"></div>
+                <div class="crt-overlay"></div>
+                <div class="crt-content">
+                  <div class="game-header">
+                    <div class="game-stats">
+                      <span class="stat-item">Nivel: <span id="story-level">1</span></span>
+                      <span class="stat-item">Puntos: <span id="story-points">0</span></span>
+                    </div>
+                    <div class="game-inventory">
+                      <span class="inventory-title">Inventario:</span>
+                      <div id="inventory-items" class="inventory-slots"></div>
+                    </div>
+                  </div>
+                  <div id="story-image-container" class="scene-container">
+                    <img id="story-image" src="" alt="Story scene" style="display: none;">
+                    <div class="scene-overlay"></div>
+                  </div>
+                  <div id="story-text-container" class="game-text">
+                    <div class="text-header">
+                      <span class="location-name">Ubicación: <span id="current-location">Inicio</span></span>
+                    </div>
+                    <p id="story-text"></p>
+                  </div>
+                  <div id="story-choices" class="game-choices">
+                    <button class="game-choice"><span class="choice-prefix">></span><span class="choice-text">Iniciar nueva partida</span></button>
+                    <button class="game-choice"><span class="choice-prefix">></span><span class="choice-text">Cargar partida</span></button>
+                    <button class="game-choice"><span class="choice-prefix">></span><span class="choice-text">Ver logros</span></button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="story-text-container">
-              <p id="story-text"></p>
-            </div>
-            <div id="story-choices"></div>
           </div>
         </section>
 
@@ -749,5 +1300,7 @@
       </footer>
 
       <script src="script.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
     </html>
