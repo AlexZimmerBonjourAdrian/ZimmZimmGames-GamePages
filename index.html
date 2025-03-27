@@ -612,6 +612,249 @@
                 font-size: 1rem;
             }
         }
+
+        /* Estilo para el mensaje de demo próximamente */
+        .demo-available {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-top: 1px dashed var(--gold);
+            font-size: 0.9rem;
+            color: var(--gold);
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .demo-available span {
+            display: inline-block;
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .demo-available span::after {
+            content: '!';
+            position: absolute;
+            right: -12px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Ajuste del espaciado para la sección de PC */
+        .platform-section.disabled {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* Ajuste responsive */
+        @media (max-width: 768px) {
+            .demo-available {
+                font-size: 0.8rem;
+                padding: 0.3rem;
+            }
+        }
+
+        /* Estilos para la sección de la Madriguera del Conejo */
+        .rabbit-hole-section {
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background-color: rgba(139, 0, 0, 0.1);
+            border: 2px solid var(--gold);
+            max-width: 1200px;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .rabbit-hole-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, 
+                    rgba(139, 0, 0, 0.1) 25%, 
+                    transparent 25%),
+                linear-gradient(-45deg, 
+                    rgba(139, 0, 0, 0.1) 25%, 
+                    transparent 25%);
+            background-size: 4px 4px;
+            pointer-events: none;
+        }
+
+        .rabbit-hole-section h2 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: var(--text-shadow);
+        }
+
+        .subtitle {
+            color: var(--gold);
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .character-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .character-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+        }
+
+        .character-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(20%) hue-rotate(320deg);
+            transition: all 0.3s ease;
+        }
+
+        .image-glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 215, 0, 0.2) 50%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .character-card:hover .image-glitch {
+            opacity: 1;
+            animation: glitch 2s infinite;
+        }
+
+        .character-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .character-card p {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        .chat-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .chat-btn:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-glitch {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 215, 0, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .chat-btn:hover .btn-glitch {
+            left: 100%;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-5px, 5px) }
+            40% { transform: translate(-5px, -5px) }
+            60% { transform: translate(5px, 5px) }
+            80% { transform: translate(5px, -5px) }
+            100% { transform: translate(0) }
+        }
+
+        /* Responsive design */
+        @media (max-width: 968px) {
+            .character-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .rabbit-hole-section h2 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .character-card {
+                padding: 1.5rem;
+            }
+
+            .character-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -647,11 +890,15 @@
                 <button class="platform-btn" disabled>Edición Física</button>
             </div>
 
-            <div class="platform-section">
+            <div class="platform-section disabled">
                 <h3>PC / Mac</h3>
-                <button class="platform-btn">Steam</button>
-                <button class="platform-btn">Epic Games</button>
-                <button class="platform-btn">GOG</button>
+                <div class="coming-soon">Coming Soon</div>
+                <button class="platform-btn" disabled>Steam</button>
+                <button class="platform-btn" disabled>Epic Games</button>
+                <button class="platform-btn" disabled>GOG</button>
+                <div class="demo-available">
+                    <span>Demo disponible próximamente</span>
+                </div>
             </div>
 
             <div class="platform-section disabled">
@@ -677,6 +924,40 @@
             <div class="demo-content">
                 <p>¡Explora el primer capítulo de Where are the Alices?</p>
                 <button class="demo-btn">Descargar Demo</button>
+            </div>
+        </div>
+
+        <!-- Sección de Chatbots después de la Demo -->
+        <div class="rabbit-hole-section">
+            <h2>Adéntrate en la Madriguera del Conejo</h2>
+            <p class="subtitle">Habla con las pesadillas hechas realidad</p>
+            
+            <div class="character-grid">
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="alice-nightmare.jpg" alt="Alice Pesadilla">
+                        <div class="image-glitch"></div>
+                    </div>
+                    <h3>Alice Pesadilla</h3>
+                    <p>Una versión retorcida de Alice, atrapada entre la realidad y la locura. Sus recuerdos están fragmentados, pero cada conversación revela una nueva capa de la verdad.</p>
+                    <a href="#" class="chat-btn">
+                        <span class="btn-text">Iniciar Conversación</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-image">
+                        <img src="rabbit-demon.jpg" alt="Conejo Demonio">
+                        <div class="image-glitch"></div>
+                    </div>
+                    <h3>El Conejo Demonio</h3>
+                    <p>Tu guía en este retorcido país de las maravillas. Sus palabras son acertijos, y cada respuesta te llevará más profundo en el abismo.</p>
+                    <a href="#" class="chat-btn">
+                        <span class="btn-text">Iniciar Conversación</span>
+                        <span class="btn-glitch"></span>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
