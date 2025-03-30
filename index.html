@@ -1493,7 +1493,7 @@
             <div class="cta-container">
                 <h2>Dare to Enter?</h2>
                 <p class="cta-text">Step into a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.</p>
-                <button class="cta-btn glitch-effect">
+                <button class="cta-btn glitch-effect" onclick="startAdventure()">
                     <span class="btn-text">Begin the Nightmare</span>
                     <span class="btn-glitch"></span>
                 </button>
@@ -2581,6 +2581,34 @@
             const preferredLanguage = localStorage.getItem('preferredLanguage') || 'es';
             changeLanguage(preferredLanguage);
         });
+
+        // Agregar la función startAdventure después de las declaraciones de audio
+        function startAdventure() {
+            // Desplazar suavemente a la sección de la aventura visual
+            document.querySelector('.text-adventure-section').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            // Esperar a que termine el desplazamiento antes de iniciar el juego
+            setTimeout(() => {
+                // Ocultar el menú del juego y mostrar el contenedor del juego
+                document.getElementById('game-menu').style.display = 'none';
+                const gameContainer = document.getElementById('game-container');
+                gameContainer.style.display = 'block';
+
+                // Detener la música del menú y comenzar la música del juego
+                gameAudio.menuMusic.pause();
+                gameAudio.gameMusic.currentTime = 0;
+                gameAudio.gameMusic.play();
+
+                // Iniciar el juego con la primera escena
+                setTimeout(() => {
+                    gameContainer.classList.add('active');
+                    updateScene('start');
+                }, 100);
+            }, 1000); // Esperar 1 segundo después del desplazamiento
+        }
     </script>
 </body>
 </html>
