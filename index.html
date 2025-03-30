@@ -1691,6 +1691,27 @@
             });
         });
 
+        // Audio elements
+        const gameAudio = {
+            menuMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-20_-_Dark_Fog_-_David_Fesliyan.mp3'),
+            gameMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-21_-_Dark_Shadows_-_David_Fesliyan.mp3'),
+            gameOverMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-22_-_Evil_Rising_-_David_Fesliyan.mp3'),
+            goodEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-23_-_Haunted_Memories_-_David_Fesliyan.mp3'),
+            badEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-24_-_Dark_Winds_Chapter_1_-_David_Fesliyan.mp3'),
+            typewriterSound: new Audio('https://www.fesliyanstudios.com/sound-effects-files/typewriter-2.mp3'),
+            buttonClick: new Audio('https://www.fesliyanstudios.com/sound-effects-files/button-click-1.mp3'),
+            pageChange: new Audio('https://www.fesliyanstudios.com/sound-effects-files/page-turn-2.mp3')
+        };
+
+        // Configure audio settings
+        Object.values(gameAudio).forEach(audio => {
+            audio.volume = 0.3;
+            if (audio !== gameAudio.typewriterSound && audio !== gameAudio.buttonClick && audio !== gameAudio.pageChange) {
+                audio.loop = true;
+            }
+        });
+        gameAudio.typewriterSound.volume = 0.1;
+
         const storyData = {
             start: {
                 location: "The Doll Garden",
@@ -1699,6 +1720,33 @@
                     approach: "Approach the tea table",
                     examine: "Look at the dolls' faces",
                     run: "Turn around and run"
+                }
+            },
+            examine: {
+                location: "Among the Dolls",
+                text: "Each face was hauntingly familiar. Children from missing person posters, their features perfectly recreated in porcelain. But their eyes... their eyes were all replaced with buttons, black as midnight. One doll in particular caught Juno's attention - it wore a blue dress, just like Alice had worn the day she disappeared.",
+                choices: {
+                    touch_doll: "Touch Alice's doll",
+                    search_clues: "Look for clues around the dolls",
+                    follow_thread: "Follow a black thread leading away"
+                }
+            },
+            touch_doll: {
+                location: "The Porcelain Truth",
+                text: "The moment Juno's fingers touched the doll's cheek, its head turned - not mechanically, but fluid like flesh. 'You shouldn't touch what isn't yours,' it whispered in Alice's voice. The doll's button eyes began to leak black thread, and Juno felt a sharp pain in her fingertips where the threads had begun to sew themselves into her skin.",
+                choices: {
+                    pull_away: "Try to pull away",
+                    accept_threads: "Accept the threads",
+                    call_for_help: "Call for help"
+                }
+            },
+            search_clues: {
+                location: "Hidden Secrets",
+                text: "Behind each doll, Juno found small items: hair ribbons, friendship bracelets, tiny notes written in children's handwriting. Under Alice's doll was a diary page: 'The rabbit says if I let him sew the buttons, I'll never be alone again. He says it only hurts for a moment...'",
+                choices: {
+                    take_evidence: "Collect the evidence",
+                    confront_rabbit: "Confront the rabbit",
+                    run_with_clues: "Run with the diary"
                 }
             },
             approach: {
@@ -1746,53 +1794,141 @@
                     wake_up: "Wake up to the real world"
                 }
             },
-            wake_up: {
-                location: "The Awakening",
-                text: "Juno woke up in her bed, her heart beating like a trapped bird. But something was different. On her wrist was a small button-shaped scar, and in her mirror... was it her reflection smiling, or was it her? And in the corner of her room, a bright-eyed cat watched her, while a black thread snaked under her door...",
+            save_all: {
+                location: "The Liberation",
+                text: "With trembling hands, Juno grabbed the scissors from the rabbit's form. Before it could react, she began cutting threads - black ones, gold ones, threads that screamed and threads that sang. With each snip, a doll became a child again, buttons falling like tears. The rabbit howled, its form unraveling. 'You've ruined everything!' it shrieked, but Juno didn't stop until every last child was free.",
                 choices: {
-                    restart: "Go back to sleep",
-                    investigate: "Follow the black thread",
-                    forget: "Try to forget everything"
+                    good_ending: "Lead the children home",
+                }
+            },
+            good_ending: {
+                location: "The Dawn",
+                text: "The sun rose on a garden full of children, their eyes bright and real, their smiles genuine. Alice was among them, holding Juno's hand. The rabbit was gone, leaving only a pile of scissors and thread. But Juno kept one button as a reminder - not all monsters hide under beds. Sometimes they invite you to tea. The missing children returned home, but they never forgot the detective who saved them from becoming dolls.",
+                choices: {
+                    restart: "Start a new investigation",
+                }
+            },
+            become_nightmare: {
+                location: "The Transformation",
+                text: "Juno took the needle offered by the cat. 'To fight monsters,' she whispered, 'sometimes you must become one.' She sewed buttons into her own eyes, but these were different - they could see the truth in all things. The rabbit's power became hers, but she used it to protect, not to trap. Now she hunts those who would harm children, her button eyes glowing in the dark.",
+                choices: {
+                    continue_hunting: "Continue hunting monsters",
+                }
+            },
+            game_over: {
+                location: "The Collection",
+                text: "In a dark garden, there's a new doll sitting at the tea party. It wears a detective's coat and has the most beautiful button eyes. Sometimes, when the moon is right, you can hear it whisper warnings to the children who wander too close to the rabbit's garden. But it's too late for the doll that was once Juno - it can only watch as the rabbit's collection grows, one button at a time.",
+                choices: {
+                    restart: "Try again",
                 }
             }
         };
 
-        // Agregamos efectos de sonido sutiles
-        const audioEffects = {
-            buttonClick: new Audio('soft-click.mp3'),
-            pageChange: new Audio('page-turn.mp3'),
-            creepyAmbient: new Audio('ambient-horror.mp3')
-        };
-
-        // Actualizamos el script del juego
-        document.addEventListener('DOMContentLoaded', () => {
-            // Función typeWriter que faltaba
-            function typeWriter(element, text, speed = 30) {
-                let i = 0;
-                element.textContent = '';
+        // Función para mostrar la pantalla de Game Over
+        function showGameOver() {
+            gameAudio.gameMusic.pause();
+            gameAudio.gameOverMusic.play();
+            
+            const container = document.getElementById('story-container');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                updateScene('game_over');
+                container.style.opacity = '1';
                 
-                function type() {
-                    if (i < text.length) {
-                        element.textContent += text.charAt(i);
-                        i++;
-                        setTimeout(type, speed);
-                    }
-                }
-                type();
-            }
+                // Agregar efecto visual de Game Over
+                const gameOverEffect = document.createElement('div');
+                gameOverEffect.className = 'game-over-effect';
+                container.appendChild(gameOverEffect);
+            }, 500);
+        }
 
-            const gameMenu = document.getElementById('game-menu');
-            const gameContainer = document.getElementById('game-container');
+        // Función para mostrar el final bueno
+        function showGoodEnding() {
+            gameAudio.gameMusic.pause();
+            gameAudio.goodEndingMusic.play();
+            updateScene('good_ending');
+        }
+
+        // Función para mostrar el final alternativo
+        function showAlternativeEnding() {
+            gameAudio.gameMusic.pause();
+            gameAudio.badEndingMusic.play();
+            updateScene('become_nightmare');
+        }
+
+        // Función typeWriter mejorada con sonido
+        function typeWriter(element, text, speed = 30) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    if (text.charAt(i) !== ' ') {
+                        gameAudio.typewriterSound.currentTime = 0;
+                        gameAudio.typewriterSound.play();
+                    }
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Actualizar la función updateScene para incluir los nuevos efectos de sonido
+        function updateScene(scene) {
+            if (!storyData[scene]) return;
+            
+            const container = document.getElementById('story-container');
+            const locationName = document.querySelector('.location-name');
+            const storyText = document.getElementById('story-text');
+            const choicesContainer = document.getElementById('choices-container');
+            
+            gameAudio.pageChange.play();
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                locationName.textContent = storyData[scene].location;
+                typeWriter(storyText, storyData[scene].text);
+                
+                choicesContainer.innerHTML = '';
+                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                    setTimeout(() => {
+                        const button = document.createElement('button');
+                        button.className = 'choice-btn';
+                        button.style.animationDelay = `${index * 0.2}s`;
+                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                        button.dataset.choice = key;
+                        button.onclick = () => {
+                            gameAudio.buttonClick.play();
+                            if (key === 'game_over') {
+                                showGameOver();
+                            } else if (key === 'good_ending') {
+                                showGoodEnding();
+                            } else if (key === 'become_nightmare') {
+                                showAlternativeEnding();
+                            } else {
+                                updateScene(key);
+                            }
+                        };
+                        choicesContainer.appendChild(button);
+                    }, index * 300);
+                });
+                
+                container.style.opacity = '1';
+            }, 500);
+        }
+
+        // Inicializar el juego con música
+        document.addEventListener('DOMContentLoaded', () => {
             const startButton = document.querySelector('.start-game');
             const creditsButton = document.querySelector('.show-credits');
+            const gameMenu = document.getElementById('game-menu');
+            const gameContainer = document.getElementById('game-container');
             
-            let currentScene = 'start';
-            let gameStarted = false;
-
             // Función para iniciar el juego
             function startGame() {
-                if (gameStarted) return;
-                
                 gameMenu.style.display = 'none';
                 gameContainer.style.display = 'block';
                 
@@ -1800,26 +1936,23 @@
                     gameContainer.classList.add('active');
                     updateScene('start');
                 }, 100);
-                
-                gameStarted = true;
-                
-                // Iniciar música de ambiente si existe
-                if (audioEffects.creepyAmbient) {
-                    audioEffects.creepyAmbient.loop = true;
-                    audioEffects.creepyAmbient.volume = 0.3;
-                    audioEffects.creepyAmbient.play().catch(() => {});
-                }
             }
+            
+            startButton.addEventListener('click', () => {
+                gameAudio.menuMusic.pause();
+                gameAudio.gameMusic.play();
+                startGame();
+            });
 
             // Función para mostrar créditos
             function showCredits() {
                 const creditsText = `
-                    <h2>Créditos</h2>
+                    <h2>Credits</h2>
                     <p>Where are the Alices?</p>
-                    <p>Un juego de terror psicológico</p>
-                    <p>Creado por ZimmZimmGames</p>
+                    <p>A Psychological Horror Game</p>
+                    <p>Created by ZimmZimmGames</p>
                     <br>
-                    <button class="menu-btn back-to-menu">Volver al Menú</button>
+                    <button class="menu-btn back-to-menu">Back to Menu</button>
                 `;
                 gameMenu.innerHTML = creditsText;
                 
@@ -1828,58 +1961,54 @@
                 });
             }
 
-            // Función para actualizar la escena
-            function updateScene(scene) {
-                if (!storyData[scene]) return;
-                
-                const container = document.getElementById('story-container');
-                const locationName = document.querySelector('.location-name');
-                const storyText = document.getElementById('story-text');
-                const choicesContainer = document.getElementById('choices-container');
-                
-                // Efecto de transición
-                container.style.opacity = '0';
-                
-                setTimeout(() => {
-                    locationName.textContent = storyData[scene].location;
-                    
-                    // Efecto de máquina de escribir
-                    typeWriter(storyText, storyData[scene].text);
-                    
-                    // Actualizar opciones con animación
-                    choicesContainer.innerHTML = '';
-                    Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
-                        setTimeout(() => {
-                            const button = document.createElement('button');
-                            button.className = 'choice-btn';
-                            button.style.animationDelay = `${index * 0.2}s`;
-                            button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
-                            button.dataset.choice = key;
-                            button.onclick = () => {
-                                playSound('buttonClick');
-                                updateScene(key);
-                            };
-                            choicesContainer.appendChild(button);
-                        }, index * 300);
-                    });
-                    
-                    container.style.opacity = '1';
-                    playSound('pageChange');
-                }, 500);
-            }
-
-            // Función para reproducir efectos de sonido
-            function playSound(soundType) {
-                if (audioEffects[soundType]) {
-                    audioEffects[soundType].currentTime = 0;
-                    audioEffects[soundType].play().catch(() => {});
-                }
-            }
-
-            // Event listeners para los botones del menú
-            startButton.addEventListener('click', startGame);
             creditsButton.addEventListener('click', showCredits);
+            
+            // Reproducir música del menú al cargar
+            gameAudio.menuMusic.play();
         });
+
+        // Agregar estilos para la pantalla de Game Over
+        const style = document.createElement('style');
+        style.textContent = `
+            .game-over-effect {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(139, 0, 0, 0.3);
+                pointer-events: none;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0% { background: rgba(139, 0, 0, 0.3); }
+                50% { background: rgba(139, 0, 0, 0.5); }
+                100% { background: rgba(139, 0, 0, 0.3); }
+            }
+
+            .choice-btn {
+                /* Existing styles */
+                transition: all 0.3s ease, text-shadow 0.3s ease;
+            }
+
+            .choice-btn:hover {
+                /* Existing styles */
+                text-shadow: 0 0 10px var(--gold);
+            }
+
+            .location-name {
+                /* Existing styles */
+                animation: textGlow 2s infinite;
+            }
+
+            @keyframes textGlow {
+                0% { text-shadow: 0 0 5px var(--gold); }
+                50% { text-shadow: 0 0 15px var(--gold), 0 0 25px var(--dark-gold); }
+                100% { text-shadow: 0 0 5px var(--gold); }
+            }
+        `;
+        document.head.appendChild(style);
 
         const translations = {
             en: {
