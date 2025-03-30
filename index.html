@@ -1714,112 +1714,148 @@
 
         const storyData = {
             start: {
-                location: "The Doll Garden",
-                text: "Mom always says we shouldn't talk to strangers... but what happens when strangers look like people we know? Juno found out one night, while investigating Alice's disappearance. In front of her, through the garden mist, there were dolls. Dozens of dolls with familiar faces, all sitting in a circle around a tea table. And in the center... a white rabbit with button eyes.",
+                location: "El Jardín de las Muñecas",
+                text: "Mamá siempre dice que no debemos hablar con extraños... pero ¿qué pasa cuando los extraños se parecen a personas que conocemos? Juno lo descubrió una noche, mientras investigaba la desaparición de Alice. Frente a ella, a través de la niebla del jardín, había muñecas. Docenas de muñecas con rostros familiares, todas sentadas en círculo alrededor de una mesa de té. Y en el centro... un conejo blanco con ojos de botón.",
                 choices: {
-                    approach: "Approach the tea table",
-                    examine: "Look at the dolls' faces",
-                    run: "Turn around and run"
+                    approach: "Acercarse a la mesa de té",
+                    examine: "Observar los rostros de las muñecas",
+                    run: "Dar media vuelta y huir"
+                }
+            },
+            run: {
+                location: "El Escape Fallido",
+                text: "Juno giró sobre sus talones, pero sus piernas se enredaron con hilos negros que surgían del suelo. '¿Tan pronto te vas?', susurró el conejo. 'La fiesta apenas comienza, y Alice ha estado esperando tanto tiempo por una compañera de juegos...' Las muñecas comenzaron a levantarse, sus articulaciones crujiendo como madera vieja.",
+                choices: {
+                    fight_threads: "Luchar contra los hilos",
+                    call_alice: "Llamar a Alice",
+                    accept_fate: "Aceptar la invitación"
+                }
+            },
+            fight_threads: {
+                location: "La Danza de los Hilos",
+                text: "Con determinación, Juno comenzó a arrancar los hilos que la ataban. Cada hilo roto emitía un chillido agudo, como si estuviera vivo. 'Qué descortés', murmuró el conejo, sacando un par de tijeras doradas. 'Si no quieres jugar con los hilos, quizás prefieras ser parte del patrón...'",
+                choices: {
+                    grab_scissors: "Intentar tomar las tijeras",
+                    run_harder: "Correr hacia la salida",
+                    negotiate: "Intentar negociar"
                 }
             },
             examine: {
-                location: "Among the Dolls",
-                text: "Each face was hauntingly familiar. Children from missing person posters, their features perfectly recreated in porcelain. But their eyes... their eyes were all replaced with buttons, black as midnight. One doll in particular caught Juno's attention - it wore a blue dress, just like Alice had worn the day she disappeared.",
+                location: "Entre las Muñecas",
+                text: "Cada rostro resultaba inquietantemente familiar. Niños de carteles de personas desaparecidas, sus rasgos perfectamente recreados en porcelana. Pero sus ojos... sus ojos habían sido reemplazados por botones, negros como la medianoche. Una muñeca en particular llamó la atención de Juno: llevaba un vestido azul, igual al que Alice llevaba el día que desapareció.",
                 choices: {
-                    touch_doll: "Touch Alice's doll",
-                    search_clues: "Look for clues around the dolls",
-                    follow_thread: "Follow a black thread leading away"
+                    touch_doll: "Tocar la muñeca de Alice",
+                    search_clues: "Buscar pistas alrededor de las muñecas",
+                    follow_thread: "Seguir un hilo negro que se aleja"
                 }
             },
             touch_doll: {
-                location: "The Porcelain Truth",
-                text: "The moment Juno's fingers touched the doll's cheek, its head turned - not mechanically, but fluid like flesh. 'You shouldn't touch what isn't yours,' it whispered in Alice's voice. The doll's button eyes began to leak black thread, and Juno felt a sharp pain in her fingertips where the threads had begun to sew themselves into her skin.",
+                location: "La Verdad de Porcelana",
+                text: "En el momento en que los dedos de Juno tocaron la mejilla de la muñeca, su cabeza giró, no de forma mecánica, sino fluida como carne. 'No deberías tocar lo que no es tuyo', susurró con la voz de Alice. Los ojos de botón de la muñeca comenzaron a gotear hilo negro, y Juno sintió un dolor agudo en las yemas de sus dedos, donde los hilos habían comenzado a coserse en su piel.",
                 choices: {
-                    pull_away: "Try to pull away",
-                    accept_threads: "Accept the threads",
-                    call_for_help: "Call for help"
+                    pull_away: "Intentar alejarse",
+                    accept_threads: "Aceptar los hilos",
+                    call_for_help: "Pedir ayuda"
+                }
+            },
+            pull_away: {
+                location: "El Precio de la Resistencia",
+                text: "Juno tiró con todas sus fuerzas, pero los hilos se tensaron más. 'Duele menos si no luchas', susurró la muñeca-Alice. 'Yo también luché al principio, pero ahora... ahora soy hermosa. Ahora soy perfecta. Y tú también puedes serlo.' Los hilos comenzaron a tejer patrones en la piel de Juno, formando delicados diseños de encaje negro.",
+                choices: {
+                    bite_threads: "Morder los hilos",
+                    scream_help: "Gritar por ayuda",
+                    submit_transformation: "Someterse a la transformación"
                 }
             },
             search_clues: {
-                location: "Hidden Secrets",
-                text: "Behind each doll, Juno found small items: hair ribbons, friendship bracelets, tiny notes written in children's handwriting. Under Alice's doll was a diary page: 'The rabbit says if I let him sew the buttons, I'll never be alone again. He says it only hurts for a moment...'",
+                location: "Secretos Ocultos",
+                text: "Detrás de cada muñeca, Juno encontró pequeños objetos: cintas para el cabello, pulseras de la amistad, pequeñas notas escritas con letra infantil. Bajo la muñeca de Alice había una página de diario: 'El conejo dice que si dejo que me cosa los botones, nunca más estaré sola. Dice que solo duele un momento...'",
                 choices: {
-                    take_evidence: "Collect the evidence",
-                    confront_rabbit: "Confront the rabbit",
-                    run_with_clues: "Run with the diary"
+                    take_evidence: "Recoger las evidencias",
+                    confront_rabbit: "Confrontar al conejo",
+                    run_with_clues: "Huir con el diario"
                 }
             },
             approach: {
-                location: "The Eternal Tea Table",
-                text: "'Would you like some tea, dear?', whispered the rabbit, its voice like sandpaper. Its paws held a cup dripping something thick and dark. The dolls turned their heads in unison, their buttons gleaming in the darkness. 'Or would you prefer... to be part of our collection? Alice preferred it that way'. One of the dolls, in a stained blue dress, smiled with loose threads.",
+                location: "La Mesa de Té Eterna",
+                text: "'¿Te gustaría un poco de té, querida?', susurró el conejo, su voz como papel de lija. Sus patas sostenían una taza que goteaba algo espeso y oscuro. Las muñecas giraron sus cabezas al unísono, sus botones brillando en la oscuridad. '¿O preferirías... ser parte de nuestra colección? Alice lo prefirió así'. Una de las muñecas, con un vestido azul manchado, sonrió con hilos sueltos.",
                 choices: {
-                    accept: "Accept the cup of tea",
-                    question: "Ask about Alice",
-                    refuse: "Refuse the invitation"
+                    accept: "Aceptar la taza de té",
+                    question: "Preguntar por Alice",
+                    refuse: "Rechazar la invitación"
+                }
+            },
+            refuse: {
+                location: "El Precio del Rechazo",
+                text: "'Me temo que esa no es una opción, detective', dijo el conejo mientras las muñecas se levantaban de sus sillas. 'Verás, una vez que encuentras nuestro pequeño jardín, debes unirte a la fiesta. Son las reglas.' Las muñecas comenzaron a rodear a Juno, sus botones brillando con una luz propia.",
+                choices: {
+                    fight_dolls: "Luchar contra las muñecas",
+                    seek_exit: "Buscar una salida",
+                    bargain: "Intentar negociar"
                 }
             },
             question: {
-                location: "The Circle of Truths",
-                text: "The rabbit tilted its head at an impossible angle. 'Oh, Alice is here... all the Alices are here'. Its words echoed as the dolls began to sing an off-key lullaby. One by one, they started to unsew their own faces, revealing underneath... more buttons. 'Isn't it beautiful? They'll never be alone again. They'll never cry again. Don't you want to be beautiful too, Juno?'",
+                location: "El Círculo de Verdades",
+                text: "El conejo inclinó su cabeza en un ángulo imposible. 'Oh, Alice está aquí... todas las Alices están aquí'. Sus palabras resonaron mientras las muñecas comenzaban a cantar una nana desafinada. Una a una, empezaron a descoserse sus propios rostros, revelando debajo... más botones. '¿No es hermoso? Nunca más estarán solas. Nunca más llorarán. ¿No quieres ser hermosa también, Juno?'",
                 choices: {
-                    fight: "Confront the rabbit",
-                    scream: "Scream until you wake up",
-                    submit: "Reach for the buttons"
+                    fight: "Confrontar al conejo",
+                    scream: "Gritar hasta despertar",
+                    submit: "Alcanzar los botones"
                 }
             },
             fight: {
-                location: "The Dance of Threads",
-                text: "The needles appeared from nowhere, shining like dead stars. The rabbit rose, growing taller and taller, its threads extending like black cobwebs. 'They all fight at first, dear. But in the end...' Its laughter sounded like scissors cutting silk. '...in the end they all understand it's better this way. Ask the cat, if you don't believe me'. And there, among the shadows, a cat smiled with needle teeth, its own buttons gleaming with thread tears.",
+                location: "La Danza de los Hilos",
+                text: "Las agujas aparecieron de la nada, brillando como estrellas muertas. El conejo se alzó, creciendo más y más alto, sus hilos extendiéndose como telarañas negras. 'Todas luchan al principio, querida. Pero al final...' Su risa sonaba como tijeras cortando seda. '...al final todas entienden que es mejor así. Pregúntale al gato, si no me crees'. Y allí, entre las sombras, un gato sonrió con dientes de aguja, sus propios botones brillando con lágrimas de hilo.",
                 choices: {
-                    trust_cat: "Trust the smiling cat",
-                    cut_strings: "Cut the rabbit's threads",
-                    close_eyes: "Close your eyes and wish to wake up"
+                    trust_cat: "Confiar en el gato sonriente",
+                    cut_strings: "Cortar los hilos del conejo",
+                    close_eyes: "Cerrar los ojos y desear despertar"
                 }
             },
             trust_cat: {
-                location: "The Shadow Theater",
-                text: "'His buttons lie', purred the cat, its seams opening to show the void inside. 'But my scars tell the truth. Every Alice who drinks his tea becomes another doll in his collection. Every sewn smile hides a scream. Would you like to see what's really in those cups, detective?' The cat extended an unsewn paw, offering to show the truth behind the curtain.",
+                location: "El Teatro de Sombras",
+                text: "'Sus botones mienten', ronroneó el gato, sus costuras abriéndose para mostrar el vacío interior. 'Pero mis cicatrices dicen la verdad. Cada Alice que bebe su té se convierte en otra muñeca de su colección. Cada sonrisa cosida esconde un grito. ¿Te gustaría ver qué hay realmente en esas tazas, detective?' El gato extendió una pata descosida, ofreciendo mostrar la verdad detrás de la cortina.",
                 choices: {
-                    see_truth: "See the truth behind the curtain",
-                    save_alice: "Try to save the dolls",
-                    escape: "Look for a way out"
+                    see_truth: "Ver la verdad tras la cortina",
+                    save_alice: "Intentar salvar a las muñecas",
+                    escape: "Buscar una salida"
                 }
             },
             see_truth: {
-                location: "The Needle Room",
-                text: "The curtain fell, and with it, the illusion. It wasn't a tea table, it was a sewing table. They weren't cups, they were thimbles full of black thread. And the rabbit... the rabbit was a mass of needles and scissors shaped like a rabbit, a living sewing box that wove nightmares. 'Now that you've seen', said the cat, its seams unraveling, 'you must choose: will you become a story to frighten children, or the nightmare that frightens nightmares?'",
+                location: "La Sala de las Agujas",
+                text: "La cortina cayó, y con ella, la ilusión. No era una mesa de té, era una mesa de costura. No eran tazas, eran dedales llenos de hilo negro. Y el conejo... el conejo era una masa de agujas y tijeras con forma de conejo, un costurero viviente que tejía pesadillas. 'Ahora que has visto', dijo el gato, sus costuras deshaciéndose, 'debes elegir: ¿te convertirás en una historia para asustar a los niños, o en la pesadilla que asusta a las pesadillas?'",
                 choices: {
-                    become_nightmare: "Become a nightmare",
-                    save_all: "Save all the dolls",
-                    wake_up: "Wake up to the real world"
+                    become_nightmare: "Convertirse en pesadilla",
+                    save_all: "Salvar a todas las muñecas",
+                    wake_up: "Despertar al mundo real"
                 }
             },
             save_all: {
-                location: "The Liberation",
-                text: "With trembling hands, Juno grabbed the scissors from the rabbit's form. Before it could react, she began cutting threads - black ones, gold ones, threads that screamed and threads that sang. With each snip, a doll became a child again, buttons falling like tears. The rabbit howled, its form unraveling. 'You've ruined everything!' it shrieked, but Juno didn't stop until every last child was free.",
+                location: "La Liberación",
+                text: "Con manos temblorosas, Juno agarró las tijeras de la forma del conejo. Antes de que pudiera reaccionar, comenzó a cortar hilos: negros, dorados, hilos que gritaban y hilos que cantaban. Con cada corte, una muñeca se convertía en niño de nuevo, los botones cayendo como lágrimas. El conejo aulló, su forma deshilachándose. '¡Lo has arruinado todo!', chilló, pero Juno no se detuvo hasta que cada niño estuvo libre.",
                 choices: {
-                    good_ending: "Lead the children home",
+                    good_ending: "Guiar a los niños a casa"
                 }
             },
             good_ending: {
-                location: "The Dawn",
-                text: "The sun rose on a garden full of children, their eyes bright and real, their smiles genuine. Alice was among them, holding Juno's hand. The rabbit was gone, leaving only a pile of scissors and thread. But Juno kept one button as a reminder - not all monsters hide under beds. Sometimes they invite you to tea. The missing children returned home, but they never forgot the detective who saved them from becoming dolls.",
+                location: "El Amanecer",
+                text: "El sol se alzó sobre un jardín lleno de niños, sus ojos brillantes y reales, sus sonrisas genuinas. Alice estaba entre ellos, sosteniendo la mano de Juno. El conejo se había ido, dejando solo un montón de tijeras e hilos. Pero Juno guardó un botón como recordatorio: no todos los monstruos se esconden bajo las camas. A veces te invitan a tomar el té. Los niños desaparecidos volvieron a casa, pero nunca olvidaron a la detective que los salvó de convertirse en muñecas.",
                 choices: {
-                    restart: "Start a new investigation",
+                    restart: "Comenzar una nueva investigación"
                 }
             },
             become_nightmare: {
-                location: "The Transformation",
-                text: "Juno took the needle offered by the cat. 'To fight monsters,' she whispered, 'sometimes you must become one.' She sewed buttons into her own eyes, but these were different - they could see the truth in all things. The rabbit's power became hers, but she used it to protect, not to trap. Now she hunts those who would harm children, her button eyes glowing in the dark.",
+                location: "La Transformación",
+                text: "Juno tomó la aguja que le ofrecía el gato. 'Para luchar contra monstruos', susurró, 'a veces debes convertirte en uno.' Se cosió botones en sus propios ojos, pero estos eran diferentes: podían ver la verdad en todas las cosas. El poder del conejo se volvió suyo, pero lo usó para proteger, no para atrapar. Ahora caza a aquellos que lastimarían a los niños, sus ojos de botón brillando en la oscuridad.",
                 choices: {
-                    continue_hunting: "Continue hunting monsters",
+                    continue_hunting: "Continuar cazando monstruos"
                 }
             },
             game_over: {
-                location: "The Collection",
-                text: "In a dark garden, there's a new doll sitting at the tea party. It wears a detective's coat and has the most beautiful button eyes. Sometimes, when the moon is right, you can hear it whisper warnings to the children who wander too close to the rabbit's garden. But it's too late for the doll that was once Juno - it can only watch as the rabbit's collection grows, one button at a time.",
+                location: "La Colección",
+                text: "En un jardín oscuro, hay una nueva muñeca sentada en la fiesta del té. Lleva un abrigo de detective y tiene los ojos de botón más hermosos. A veces, cuando la luna está en lo alto, puedes oírla susurrar advertencias a los niños que se acercan demasiado al jardín del conejo. Pero es demasiado tarde para la muñeca que una vez fue Juno: solo puede observar mientras la colección del conejo crece, un botón a la vez.",
                 choices: {
-                    restart: "Try again",
+                    restart: "Intentar de nuevo"
                 }
             }
         };
@@ -1929,6 +1965,10 @@
             
             // Función para iniciar el juego
             function startGame() {
+                gameAudio.menuMusic.pause();
+                gameAudio.gameMusic.currentTime = 0;
+                gameAudio.gameMusic.play();
+                
                 gameMenu.style.display = 'none';
                 gameContainer.style.display = 'block';
                 
@@ -1937,22 +1977,16 @@
                     updateScene('start');
                 }, 100);
             }
-            
-            startButton.addEventListener('click', () => {
-                gameAudio.menuMusic.pause();
-                gameAudio.gameMusic.play();
-                startGame();
-            });
 
-            // Función para mostrar créditos
+            // Función para mostrar los créditos
             function showCredits() {
                 const creditsText = `
-                    <h2>Credits</h2>
+                    <h2>Créditos</h2>
                     <p>Where are the Alices?</p>
-                    <p>A Psychological Horror Game</p>
-                    <p>Created by ZimmZimmGames</p>
+                    <p>Un Juego de Terror Psicológico</p>
+                    <p>Creado por ZimmZimmGames</p>
                     <br>
-                    <button class="menu-btn back-to-menu">Back to Menu</button>
+                    <button class="menu-btn back-to-menu">Volver al Menú</button>
                 `;
                 gameMenu.innerHTML = creditsText;
                 
@@ -1961,6 +1995,119 @@
                 });
             }
 
+            // Función mejorada para escribir texto
+            function typeWriter(element, text, speed = 30) {
+                return new Promise((resolve) => {
+                    let i = 0;
+                    element.textContent = '';
+                    
+                    function type() {
+                        if (i < text.length) {
+                            element.textContent += text.charAt(i);
+                            if (text.charAt(i) !== ' ') {
+                                gameAudio.typewriterSound.currentTime = 0;
+                                gameAudio.typewriterSound.play();
+                            }
+                            i++;
+                            setTimeout(type, speed);
+                        } else {
+                            resolve();
+                        }
+                    }
+                    type();
+                });
+            }
+
+            // Función mejorada para actualizar la escena
+            async function updateScene(scene) {
+                if (!storyData[scene]) return;
+                
+                const container = document.getElementById('story-container');
+                const locationName = document.querySelector('.location-name');
+                const storyText = document.getElementById('story-text');
+                const choicesContainer = document.getElementById('choices-container');
+                
+                gameAudio.pageChange.play();
+                container.style.opacity = '0';
+                
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                locationName.textContent = storyData[scene].location;
+                choicesContainer.innerHTML = '';
+                container.style.opacity = '1';
+                
+                await typeWriter(storyText, storyData[scene].text);
+                
+                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                    setTimeout(() => {
+                        const button = document.createElement('button');
+                        button.className = 'choice-btn';
+                        button.style.animationDelay = `${index * 0.2}s`;
+                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                        
+                        button.onclick = () => {
+                            gameAudio.buttonClick.play();
+                            
+                            switch(key) {
+                                case 'game_over':
+                                    showGameOver();
+                                    break;
+                                case 'good_ending':
+                                    showGoodEnding();
+                                    break;
+                                case 'become_nightmare':
+                                    showAlternativeEnding();
+                                    break;
+                                case 'restart':
+                                    location.reload();
+                                    break;
+                                default:
+                                    updateScene(key);
+                            }
+                        };
+                        
+                        choicesContainer.appendChild(button);
+                    }, index * 300);
+                });
+            }
+
+            // Función mejorada para mostrar el Game Over
+            function showGameOver() {
+                gameAudio.gameMusic.pause();
+                gameAudio.gameOverMusic.currentTime = 0;
+                gameAudio.gameOverMusic.play();
+                
+                const container = document.getElementById('story-container');
+                container.style.opacity = '0';
+                
+                setTimeout(() => {
+                    updateScene('game_over');
+                    container.style.opacity = '1';
+                    
+                    const gameOverEffect = document.createElement('div');
+                    gameOverEffect.className = 'game-over-effect';
+                    container.appendChild(gameOverEffect);
+                }, 500);
+            }
+
+            // Función mejorada para mostrar el final bueno
+            function showGoodEnding() {
+                gameAudio.gameMusic.pause();
+                gameAudio.goodEndingMusic.currentTime = 0;
+                gameAudio.goodEndingMusic.play();
+                updateScene('good_ending');
+            }
+
+            // Función mejorada para mostrar el final alternativo
+            function showAlternativeEnding() {
+                gameAudio.gameMusic.pause();
+                gameAudio.badEndingMusic.currentTime = 0;
+                gameAudio.badEndingMusic.play();
+                updateScene('become_nightmare');
+            }
+
+            // Event Listeners
+            startButton.addEventListener('click', startGame);
             creditsButton.addEventListener('click', showCredits);
             
             // Reproducir música del menú al cargar
