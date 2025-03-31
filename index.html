@@ -1425,6 +1425,173 @@
                 right: 60px;
             }
         }
+
+        /* Hero Section Styles */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.9),
+                rgba(139, 0, 0, 0.2)
+            );
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-logo {
+            max-width: 500px;
+            width: 90%;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.2));
+            animation: logoFloat 6s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-family: var(--font-accent);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-family: var(--font-accent);
+            min-width: 200px;
+        }
+
+        .hero-btn.primary {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-btn.primary:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .hero-btn.secondary:hover {
+            opacity: 1;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Agregar estos estilos en la sección de estilos */
+        .mobile-coming-soon {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed var(--gold);
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .mobile-coming-soon p {
+            color: var(--gold);
+            font-family: 'Special Elite', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-coming-soon {
+                margin: 1rem 0;
+                padding: 0.8rem;
+            }
+
+            .mobile-coming-soon p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1447,7 +1614,7 @@
             <a href="#faq">FAQ / CONTACT</a>
         </div>
 
-        <!-- Add inside nav, after menu-items -->
+        <!-- Language selector -->
         <div class="language-selector">
             <button class="language-btn current" data-lang="en">EN</button>
             <div class="language-dropdown">
@@ -1460,7 +1627,28 @@
 
     <main class="main-content">
         <div class="background-effect"></div>
-        <img src="game-logo.png" alt="Where are the Alices?" class="game-logo">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <img src="game-logo.png" alt="Where are the Alices?" class="hero-logo">
+                <h1 class="hero-title">Where are the Alices?</h1>
+                <p class="hero-subtitle">A Psychological Horror Game</p>
+                <div class="hero-description">
+                    <p>Enter a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.</p>
+                </div>
+                <div class="hero-buttons">
+                    <button class="hero-btn primary" onclick="startAdventure()">
+                        <span class="btn-text">Begin the Nightmare</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                    <button class="hero-btn secondary">
+                        <span class="btn-text">Watch Trailer</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
 
         <div class="platforms-grid">
             <div class="platform-section disabled">
@@ -1493,6 +1681,9 @@
             <div class="cta-container">
                 <h2>Dare to Enter?</h2>
                 <p class="cta-text">Step into a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.</p>
+                <div class="mobile-coming-soon">
+                    <p>Coming Soon to Android and iOS</p>
+                </div>
                 <button class="cta-btn glitch-effect" onclick="startAdventure()">
                     <span class="btn-text">Begin the Nightmare</span>
                     <span class="btn-glitch"></span>
