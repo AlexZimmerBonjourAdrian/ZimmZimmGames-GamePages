@@ -2125,42 +2125,34 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Sobre Nosotros</h3>
-                <p>ZimmZimm Games es tu destino para experiencias de terror psicológico únicas y memorables.</p>
+                <h3>About Us</h3>
+                <p>ZimmZimm Games is your destination for exciting games and unique experiences.</p>
             </div>
             <div class="footer-section">
-                <h3>Enlaces Rápidos</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#juegos">Juegos</a></li>
-                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#juegos">Games</a></li>
+                    <li><a href="#sobre-nosotros">About Us</a></li>
+                    <li><a href="#contacto">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Newsletter</h3>
                 <form class="newsletter-form" id="newsletterForm">
-                    <!-- Añadir campo de nombre (opcional) -->
-                    <input type="text" name="name" placeholder="Tu nombre (opcional)">
-                    
-                    <!-- Email (ya existente) -->
-                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                    
-                    <!-- Añadir checkbox GDPR -->
-                    <div class="consent-checkbox">
-                        <input type="checkbox" id="gdpr-consent" required>
-                        <label for="gdpr-consent">Acepto recibir comunicaciones y la política de privacidad</label>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your name (optional)">
                     </div>
-                    
-                    <!-- Botón (ya existente) -->
-                    <button type="submit" class="subscribe-btn">Suscribirse</button>
-                    
-                    <!-- Mensaje de estado -->
-                    <div id="subscription-status" class="status-message"></div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gdpr-consent">I accept communications and privacy policy</label>
+                    </div>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
             </div>
             <div class="footer-section">
-                <h3>Síguenos</h3>
+                <h3>Follow Us</h3>
                 <div class="social-links">
                     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
@@ -2174,7 +2166,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 ZimmZimmGames. Todos los derechos reservados.</p>
+            <p>© 2025 ZimmZimmGames. All rights reserved.</p>
         </div>
     </footer>
 
@@ -2866,7 +2858,7 @@
             document.querySelector('.footer p').setAttribute('data-translate', 'copyright');
 
             // Initialize language
-            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'es';
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
             changeLanguage(preferredLanguage);
         });
 
