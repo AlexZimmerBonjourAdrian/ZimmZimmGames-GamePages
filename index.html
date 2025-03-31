@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* Fuentes */
+            /* Fonts */
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Crimson Text', serif;
             --font-accent: 'Special Elite', cursive;
             
-            /* Colores principales */
+            /* Main colors */
             --primary-color: #000000;
             --secondary-color: #1A1A1A;
             --accent-color: #2D2D2D;
             --accent-red: #8B0000;
             --accent-gold: #D4AF37;
             
-            /* Fondos */
+            /* Backgrounds */
             --background-dark: #0A0A0A;
             --background-light: #1A1A1A;
             
-            /* Textos */
+            /* Texts */
             --text-primary: #CCCCCC;
             --text-secondary: #999999;
             --border-color: #333333;
@@ -35,7 +35,7 @@
             --black: #000000;
             --dark-red: #1a0000;
             
-            /* Sombras y efectos */
+            /* Shadows and effects */
             --gold-glow: 0 0 10px rgba(255, 215, 0, 0.3);
             --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -1429,17 +1429,17 @@
 </head>
 <body>
     <nav class="menu">
-        <!-- Botón hamburguesa -->
-        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-items">
+        <!-- Hamburger button -->
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="menu-items">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
         </button>
 
-        <!-- Overlay para el menú -->
+        <!-- Menu overlay -->
         <div class="menu-overlay"></div>
 
-        <!-- Menú items -->
+        <!-- Menu items -->
         <div class="menu-items" id="menu-items">
             <a href="#about">ABOUT</a>
             <a href="#demo">DEMO</a>
@@ -1447,7 +1447,7 @@
             <a href="#faq">FAQ / CONTACT</a>
         </div>
 
-        <!-- Agregar dentro del nav, después del menu-items -->
+        <!-- Add inside nav, after menu-items -->
         <div class="language-selector">
             <button class="language-btn current" data-lang="en">EN</button>
             <div class="language-dropdown">
@@ -1556,7 +1556,7 @@
             </div>
         </div>
 
-        <!-- Sección de Chatbots después de la Demo -->
+        <!-- Chatbot Section after the Demo -->
         <div class="rabbit-hole-section">
             <h2>Enter the Rabbit Hole</h2>
             <p class="subtitle">Talk to nightmares made real</p>
@@ -1590,7 +1590,7 @@
             </div>
         </div>
 
-        <!-- Sección de Aventura de Texto -->
+        <!-- Text Adventure Section -->
         <div class="text-adventure-section">
             <div class="crt-frame">
                 <div class="crt-screen">
@@ -1628,7 +1628,7 @@
         <p>© 2024 ZimmZimmGames. All rights reserved.</p>
     </footer>
 
-    <!-- Agregar la sección de Discord al final, antes del footer -->
+    <!-- Add Discord section at the end, before the footer -->
     <div class="discord-section">
         <h2>Join the Community</h2>
         <p class="subtitle">Share your theories and uncover secrets with other investigators</p>
@@ -1644,7 +1644,7 @@
     </div>
 
     <script>
-        // Efecto de glitch aleatorio en el logo
+        // Random glitch effect on the logo
         const logo = document.querySelector('.game-logo');
         setInterval(() => {
             if (Math.random() < 0.1) {
@@ -1655,7 +1655,7 @@
             }
         }, 4000);
 
-        // Funcionalidad del menú hamburguesa
+        // Functionality of the hamburger menu
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.querySelector('.nav-toggle');
             const menuItems = document.querySelector('.menu-items');
@@ -1673,17 +1673,17 @@
             // Toggle menu on button click
             toggleButton.addEventListener('click', toggleMenu);
 
-            // Cerrar menú al hacer click en el overlay
+            // Close menu when clicking on the overlay
             menuOverlay.addEventListener('click', toggleMenu);
 
-            // Cerrar menú al hacer click en un enlace
+            // Close menu when clicking on a link
             menuItems.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     toggleMenu();
                 });
             });
 
-            // Cerrar menú con la tecla Escape
+            // Close menu with the Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && toggleButton.getAttribute('aria-expanded') === 'true') {
                     toggleMenu();
@@ -1714,149 +1714,149 @@
 
         const storyData = {
             start: {
-                location: "El Jardín de las Muñecas",
-                text: "Mamá siempre dice que no debemos hablar con extraños... pero ¿qué pasa cuando los extraños se parecen a personas que conocemos? Juno lo descubrió una noche, mientras investigaba la desaparición de Alice. Frente a ella, a través de la niebla del jardín, había muñecas. Docenas de muñecas con rostros familiares, todas sentadas en círculo alrededor de una mesa de té. Y en el centro... un conejo blanco con ojos de botón.",
+                location: "The Doll Garden",
+                text: "Mom always says we shouldn't talk to strangers... but what happens when strangers look like people we know? Juno discovered this one night while investigating Alice's disappearance. In front of her, through the garden mist, were dolls. Dozens of dolls with familiar faces, all seated in a circle around a tea table. And in the center... a white rabbit with button eyes.",
                 choices: {
-                    approach: "Acercarse a la mesa de té",
-                    examine: "Observar los rostros de las muñecas",
-                    investigate: "Investigar los alrededores"
+                    approach: "Approach the tea table",
+                    examine: "Observe the dolls' faces",
+                    investigate: "Investigate the surroundings"
                 }
             },
             investigate: {
-                location: "Los Límites del Jardín",
-                text: "Mientras Juno exploraba los bordes del jardín, notó algo extraño: las sombras parecían moverse en dirección opuesta a la luz. Y había marcas en el suelo, como si alguien hubiera arrastrado algo... o alguien. Entre los arbustos, un destello metálico llamó su atención.",
+                location: "The Garden's Edge",
+                text: "As Juno explored the edges of the garden, she noticed something strange: the shadows seemed to move in the opposite direction to the light. And there were marks on the ground, as if someone had dragged something... or someone. Among the bushes, a metallic gleam caught her attention.",
                 choices: {
-                    check_metal: "Investigar el destello metálico",
-                    follow_marks: "Seguir las marcas en el suelo",
-                    return_party: "Volver a la fiesta de té"
+                    check_metal: "Investigate the metallic gleam",
+                    follow_marks: "Follow the marks on the ground",
+                    return_party: "Return to the tea party"
                 }
             },
             check_metal: {
-                location: "El Tesoro Enterrado",
-                text: "El destello provenía de una vieja caja de música enterrada parcialmente. Al tocarla, la caja comenzó a sonar por sí sola, tocando una melodía inquietante. Dentro, Juno encontró una llave dorada y una nota escrita con letra infantil: 'Los botones son la llave, pero también la prisión'.",
+                location: "The Buried Treasure",
+                text: "The gleam came from an old music box partially buried. When touched, the box began to play on its own, playing an unsettling melody. Inside, Juno found a golden key and a note written in childish handwriting: 'Buttons are the key, but also the prison'.",
                 choices: {
-                    take_key: "Tomar la llave",
-                    return_party: "Volver a la fiesta de té",
-                    follow_music: "Seguir la melodía"
+                    take_key: "Take the key",
+                    return_party: "Return to the tea party",
+                    follow_music: "Follow the melody"
                 }
             },
             follow_music: {
-                location: "El Camino de la Melodía",
-                text: "La melodía de la caja de música resonaba cada vez más fuerte, guiando a Juno a través del jardín. Las muñecas parecían seguir el ritmo con sus cabezas, y el conejo sonreía cada vez más ampliamente.",
+                location: "The Melody's Path",
+                text: "The music box melody resonated louder and louder, guiding Juno through the garden. The dolls seemed to follow the rhythm with their heads, and the rabbit smiled more and more widely.",
                 choices: {
-                    confront_rabbit: "Confrontar al conejo",
-                    free_dolls: "Intentar liberar a las muñecas",
-                    escape: "Intentar escapar"
+                    confront_rabbit: "Confront the rabbit",
+                    free_dolls: "Try to free the dolls",
+                    escape: "Try to escape"
                 }
             },
             take_key: {
-                location: "La Llave Dorada",
-                text: "En el momento en que Juno tomó la llave, todas las muñecas giraron sus cabezas hacia ella al unísono. El conejo se levantó lentamente, sus ojos de botón brillando con un resplandor rojizo. 'Ah, has encontrado la llave maestra', dijo con voz melosa. 'Ahora podrás abrir todas las puertas... o cerrarlas para siempre'.",
+                location: "The Golden Key",
+                text: "The moment Juno took the key, all the dolls turned their heads toward her in unison. The rabbit slowly rose, its button eyes glowing with a reddish gleam. 'Ah, you've found the master key,' it said in a honeyed voice. 'Now you can open all the doors... or close them forever'.",
                 choices: {
-                    use_key: "Usar la llave",
-                    confront_rabbit_key: "Confrontar al conejo",
-                    destroy_key: "Destruir la llave"
+                    use_key: "Use the key",
+                    confront_rabbit_key: "Confront the rabbit",
+                    destroy_key: "Destroy the key"
                 }
             },
             destroy_key: {
-                location: "La Decisión Final",
-                text: "Con determinación, Juno arrojó la llave contra el suelo con todas sus fuerzas. Al romperse, una luz dorada emergió, envolviendo todo el jardín. Las muñecas comenzaron a brillar, sus costuras deshaciéndose, revelando a los niños atrapados en su interior. El conejo aulló de rabia mientras su forma se desvanecía en la oscuridad.",
+                location: "The Final Decision",
+                text: "With determination, Juno threw the key against the ground with all her might. As it broke, a golden light emerged, enveloping the entire garden. The dolls began to glow, their seams coming undone, revealing the children trapped inside. The rabbit howled in rage as its form vanished into darkness.",
                 choices: {
-                    save_children: "Guiar a los niños hacia la salida",
-                    fight_rabbit: "Enfrentar al conejo debilitado",
-                    seal_garden: "Sellar el jardín para siempre"
+                    save_children: "Guide the children to the exit",
+                    fight_rabbit: "Face the weakened rabbit",
+                    seal_garden: "Seal the garden forever"
                 }
             },
             examine: {
-                location: "Entre las Muñecas",
-                text: "Cada rostro resultaba inquietantemente familiar. Niños de carteles de personas desaparecidas, sus rasgos perfectamente recreados en porcelana. Pero sus ojos... sus ojos habían sido reemplazados por botones, negros como la medianoche. Una muñeca en particular llamó la atención de Juno: llevaba un vestido azul, igual al que Alice llevaba el día que desapareció.",
+                location: "Among the Dolls",
+                text: "Each face was disturbingly familiar. Children from missing person posters, their features perfectly recreated in porcelain. But their eyes... their eyes had been replaced with buttons, black as midnight. One doll in particular caught Juno's attention: it wore a blue dress, just like the one Alice wore the day she disappeared.",
                 choices: {
-                    touch_doll: "Tocar la muñeca de Alice",
-                    search_clues: "Buscar pistas",
-                    return_party: "Volver a la fiesta de té"
+                    touch_doll: "Touch Alice's doll",
+                    search_clues: "Look for clues",
+                    return_party: "Return to the tea party"
                 }
             },
             approach: {
-                location: "La Mesa de Té Eterna",
-                text: "'¿Te gustaría un poco de té, querida?', susurró el conejo, su voz como papel de lija. Sus patas sostenían una taza que goteaba algo espeso y oscuro. Las muñecas giraron sus cabezas al unísono, sus botones brillando en la oscuridad. '¿O preferirías... ser parte de nuestra colección? Alice lo prefirió así'. Una de las muñecas, con un vestido azul manchado, sonrió con hilos sueltos.",
+                location: "The Eternal Tea Table",
+                text: "'Would you like some tea, dear?' whispered the rabbit, its voice like sandpaper. Its paws held a cup that dripped something thick and dark. The dolls turned their heads in unison, their buttons gleaming in the darkness. 'Or would you prefer... to be part of our collection? Alice preferred it that way'. One of the dolls, in a stained blue dress, smiled with loose threads.",
                 choices: {
-                    accept_tea: "Aceptar el té",
-                    question_alice: "Preguntar por Alice",
-                    refuse_tea: "Rechazar la invitación"
+                    accept_tea: "Accept the tea",
+                    question_alice: "Ask about Alice",
+                    refuse_tea: "Refuse the invitation"
                 }
             },
             accept_tea: {
-                location: "El Último Sorbo",
-                text: "El té tenía un sabor dulce y metálico. Mientras Juno bebía, sintió sus párpados volverse pesados. Las muñecas comenzaron a cantar una nana distorsionada mientras el mundo se desvanecía en oscuridad...",
+                location: "The Last Sip",
+                text: "The tea had a sweet, metallic taste. As Juno drank, she felt her eyelids grow heavy. The dolls began to sing a distorted lullaby as the world faded into darkness...",
                 choices: {
-                    game_over: "Sucumbir al sueño"
+                    game_over: "Succumb to sleep"
                 }
             },
             question_alice: {
-                location: "La Verdad Revelada",
-                text: "El conejo inclinó su cabeza en un ángulo imposible. 'Oh, Alice está aquí... todas las Alices están aquí'. Sus palabras resonaron mientras las muñecas comenzaban a cantar una nana desafinada. Una a una, empezaron a descoserse sus propios rostros, revelando debajo... más botones.",
+                location: "The Revealed Truth",
+                text: "The rabbit tilted its head at an impossible angle. 'Oh, Alice is here... all the Alices are here'. Its words resonated as the dolls began to sing an out-of-tune lullaby. One by one, they began to unsew their own faces, revealing underneath... more buttons.",
                 choices: {
-                    fight_rabbit: "Enfrentar al conejo",
-                    save_alice: "Intentar salvar a Alice",
-                    escape: "Intentar escapar"
+                    fight_rabbit: "Confront the rabbit",
+                    save_alice: "Try to save Alice",
+                    escape: "Try to escape"
                 }
             },
             refuse_tea: {
-                location: "El Precio del Rechazo",
-                text: "'Me temo que esa no es una opción, detective', dijo el conejo mientras las muñecas se levantaban de sus sillas. 'Verás, una vez que encuentras nuestro pequeño jardín, debes unirte a la fiesta. Son las reglas.'",
+                location: "The Price of Refusal",
+                text: "'I'm afraid that's not an option, detective,' said the rabbit as the dolls rose from their chairs. 'You see, once you find our little garden, you must join the party. Those are the rules.'",
                 choices: {
-                    fight_rabbit: "Enfrentar al conejo",
-                    run: "Intentar huir",
-                    negotiate: "Intentar negociar"
+                    fight_rabbit: "Confront the rabbit",
+                    run: "Try to flee",
+                    negotiate: "Try to negotiate"
                 }
             },
             fight_rabbit: {
-                location: "La Confrontación Final",
-                text: "El conejo se alzó, su forma distorsionándose en una masa de agujas y sombras. 'Si tanto deseas ver el verdadero rostro de la pesadilla, ¡que así sea!'. Juno enfrentó al horror con determinación, usando los fragmentos de la llave como arma.",
+                location: "The Final Confrontation",
+                text: "The rabbit rose, its form distorting into a mass of needles and shadows. 'If you so desire to see the true face of the nightmare, so be it!'. Juno faced the horror with determination, using the key fragments as a weapon.",
                 choices: {
-                    final_strike: "Dar el golpe final",
-                    sacrifice: "Sacrificarse por los niños",
-                    seal_garden: "Sellar el jardín"
+                    final_strike: "Deliver the final blow",
+                    sacrifice: "Sacrifice yourself for the children",
+                    seal_garden: "Seal the garden"
                 }
             },
             save_children: {
-                location: "El Rescate",
-                text: "Uno por uno, los niños emergieron de sus prisiones de porcelana, desorientados pero vivos. Alice estaba entre ellos, sus ojos nuevamente humanos y llenos de lágrimas de alegría. Mientras Juno los guiaba hacia la salida, el jardín comenzó a desmoronarse.",
+                location: "The Rescue",
+                text: "One by one, the children emerged from their porcelain prisons, disoriented but alive. Alice was among them, her eyes human again and filled with tears of joy. As Juno guided them to the exit, the garden began to crumble.",
                 choices: {
-                    true_ending: "Escapar con los niños"
+                    true_ending: "Escape with the children"
                 }
             },
             true_ending: {
-                location: "El Verdadero Final",
-                text: "El sol se alzó sobre un nuevo día, iluminando a los niños rescatados reunidos con sus familias. El jardín de las muñecas había desaparecido, dejando solo un terreno vacío y un recuerdo distante de pesadilla. Los niños desaparecidos volvieron a casa, y el conejo blanco nunca más volvió a invitar a nadie a tomar el té.",
+                location: "The True Ending",
+                text: "The sun rose on a new day, illuminating the rescued children reunited with their families. The doll garden had disappeared, leaving only an empty plot and a distant memory of nightmare. The missing children returned home, and the white rabbit never again invited anyone to tea.",
                 choices: {
-                    restart: "Comenzar una nueva investigación"
+                    restart: "Start a new investigation"
                 }
             },
             sacrifice: {
-                location: "El Sacrificio Final",
-                text: "Comprendiendo que la única forma de salvar a los niños era ofrecer un reemplazo, Juno dio un paso adelante. 'Tómame a mí', declaró. 'Libera a los niños y ocupa mi lugar'. El conejo sonrió, y con un movimiento de sus garras, los niños fueron liberados mientras Juno sentía los hilos comenzar a tejer su nueva forma.",
+                location: "The Final Sacrifice",
+                text: "Understanding that the only way to save the children was to offer a replacement, Juno stepped forward. 'Take me,' she declared. 'Free the children and take my place'. The rabbit smiled, and with a motion of his claws, the children were freed as Juno felt the threads beginning to weave her new form.",
                 choices: {
-                    sacrifice_ending: "Aceptar la transformación"
+                    sacrifice_ending: "Accept the transformation"
                 }
             },
             sacrifice_ending: {
-                location: "La Guardiana de Porcelana",
-                text: "Ahora hay una nueva muñeca en el jardín, una que lleva un pequeño abrigo de detective y tiene los ojos más tristes. Pero gracias a su sacrificio, ningún otro niño desaparecerá jamás. Los que conocen la historia dicen que, en las noches de luna llena, la muñeca detective parece sonreír, satisfecha de haber salvado tantas vidas a cambio de la suya.",
+                location: "The Porcelain Guardian",
+                text: "Now there is a new doll in the garden, one that wears a small detective coat and has the saddest eyes. But thanks to her sacrifice, no other child will ever disappear again. Those who know the story say that, on full moon nights, the detective doll seems to smile, satisfied with having saved so many lives in exchange for her own.",
                 choices: {
-                    restart: "Comenzar una nueva investigación"
+                    restart: "Start a new investigation"
                 }
             },
             game_over: {
-                location: "La Colección",
-                text: "En un jardín oscuro, hay una nueva muñeca sentada en la fiesta del té. Lleva un abrigo de detective y tiene los ojos de botón más hermosos. A veces, cuando la luna está en lo alto, puedes oírla susurrar advertencias a los niños que se acercan demasiado al jardín del conejo. Pero es demasiado tarde para la muñeca que una vez fue Juno: solo puede observar mientras la colección del conejo crece, un botón a la vez.",
+                location: "The Collection",
+                text: "In a dark garden, there is a new doll sitting at the tea party. It wears a detective coat and has the most beautiful button eyes. Sometimes, when the moon is high, you can hear it whisper warnings to children who get too close to the rabbit's garden. But it's too late for the doll that once was Juno: she can only watch as the rabbit's collection grows, one button at a time.",
                 choices: {
-                    restart: "Intentar de nuevo"
+                    restart: "Try again"
                 }
             }
         };
 
-        // Función para mostrar la pantalla de Game Over
+        // Function to show Game Over screen
         function showGameOver() {
             gameAudio.gameMusic.pause();
             gameAudio.gameOverMusic.play();
@@ -1868,28 +1868,28 @@
                 updateScene('game_over');
                 container.style.opacity = '1';
                 
-                // Agregar efecto visual de Game Over
+                // Add visual effect for Game Over
                 const gameOverEffect = document.createElement('div');
                 gameOverEffect.className = 'game-over-effect';
                 container.appendChild(gameOverEffect);
             }, 500);
         }
 
-        // Función para mostrar el final bueno
+        // Function to show good ending
         function showGoodEnding() {
             gameAudio.gameMusic.pause();
             gameAudio.goodEndingMusic.play();
             updateScene('good_ending');
         }
 
-        // Función para mostrar el final alternativo
+        // Function to show alternative ending
         function showAlternativeEnding() {
             gameAudio.gameMusic.pause();
             gameAudio.badEndingMusic.play();
             updateScene('become_nightmare');
         }
 
-        // Función typeWriter mejorada con sonido
+        // Improved typeWriter with sound
         function typeWriter(element, text, speed = 30) {
             let i = 0;
             element.textContent = '';
@@ -1908,7 +1908,7 @@
             type();
         }
 
-        // Actualizar la función updateScene para incluir los nuevos efectos de sonido
+        // Update the updateScene function to include new sound effects
         function updateScene(scene) {
             if (!storyData[scene]) return;
             
@@ -1952,14 +1952,14 @@
             }, 500);
         }
 
-        // Inicializar el juego con música
+        // Initialize the game with music
         document.addEventListener('DOMContentLoaded', () => {
             const startButton = document.querySelector('.start-game');
             const creditsButton = document.querySelector('.show-credits');
             const gameMenu = document.getElementById('game-menu');
             const gameContainer = document.getElementById('game-container');
             
-            // Función para iniciar el juego
+            // Function to start the game
             function startGame() {
                 gameAudio.menuMusic.pause();
                 gameAudio.gameMusic.currentTime = 0;
@@ -1974,15 +1974,15 @@
                 }, 100);
             }
 
-            // Función para mostrar los créditos
+            // Function to show credits
             function showCredits() {
                 const creditsText = `
-                    <h2>Créditos</h2>
+                    <h2>Credits</h2>
                     <p>Where are the Alices?</p>
-                    <p>Un Juego de Terror Psicológico</p>
-                    <p>Creado por ZimmZimmGames</p>
+                    <p>A Psychological Horror Game</p>
+                    <p>Created by ZimmZimmGames</p>
                     <br>
-                    <button class="menu-btn back-to-menu">Volver al Menú</button>
+                    <button class="menu-btn back-to-menu">Back to Menu</button>
                 `;
                 gameMenu.innerHTML = creditsText;
                 
@@ -1991,7 +1991,7 @@
                 });
             }
 
-            // Función mejorada para escribir texto
+            // Improved function to write text
             function typeWriter(element, text, speed = 30) {
                 return new Promise((resolve) => {
                     let i = 0;
@@ -2014,7 +2014,7 @@
                 });
             }
 
-            // Función mejorada para actualizar la escena
+            // Improved function to update the scene
             async function updateScene(scene) {
                 if (!storyData[scene]) return;
                 
@@ -2067,7 +2067,7 @@
                 });
             }
 
-            // Función mejorada para mostrar el Game Over
+            // Improved function to show Game Over
             function showGameOver() {
                 gameAudio.gameMusic.pause();
                 gameAudio.gameOverMusic.currentTime = 0;
@@ -2086,7 +2086,7 @@
                 }, 500);
             }
 
-            // Función mejorada para mostrar el final bueno
+            // Improved function to show good ending
             function showGoodEnding() {
                 gameAudio.gameMusic.pause();
                 gameAudio.goodEndingMusic.currentTime = 0;
@@ -2094,7 +2094,7 @@
                 updateScene('good_ending');
             }
 
-            // Función mejorada para mostrar el final alternativo
+            // Improved function to show alternative ending
             function showAlternativeEnding() {
                 gameAudio.gameMusic.pause();
                 gameAudio.badEndingMusic.currentTime = 0;
@@ -2106,11 +2106,11 @@
             startButton.addEventListener('click', startGame);
             creditsButton.addEventListener('click', showCredits);
             
-            // Reproducir música del menú al cargar
+            // Play menu music on load
             gameAudio.menuMusic.play();
         });
 
-        // Agregar estilos para la pantalla de Game Over
+        // Add styles for Game Over screen
         const style = document.createElement('style');
         style.textContent = `
             .game-over-effect {
@@ -2264,11 +2264,11 @@
             }
         };
 
-        // Función para cambiar el idioma
+        // Function to change language
         function changeLanguage(lang) {
             document.documentElement.setAttribute('lang', lang);
             
-            // Actualizar todos los elementos traducibles
+            // Update all translatable elements
             document.querySelectorAll('[data-translate]').forEach(element => {
                 const key = element.getAttribute('data-translate');
                 if (translations[lang][key]) {
@@ -2281,7 +2281,7 @@
                 }
             });
 
-            // Actualizar el botón de idioma actual
+            // Update current language button
             const currentBtn = document.querySelector('.language-btn.current');
             currentBtn.classList.remove('current');
             currentBtn.textContent = lang.toUpperCase();
@@ -2290,34 +2290,34 @@
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Inicializar el sistema de idiomas
+        // Initialize language system
         document.addEventListener('DOMContentLoaded', () => {
-            // Agregar atributos data-translate a los elementos que necesitan traducción
+            // Add data-translate attributes to elements that need translation
             document.querySelectorAll('.menu-items a').forEach((item, index) => {
                 const keys = ['about', 'demo', 'merch', 'faq'];
                 item.setAttribute('data-translate', keys[index]);
             });
 
-            // Elementos de la página principal
+            // Main page elements
             document.querySelector('.coming-soon').setAttribute('data-translate', 'comingSoon');
             document.querySelector('.demo-available span').setAttribute('data-translate', 'demoAvailable');
             document.querySelector('.cta-container h2').setAttribute('data-translate', 'dareToEnter');
             document.querySelector('.cta-text').setAttribute('data-translate', 'dareText');
             document.querySelector('.cta-btn .btn-text').setAttribute('data-translate', 'startNightmare');
             
-            // Sección de soporte
+            // Support section
             document.querySelector('.support-section h2').setAttribute('data-translate', 'supportTitle');
             document.querySelector('.support-section .subtitle').setAttribute('data-translate', 'supportSubtitle');
             
-            // Sección de demo
+            // Demo section
             document.querySelector('.demo-section h2').setAttribute('data-translate', 'tryDemo');
             document.querySelector('.demo-content p').setAttribute('data-translate', 'exploreChapter');
             
-            // Sección de la madriguera del conejo
+            // Rabbit hole section
             document.querySelector('.rabbit-hole-section h2').setAttribute('data-translate', 'rabbitHoleTitle');
             document.querySelector('.rabbit-hole-section .subtitle').setAttribute('data-translate', 'rabbitHoleSubtitle');
             
-            // Sección de Discord
+            // Discord section
             document.querySelector('.discord-section h2').setAttribute('data-translate', 'communityTitle');
             document.querySelector('.discord-section .subtitle').setAttribute('data-translate', 'communitySubtitle');
             document.querySelector('.discord-card h3').setAttribute('data-translate', 'discordTitle');
@@ -2326,37 +2326,37 @@
             // Footer
             document.querySelector('.footer p').setAttribute('data-translate', 'copyright');
 
-            // Inicializar el idioma
+            // Initialize language
             const preferredLanguage = localStorage.getItem('preferredLanguage') || 'es';
             changeLanguage(preferredLanguage);
         });
 
-        // Agregar la función startAdventure después de las declaraciones de audio
+        // Add startAdventure function after audio declarations
         function startAdventure() {
-            // Desplazar suavemente a la sección de la aventura visual
+            // Smoothly scroll to the visual adventure section
             document.querySelector('.text-adventure-section').scrollIntoView({ 
                 behavior: 'smooth',
                 block: 'start'
             });
 
-            // Esperar a que termine el desplazamiento antes de iniciar el juego
+            // Wait for the scrolling to finish before starting the game
             setTimeout(() => {
-                // Ocultar el menú del juego y mostrar el contenedor del juego
+                // Hide game menu and show game container
                 document.getElementById('game-menu').style.display = 'none';
                 const gameContainer = document.getElementById('game-container');
                 gameContainer.style.display = 'block';
 
-                // Detener la música del menú y comenzar la música del juego
+                // Stop menu music and start game music
                 gameAudio.menuMusic.pause();
                 gameAudio.gameMusic.currentTime = 0;
                 gameAudio.gameMusic.play();
 
-                // Iniciar el juego con la primera escena
+                // Start the game with the first scene
                 setTimeout(() => {
                     gameContainer.classList.add('active');
                     updateScene('start');
                 }, 100);
-            }, 1000); // Esperar 1 segundo después del desplazamiento
+            }, 1000); // Wait 1 second after scrolling
         }
     </script>
 </body>
