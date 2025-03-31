@@ -1719,28 +1719,16 @@
                 choices: {
                     approach: "Acercarse a la mesa de té",
                     examine: "Observar los rostros de las muñecas",
-                    run: "Dar media vuelta y huir",
-                    investigate_surroundings: "Investigar los alrededores"
+                    investigate: "Investigar los alrededores"
                 }
             },
-            investigate_surroundings: {
+            investigate: {
                 location: "Los Límites del Jardín",
                 text: "Mientras Juno exploraba los bordes del jardín, notó algo extraño: las sombras parecían moverse en dirección opuesta a la luz. Y había marcas en el suelo, como si alguien hubiera arrastrado algo... o alguien. Entre los arbustos, un destello metálico llamó su atención.",
                 choices: {
-                    follow_marks: "Seguir las marcas en el suelo",
                     check_metal: "Investigar el destello metálico",
-                    return_party: "Volver a la fiesta de té",
-                    call_backup: "Llamar refuerzos"
-                }
-            },
-            follow_marks: {
-                location: "El Rastro Oscuro",
-                text: "Las marcas llevaron a Juno hasta una pequeña puerta oculta entre las enredaderas. Parecía antigua, con símbolos extraños tallados en el marco. A través de las grietas, podía escuchar el sonido de una caja de música y risas infantiles distorsionadas.",
-                choices: {
-                    open_door: "Abrir la puerta",
-                    decode_symbols: "Estudiar los símbolos",
-                    find_key: "Buscar una llave",
-                    return_garden: "Regresar al jardín"
+                    follow_marks: "Seguir las marcas en el suelo",
+                    return_party: "Volver a la fiesta de té"
                 }
             },
             check_metal: {
@@ -1748,18 +1736,25 @@
                 text: "El destello provenía de una vieja caja de música enterrada parcialmente. Al tocarla, la caja comenzó a sonar por sí sola, tocando una melodía inquietante. Dentro, Juno encontró una llave dorada y una nota escrita con letra infantil: 'Los botones son la llave, pero también la prisión'.",
                 choices: {
                     take_key: "Tomar la llave",
-                    read_more: "Buscar más notas",
-                    follow_music: "Seguir la melodía",
-                    bury_box: "Volver a enterrar la caja"
+                    return_party: "Volver a la fiesta de té",
+                    follow_music: "Seguir la melodía"
+                }
+            },
+            follow_music: {
+                location: "El Camino de la Melodía",
+                text: "La melodía de la caja de música resonaba cada vez más fuerte, guiando a Juno a través del jardín. Las muñecas parecían seguir el ritmo con sus cabezas, y el conejo sonreía cada vez más ampliamente.",
+                choices: {
+                    confront_rabbit: "Confrontar al conejo",
+                    free_dolls: "Intentar liberar a las muñecas",
+                    escape: "Intentar escapar"
                 }
             },
             take_key: {
                 location: "La Llave Dorada",
                 text: "En el momento en que Juno tomó la llave, todas las muñecas giraron sus cabezas hacia ella al unísono. El conejo se levantó lentamente, sus ojos de botón brillando con un resplandor rojizo. 'Ah, has encontrado la llave maestra', dijo con voz melosa. 'Ahora podrás abrir todas las puertas... o cerrarlas para siempre'.",
                 choices: {
-                    use_key: "Usar la llave en la puerta más cercana",
-                    confront_rabbit_key: "Confrontar al conejo con la llave",
-                    free_dolls: "Intentar liberar a las muñecas",
+                    use_key: "Usar la llave",
+                    confront_rabbit_key: "Confrontar al conejo",
                     destroy_key: "Destruir la llave"
                 }
             },
@@ -1772,53 +1767,68 @@
                     seal_garden: "Sellar el jardín para siempre"
                 }
             },
+            examine: {
+                location: "Entre las Muñecas",
+                text: "Cada rostro resultaba inquietantemente familiar. Niños de carteles de personas desaparecidas, sus rasgos perfectamente recreados en porcelana. Pero sus ojos... sus ojos habían sido reemplazados por botones, negros como la medianoche. Una muñeca en particular llamó la atención de Juno: llevaba un vestido azul, igual al que Alice llevaba el día que desapareció.",
+                choices: {
+                    touch_doll: "Tocar la muñeca de Alice",
+                    search_clues: "Buscar pistas",
+                    return_party: "Volver a la fiesta de té"
+                }
+            },
+            approach: {
+                location: "La Mesa de Té Eterna",
+                text: "'¿Te gustaría un poco de té, querida?', susurró el conejo, su voz como papel de lija. Sus patas sostenían una taza que goteaba algo espeso y oscuro. Las muñecas giraron sus cabezas al unísono, sus botones brillando en la oscuridad. '¿O preferirías... ser parte de nuestra colección? Alice lo prefirió así'. Una de las muñecas, con un vestido azul manchado, sonrió con hilos sueltos.",
+                choices: {
+                    accept_tea: "Aceptar el té",
+                    question_alice: "Preguntar por Alice",
+                    refuse_tea: "Rechazar la invitación"
+                }
+            },
+            accept_tea: {
+                location: "El Último Sorbo",
+                text: "El té tenía un sabor dulce y metálico. Mientras Juno bebía, sintió sus párpados volverse pesados. Las muñecas comenzaron a cantar una nana distorsionada mientras el mundo se desvanecía en oscuridad...",
+                choices: {
+                    game_over: "Sucumbir al sueño"
+                }
+            },
+            question_alice: {
+                location: "La Verdad Revelada",
+                text: "El conejo inclinó su cabeza en un ángulo imposible. 'Oh, Alice está aquí... todas las Alices están aquí'. Sus palabras resonaron mientras las muñecas comenzaban a cantar una nana desafinada. Una a una, empezaron a descoserse sus propios rostros, revelando debajo... más botones.",
+                choices: {
+                    fight_rabbit: "Enfrentar al conejo",
+                    save_alice: "Intentar salvar a Alice",
+                    escape: "Intentar escapar"
+                }
+            },
+            refuse_tea: {
+                location: "El Precio del Rechazo",
+                text: "'Me temo que esa no es una opción, detective', dijo el conejo mientras las muñecas se levantaban de sus sillas. 'Verás, una vez que encuentras nuestro pequeño jardín, debes unirte a la fiesta. Son las reglas.'",
+                choices: {
+                    fight_rabbit: "Enfrentar al conejo",
+                    run: "Intentar huir",
+                    negotiate: "Intentar negociar"
+                }
+            },
+            fight_rabbit: {
+                location: "La Confrontación Final",
+                text: "El conejo se alzó, su forma distorsionándose en una masa de agujas y sombras. 'Si tanto deseas ver el verdadero rostro de la pesadilla, ¡que así sea!'. Juno enfrentó al horror con determinación, usando los fragmentos de la llave como arma.",
+                choices: {
+                    final_strike: "Dar el golpe final",
+                    sacrifice: "Sacrificarse por los niños",
+                    seal_garden: "Sellar el jardín"
+                }
+            },
             save_children: {
                 location: "El Rescate",
-                text: "Uno por uno, los niños emergieron de sus prisiones de porcelana, desorientados pero vivos. Alice estaba entre ellos, sus ojos nuevamente humanos y llenos de lágrimas de alegría. Mientras Juno los guiaba hacia la salida, el jardín comenzó a desmoronarse, llevándose consigo los horrores que había contenido durante tanto tiempo.",
+                text: "Uno por uno, los niños emergieron de sus prisiones de porcelana, desorientados pero vivos. Alice estaba entre ellos, sus ojos nuevamente humanos y llenos de lágrimas de alegría. Mientras Juno los guiaba hacia la salida, el jardín comenzó a desmoronarse.",
                 choices: {
                     true_ending: "Escapar con los niños"
                 }
             },
             true_ending: {
                 location: "El Verdadero Final",
-                text: "El sol se alzó sobre un nuevo día, iluminando a los niños rescatados reunidos con sus familias. El jardín de las muñecas había desaparecido, dejando solo un terreno vacío y un recuerdo distante de pesadilla. Juno guardó un botón roto como recordatorio: a veces, la verdadera valentía está en romper las reglas de un juego macabro. Los niños desaparecidos volvieron a casa, y el conejo blanco nunca más volvió a invitar a nadie a tomar el té.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            seal_garden: {
-                location: "El Sello Eterno",
-                text: "Usando los fragmentos de la llave, Juno trazó un círculo alrededor del jardín. Las sombras se solidificaron, formando una barrera impenetrable. Los niños fueron liberados, pero el jardín quedaría sellado para siempre, junto con sus horrores. El conejo quedó atrapado en su propio reino de pesadillas, incapaz de cazar nuevamente.",
-                choices: {
-                    guardian_ending: "Convertirse en guardiana"
-                }
-            },
-            guardian_ending: {
-                location: "La Guardiana del Sello",
-                text: "Años después, la gente habla de una detective que vigila un terreno vacío. Sus ojos brillan en la oscuridad, no con botones, sino con el poder del sello que mantiene encerradas las pesadillas. Los niños están a salvo, pero Juno nunca olvidará el precio de la victoria: una eternidad vigilando que el conejo nunca escape de su prisión de sombras.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            fight_rabbit: {
-                location: "La Confrontación Final",
-                text: "El conejo se alzó, su forma distorsionándose en una masa de agujas y sombras. 'Si tanto deseas ver el verdadero rostro de la pesadilla, ¡que así sea!'. Juno enfrentó al horror con determinación, usando los fragmentos de la llave como arma. Cada golpe revelaba más de la verdadera forma del conejo: un vacío con hambre de inocencia.",
-                choices: {
-                    final_strike: "Dar el golpe final",
-                    banish_rabbit: "Desterrar al conejo",
-                    sacrifice: "Sacrificarse por los niños"
-                }
-            },
-            final_strike: {
-                location: "El Último Golpe",
-                text: "Con un grito de batalla, Juno clavó el fragmento más grande de la llave en el centro del conejo. Una explosión de luz dorada inundó el jardín, y el horror se deshizo como niebla bajo el sol. Los niños fueron liberados, y el mal que había atormentado el jardín fue destruido para siempre.",
-                choices: {
-                    hero_ending: "Aceptar el rol de heroína"
-                }
-            },
-            hero_ending: {
-                location: "La Heroína del Jardín",
-                text: "La leyenda de la detective que derrotó al conejo blanco se convirtió en un cuento para dormir, pero uno que da esperanza en lugar de miedo. Los niños rescatados crecieron sabiendo que los monstruos pueden ser vencidos, y Juno siguió protegiendo a los inocentes, ahora con la sabiduría de quien ha mirado a la oscuridad a los ojos y ha ganado.",
+                text: "El sol se alzó sobre un nuevo día, iluminando a los niños rescatados reunidos con sus familias. El jardín de las muñecas había desaparecido, dejando solo un terreno vacío y un recuerdo distante de pesadilla. Los niños desaparecidos volvieron a casa, y el conejo blanco nunca más volvió a invitar a nadie a tomar el té.",
                 choices: {
                     restart: "Comenzar una nueva investigación"
                 }
@@ -1837,272 +1847,11 @@
                     restart: "Comenzar una nueva investigación"
                 }
             },
-            run: {
-                location: "El Escape Fallido",
-                text: "Juno giró sobre sus talones, pero sus piernas se enredaron con hilos negros que surgían del suelo. '¿Tan pronto te vas?', susurró el conejo. 'La fiesta apenas comienza, y Alice ha estado esperando tanto tiempo por una compañera de juegos...' Las muñecas comenzaron a levantarse, sus articulaciones crujiendo como madera vieja.",
-                choices: {
-                    fight_threads: "Luchar contra los hilos",
-                    call_alice: "Llamar a Alice",
-                    accept_fate: "Aceptar la invitación"
-                }
-            },
-            fight_threads: {
-                location: "La Danza de los Hilos",
-                text: "Con determinación, Juno comenzó a arrancar los hilos que la ataban. Cada hilo roto emitía un chillido agudo, como si estuviera vivo. 'Qué descortés', murmuró el conejo, sacando un par de tijeras doradas. 'Si no quieres jugar con los hilos, quizás prefieras ser parte del patrón...'",
-                choices: {
-                    grab_scissors: "Intentar tomar las tijeras",
-                    run_harder: "Correr hacia la salida",
-                    negotiate: "Intentar negociar"
-                }
-            },
-            examine: {
-                location: "Entre las Muñecas",
-                text: "Cada rostro resultaba inquietantemente familiar. Niños de carteles de personas desaparecidas, sus rasgos perfectamente recreados en porcelana. Pero sus ojos... sus ojos habían sido reemplazados por botones, negros como la medianoche. Una muñeca en particular llamó la atención de Juno: llevaba un vestido azul, igual al que Alice llevaba el día que desapareció.",
-                choices: {
-                    touch_doll: "Tocar la muñeca de Alice",
-                    search_clues: "Buscar pistas alrededor de las muñecas",
-                    follow_thread: "Seguir un hilo negro que se aleja"
-                }
-            },
-            touch_doll: {
-                location: "La Verdad de Porcelana",
-                text: "En el momento en que los dedos de Juno tocaron la mejilla de la muñeca, su cabeza giró, no de forma mecánica, sino fluida como carne. 'No deberías tocar lo que no es tuyo', susurró con la voz de Alice. Los ojos de botón de la muñeca comenzaron a gotear hilo negro, y Juno sintió un dolor agudo en las yemas de sus dedos, donde los hilos habían comenzado a coserse en su piel.",
-                choices: {
-                    pull_away: "Intentar alejarse",
-                    accept_threads: "Aceptar los hilos",
-                    call_for_help: "Pedir ayuda"
-                }
-            },
-            pull_away: {
-                location: "El Precio de la Resistencia",
-                text: "Juno tiró con todas sus fuerzas, pero los hilos se tensaron más. 'Duele menos si no luchas', susurró la muñeca-Alice. 'Yo también luché al principio, pero ahora... ahora soy hermosa. Ahora soy perfecta. Y tú también puedes serlo.' Los hilos comenzaron a tejer patrones en la piel de Juno, formando delicados diseños de encaje negro.",
-                choices: {
-                    bite_threads: "Morder los hilos",
-                    scream_help: "Gritar por ayuda",
-                    submit_transformation: "Someterse a la transformación"
-                }
-            },
-            search_clues: {
-                location: "Secretos Ocultos",
-                text: "Detrás de cada muñeca, Juno encontró pequeños objetos: cintas para el cabello, pulseras de la amistad, pequeñas notas escritas con letra infantil. Bajo la muñeca de Alice había una página de diario: 'El conejo dice que si dejo que me cosa los botones, nunca más estaré sola. Dice que solo duele un momento...'",
-                choices: {
-                    take_evidence: "Recoger las evidencias",
-                    confront_rabbit: "Confrontar al conejo",
-                    run_with_clues: "Huir con el diario"
-                }
-            },
-            approach: {
-                location: "La Mesa de Té Eterna",
-                text: "'¿Te gustaría un poco de té, querida?', susurró el conejo, su voz como papel de lija. Sus patas sostenían una taza que goteaba algo espeso y oscuro. Las muñecas giraron sus cabezas al unísono, sus botones brillando en la oscuridad. '¿O preferirías... ser parte de nuestra colección? Alice lo prefirió así'. Una de las muñecas, con un vestido azul manchado, sonrió con hilos sueltos.",
-                choices: {
-                    accept: "Aceptar la taza de té",
-                    question: "Preguntar por Alice",
-                    refuse: "Rechazar la invitación"
-                }
-            },
-            refuse: {
-                location: "El Precio del Rechazo",
-                text: "'Me temo que esa no es una opción, detective', dijo el conejo mientras las muñecas se levantaban de sus sillas. 'Verás, una vez que encuentras nuestro pequeño jardín, debes unirte a la fiesta. Son las reglas.' Las muñecas comenzaron a rodear a Juno, sus botones brillando con una luz propia.",
-                choices: {
-                    fight_dolls: "Luchar contra las muñecas",
-                    seek_exit: "Buscar una salida",
-                    bargain: "Intentar negociar"
-                }
-            },
-            question: {
-                location: "El Círculo de Verdades",
-                text: "El conejo inclinó su cabeza en un ángulo imposible. 'Oh, Alice está aquí... todas las Alices están aquí'. Sus palabras resonaron mientras las muñecas comenzaban a cantar una nana desafinada. Una a una, empezaron a descoserse sus propios rostros, revelando debajo... más botones. '¿No es hermoso? Nunca más estarán solas. Nunca más llorarán. ¿No quieres ser hermosa también, Juno?'",
-                choices: {
-                    fight: "Confrontar al conejo",
-                    scream: "Gritar hasta despertar",
-                    submit: "Alcanzar los botones"
-                }
-            },
-            fight: {
-                location: "La Danza de los Hilos",
-                text: "Las agujas aparecieron de la nada, brillando como estrellas muertas. El conejo se alzó, creciendo más y más alto, sus hilos extendiéndose como telarañas negras. 'Todas luchan al principio, querida. Pero al final...' Su risa sonaba como tijeras cortando seda. '...al final todas entienden que es mejor así. Pregúntale al gato, si no me crees'. Y allí, entre las sombras, un gato sonrió con dientes de aguja, sus propios botones brillando con lágrimas de hilo.",
-                choices: {
-                    trust_cat: "Confiar en el gato sonriente",
-                    cut_strings: "Cortar los hilos del conejo",
-                    close_eyes: "Cerrar los ojos y desear despertar"
-                }
-            },
-            trust_cat: {
-                location: "El Teatro de Sombras",
-                text: "'Sus botones mienten', ronroneó el gato, sus costuras abriéndose para mostrar el vacío interior. 'Pero mis cicatrices dicen la verdad. Cada Alice que bebe su té se convierte en otra muñeca de su colección. Cada sonrisa cosida esconde un grito. ¿Te gustaría ver qué hay realmente en esas tazas, detective?' El gato extendió una pata descosida, ofreciendo mostrar la verdad detrás de la cortina.",
-                choices: {
-                    see_truth: "Ver la verdad tras la cortina",
-                    save_alice: "Intentar salvar a las muñecas",
-                    escape: "Buscar una salida"
-                }
-            },
-            see_truth: {
-                location: "La Sala de las Agujas",
-                text: "La cortina cayó, y con ella, la ilusión. No era una mesa de té, era una mesa de costura. No eran tazas, eran dedales llenos de hilo negro. Y el conejo... el conejo era una masa de agujas y tijeras con forma de conejo, un costurero viviente que tejía pesadillas. 'Ahora que has visto', dijo el gato, sus costuras deshaciéndose, 'debes elegir: ¿te convertirás en una historia para asustar a los niños, o en la pesadilla que asusta a las pesadillas?'",
-                choices: {
-                    become_nightmare: "Convertirse en pesadilla",
-                    save_all: "Salvar a todas las muñecas",
-                    wake_up: "Despertar al mundo real"
-                }
-            },
-            save_all: {
-                location: "La Liberación",
-                text: "Con manos temblorosas, Juno agarró las tijeras de la forma del conejo. Antes de que pudiera reaccionar, comenzó a cortar hilos: negros, dorados, hilos que gritaban y hilos que cantaban. Con cada corte, una muñeca se convertía en niño de nuevo, los botones cayendo como lágrimas. El conejo aulló, su forma deshilachándose. '¡Lo has arruinado todo!', chilló, pero Juno no se detuvo hasta que cada niño estuvo libre.",
-                choices: {
-                    good_ending: "Guiar a los niños a casa"
-                }
-            },
-            good_ending: {
-                location: "El Amanecer",
-                text: "El sol se alzó sobre un jardín lleno de niños, sus ojos brillantes y reales, sus sonrisas genuinas. Alice estaba entre ellos, sosteniendo la mano de Juno. El conejo se había ido, dejando solo un montón de tijeras e hilos. Pero Juno guardó un botón como recordatorio: no todos los monstruos se esconden bajo las camas. A veces te invitan a tomar el té. Los niños desaparecidos volvieron a casa, pero nunca olvidaron a la detective que los salvó de convertirse en muñecas.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            become_nightmare: {
-                location: "La Transformación",
-                text: "Juno tomó la aguja que le ofrecía el gato. 'Para luchar contra monstruos', susurró, 'a veces debes convertirte en uno.' Se cosió botones en sus propios ojos, pero estos eran diferentes: podían ver la verdad en todas las cosas. El poder del conejo se volvió suyo, pero lo usó para proteger, no para atrapar. Ahora caza a aquellos que lastimarían a los niños, sus ojos de botón brillando en la oscuridad.",
-                choices: {
-                    continue_hunting: "Continuar cazando monstruos"
-                }
-            },
             game_over: {
                 location: "La Colección",
                 text: "En un jardín oscuro, hay una nueva muñeca sentada en la fiesta del té. Lleva un abrigo de detective y tiene los ojos de botón más hermosos. A veces, cuando la luna está en lo alto, puedes oírla susurrar advertencias a los niños que se acercan demasiado al jardín del conejo. Pero es demasiado tarde para la muñeca que una vez fue Juno: solo puede observar mientras la colección del conejo crece, un botón a la vez.",
                 choices: {
                     restart: "Intentar de nuevo"
-                }
-            },
-            call_backup: {
-                location: "La Llamada de Auxilio",
-                text: "Juno sacó su teléfono, pero la señal era inexistente. En su lugar, el dispositivo comenzó a reproducir una extraña melodía de caja de música. En la pantalla, números y letras se mezclaban formando un mensaje: 'Nadie puede ayudarte aquí. Solo tú puedes salvarlos... o unirte a ellos'.",
-                choices: {
-                    continue_alone: "Seguir investigando sola",
-                    use_phone_light: "Usar la luz del teléfono para investigar",
-                    throw_phone: "Arrojar el teléfono",
-                    return_entrance: "Volver a la entrada"
-                }
-            },
-            use_phone_light: {
-                location: "Revelaciones en la Oscuridad",
-                text: "La luz del teléfono reveló algo inquietante: las sombras de las muñecas no coincidían con sus cuerpos. Algunas sombras mostraban niños tratando de escapar, mientras otras revelaban formas retorcidas y monstruosas. El conejo proyectaba la sombra más grande de todas: una masa de agujas y tijeras con forma vagamente humana.",
-                choices: {
-                    photograph: "Tomar fotografías",
-                    follow_shadows: "Seguir las sombras",
-                    confront_truth: "Confrontar al conejo con la verdad",
-                    run_away: "Huir del jardín"
-                }
-            },
-            photograph: {
-                location: "Evidencia Imposible",
-                text: "Cada foto mostraba algo diferente: donde había muñecas, las imágenes mostraban niños atrapados en poses imposibles. El conejo no aparecía en ninguna foto, pero en su lugar había una figura alta y delgada con un traje victoriano manchado de algo oscuro. De repente, el teléfono comenzó a derretirse en las manos de Juno.",
-                choices: {
-                    save_evidence: "Intentar salvar las fotos",
-                    accept_vision: "Aceptar la verdad revelada",
-                    destroy_phone: "Destruir el teléfono",
-                    share_truth: "Compartir la verdad con las muñecas"
-                }
-            },
-            share_truth: {
-                location: "El Despertar Colectivo",
-                text: "Juno mostró las fotos a las muñecas antes de que el teléfono se derritiera por completo. Una a una, comenzaron a recordar quiénes eran. Sus ojos de botón cayeron, revelando ojos humanos llenos de lágrimas y determinación. El conejo rugió de furia mientras su control sobre ellas se debilitaba.",
-                choices: {
-                    lead_rebellion: "Liderar la rebelión",
-                    protect_children: "Proteger a los niños",
-                    face_rabbit: "Enfrentar al conejo",
-                    escape_together: "Escapar todos juntos"
-                }
-            },
-            lead_rebellion: {
-                location: "La Revolución de las Muñecas",
-                text: "Bajo el liderazgo de Juno, las muñecas-niños se alzaron contra su captor. Cada botón arrancado era un alma liberada, cada hilo roto una cadena menos. El conejo intentó mantener el control, pero su poder residía en el miedo, y los niños ya no tenían miedo. Con cada pequeño acto de rebeldía, su reino de pesadillas se desmoronaba.",
-                choices: {
-                    revolution_ending: "Completar la revolución",
-                    protect_weak: "Proteger a los más débiles",
-                    final_battle: "Batalla final"
-                }
-            },
-            revolution_ending: {
-                location: "El Triunfo de la Libertad",
-                text: "El jardín de pesadillas se transformó en un campo de batalla donde la inocencia luchó contra el horror. Los niños, liberados de sus prisiones de porcelana, usaron sus propios hilos rotos como armas. El conejo, enfrentado a la fuerza del valor colectivo, se encogió hasta ser nada más que un juguete roto. Los niños eran libres, y su carcelero no era más que un mal recuerdo.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            final_battle: {
-                location: "El Último Enfrentamiento",
-                text: "El conejo reveló su verdadera forma: un coleccionista de almas antiguo y retorcido. Pero Juno y los niños liberados lo rodearon, cada uno sosteniendo un fragmento de sus propias prisiones. 'Los monstruos solo tienen poder si les tenemos miedo', declaró Juno. Unidos, enfrentaron la oscuridad con la luz de su valentía.",
-                choices: {
-                    banish_forever: "Desterrar al conejo para siempre",
-                    redeem_rabbit: "Intentar redimir al conejo",
-                    ultimate_sacrifice: "Realizar el sacrificio final"
-                }
-            },
-            banish_forever: {
-                location: "El Destierro",
-                text: "Usando los fragmentos de porcelana y los hilos rotos, Juno y los niños tejieron una red de luz y esperanza. El conejo, atrapado en su propia trampa, fue empujado hacia un abismo entre realidades. Su reino de pesadillas se cerró para siempre, sellado por la fuerza combinada de quienes una vez fueron sus víctimas.",
-                choices: {
-                    victory_ending: "Celebrar la victoria"
-                }
-            },
-            victory_ending: {
-                location: "El Amanecer de la Esperanza",
-                text: "El jardín se transformó bajo la luz del amanecer. Donde antes había horror, ahora florecían flores reales. Los niños, libres de sus prisiones de porcelana, rieron y jugaron mientras el último rastro del conejo se desvanecía. Juno los observaba, sabiendo que algunas batallas valen la pena ser luchadas. En su bolsillo, guardó un último botón, no como trofeo, sino como recordatorio de que la oscuridad siempre puede ser vencida por la luz de la valentía colectiva.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            redeem_rabbit: {
-                location: "La Redención",
-                text: "En medio de la batalla, Juno vio algo en los ojos de botón del conejo: un destello de soledad antigua y dolor. '¿Por qué coleccionas niños?', preguntó. El conejo vaciló, y por un momento, su forma cambió, revelando a un niño perdido hace mucho tiempo. 'Solo quería amigos que nunca me abandonaran', susurró con una voz que ya no era amenazante, sino triste.",
-                choices: {
-                    offer_friendship: "Ofrecer verdadera amistad",
-                    show_consequences: "Mostrar el dolor causado",
-                    forgive: "Perdonar y sanar"
-                }
-            },
-            offer_friendship: {
-                location: "El Poder del Perdón",
-                text: "Juno extendió su mano hacia el niño que fue el conejo. 'La verdadera amistad no se puede forzar ni coser', dijo suavemente. 'Debe crecer naturalmente, como las flores en este jardín'. Los niños liberados, viendo la verdad, formaron un círculo alrededor del conejo transformado. Esta vez, la fiesta de té era real, con risas genuinas y sin hilos ni botones.",
-                choices: {
-                    redemption_ending: "Aceptar la redención"
-                }
-            },
-            redemption_ending: {
-                location: "El Jardín Sanado",
-                text: "El jardín de pesadillas se transformó en un lugar de sanación. El conejo, ahora un niño normal, aprendió a hacer amigos sin necesidad de hilos ni agujas. Las muñecas se convirtieron en niños reales, y el jardín se llenó de juegos y risas verdaderas. Juno comprendió que a veces, el verdadero valor está en ver más allá del monstruo, hasta encontrar el corazón herido que necesita sanar.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            ultimate_sacrifice: {
-                location: "El Precio del Amor",
-                text: "Juno comprendió que la única forma de salvar a todos era ofrecer algo que el conejo nunca había tenido: amor incondicional. Abrazó al monstruo, aceptando sus agujas y dolor. 'No estás solo', susurró. 'Nunca más lo estarás'. Su sacrificio de amor puro comenzó a transformar tanto al conejo como al jardín mismo.",
-                choices: {
-                    transformation_ending: "Aceptar la transformación final"
-                }
-            },
-            transformation_ending: {
-                location: "El Jardín del Amor",
-                text: "El sacrificio de Juno transformó el jardín en un santuario. Ella se convirtió en su guardiana, no como una muñeca, sino como un espíritu de amor y protección. Los niños fueron liberados, y el conejo encontró paz como su compañero guardián. Juntos, transformaron el lugar de pesadillas en un refugio para niños perdidos, donde el amor verdadero sana todas las heridas.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
-                }
-            },
-            protect_weak: {
-                location: "El Escudo de los Inocentes",
-                text: "Mientras algunos niños luchaban, Juno se concentró en proteger a los más pequeños y asustados. Formó un círculo con ellos, usando su propio cuerpo como escudo. El conejo, al ver este acto de amor protector, comenzó a recordar su propia infancia perdida, cuando él también necesitó protección y nadie estuvo allí.",
-                choices: {
-                    shield_ending: "Mantener el escudo protector",
-                    inspire_others: "Inspirar a otros a proteger",
-                    face_darkness: "Enfrentar la oscuridad juntos"
-                }
-            },
-            shield_ending: {
-                location: "La Protectora Eterna",
-                text: "El amor protector de Juno creó un escudo de luz dorada que ninguna oscuridad podía penetrar. Los niños, seguros en su abrazo, encontraron la fuerza para liberarse. El conejo, enfrentado al poder del amor maternal que nunca conoció, se transformó en un guardián más, jurando proteger en lugar de dañar. El jardín se convirtió en un santuario donde los niños perdidos siempre encontrarían protección.",
-                choices: {
-                    restart: "Comenzar una nueva investigación"
                 }
             }
         };
