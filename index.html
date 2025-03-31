@@ -398,10 +398,159 @@
         }
 
         .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
+            background-color: var(--bg-color-dark);
+            color: var(--gold);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            color: var(--gold);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--gold);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            opacity: 1;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 0.8rem;
+            color: var(--gold);
+            font-family: var(--font-accent);
+            border-radius: 4px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 215, 0, 0.5);
+        }
+
+        .subscribe-btn {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem;
+            cursor: pointer;
+            font-family: var(--font-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .subscribe-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .platform-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .platform-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
             opacity: 0.7;
+            transition: all 0.3s ease;
+            font-family: var(--font-accent);
+        }
+
+        .platform-link:hover {
+            opacity: 1;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--gold);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                max-width: 300px;
+                margin: 0 auto;
+            }
         }
 
         /* Efecto de glitch similar a Undertale */
@@ -1858,7 +2007,7 @@
                     <i class="fab fa-paypal"></i>
                     <h3>PayPal</h3>
                     <p>One-time contribution to development</p>
-                    <a href="#" class="support-btn">
+                    <a href="https://www.paypal.com/ncp/payment/RZGJ66JYMZD5A" target="_blank" class="support-btn">
                         <span class="btn-text">Donate with PayPal</span>
                         <span class="btn-glitch"></span>
                     </a>
@@ -1868,7 +2017,7 @@
                     <i class="fab fa-patreon"></i>
                     <h3>Patreon</h3>
                     <p>Exclusive access to development and special content</p>
-                    <a href="#" class="support-btn">
+                    <a href="https://www.patreon.com/zimmzimmgames" target="_blank" class="support-btn">
                         <span class="btn-text">Join on Patreon</span>
                         <span class="btn-glitch"></span>
                     </a>
@@ -1878,7 +2027,7 @@
                     <i class="fas fa-coffee"></i>
                     <h3>Ko-fi</h3>
                     <p>Buy us a coffee to keep the nightmares alive</p>
-                    <a href="#" class="support-btn">
+                    <a href="https://ko-fi.com/zimmzimmgames" target="_blank" class="support-btn">
                         <span class="btn-text">Buy a Ko-fi</span>
                         <span class="btn-glitch"></span>
                     </a>
@@ -1972,43 +2121,51 @@
             </div>
         </div>
     </main>
-
+   
     <footer class="footer">
-        <p>© 2024 ZimmZimmGames. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Sobre Nosotros</h3>
+                <p>ZimmZimm Games es tu destino para experiencias de terror psicológico únicas y memorables.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#juegos">Juegos</a></li>
+                    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico" required>
+                    <button type="submit" class="subscribe-btn">Suscribirse</button>
+                </form>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-steam"></i></a>
+                </div>
+                <div class="platform-links">
+                    <a href="https://gamejolt.com/@ZimmZimmGames" target="_blank" class="platform-link">Gamejolt</a>
+                    <a href="https://zimmzimmgames.itch.io/" target="_blank" class="platform-link">itch.io</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 ZimmZimmGames. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-    <!-- Add Discord section at the end, before the footer -->
-    <div class="discord-section">
-        <h2>Join the Community</h2>
-        <p class="subtitle">Share your theories and uncover secrets with other investigators</p>
-        <div class="discord-card">
-            <i class="fab fa-discord"></i>
-            <h3>Official Discord Server</h3>
-            <p>Join our detective community and share your discoveries about the disappearances. Can you solve the mystery before it's too late?</p>
-            <a href="#" class="discord-btn">
-                <span class="btn-text">Join Discord</span>
-                <span class="btn-glitch"></span>
-            </a>
-        </div>
-    </div>
+    
 
-  <!--  <div class="game-screenshots">-->
-       <!--   <img src="screenshot1.jpg" alt="Where are the Alices? - Gameplay Screenshot - A dimly lit room filled with mysterious dolls and shadows"> -->
-      <!--    <img src="screenshot2.jpg" alt="Where are the Alices? - Gameplay Screenshot - A creepy hallway with flickering lights and scattered toys"> -->
-      <!--    <img src="screenshot3.jpg" alt="Where are the Alices? - Gameplay Screenshot - A close-up of a disturbing doll with an unsettling expression"> -->
-    <!--  </div>-->
 
-    <div class="social-links">
-        <a href="https://twitter.com/ZimmZimmGames" target="_blank" aria-label="Follow ZimmZimmGames on Twitter">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://discord.gg/ZimmZimmGames" target="_blank" aria-label="Join ZimmZimmGames Discord Community">
-            <i class="fab fa-discord"></i>
-        </a>
-        <a href="https://www.youtube.com/@ZimmZimmGames" target="_blank" aria-label="Subscribe to ZimmZimmGames YouTube Channel">
-            <i class="fab fa-youtube"></i>
-        </a>
-    </div>
 
     <script>
         // Random glitch effect on the logo
@@ -2725,6 +2882,17 @@
                 }, 100);
             }, 1000); // Wait 1 second after scrolling
         }
+
+        // Manejo del formulario de suscripción
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            
+            // Aquí puedes agregar la lógica para enviar el email a tu backend
+            // Por ahora, solo mostraremos un mensaje de éxito
+            alert('¡Gracias por suscribirte! Te mantendremos informado sobre nuestras novedades.');
+            this.reset();
+        });
     </script>
 </body>
 </html>
