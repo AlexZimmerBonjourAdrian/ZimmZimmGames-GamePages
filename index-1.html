@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <meta name="description" content="ZimmZimmGames - Official Website">
+      <meta name="keywords" content="games, indie games, ZimmZimmGames">
+      <meta name="author" content="ZimmZimmGames">
+      <meta name="theme-color" content="#8B0000">
+      <title>ZimmZimm Games</title>
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+      <link rel="icon" type="image/png" href="favicon.png">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <style>
+        :root {
+            /* Fuentes */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Crimson Text', serif;
+            --font-accent: 'Special Elite', cursive;
+            
+            /* Colores principales */
+            --primary-color: #000000;
+            --secondary-color: #1A1A1A;
+            --accent-color: #2D2D2D;
+            
+            /* Colores de acento */
+            --accent-red: #8B0000;
+            --accent-gold: #D4AF37;
+            
+            /* Fondo principal - Negro profundo */
+            --background-dark: #0A0A0A;
+            
+            /* Fondo secundario - Gris muy oscuro */
+            --background-light: #1A1A1A;
+            
+            /* Texto principal - Gris claro */
+            --text-primary: #CCCCCC;
+            
+            /* Texto secundario - Gris medio */
+            --text-secondary: #999999;
+            
+            /* Color de bordes - Gris oscuro */
+            --border-color: #333333;
+            
+            /* Color de destaque - Rojo sangre */
+            --highlight-color: #8B0000;
+            
+            /* Color de sombras - Negro con transparencia */
+            --shadow-color: rgba(0, 0, 0, 0.7);
+        }
+
+        body {
+            background-color: #000000;
+            color: var(--text-primary);
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-body);
+            background-image: 
+                linear-gradient(45deg, rgba(139, 0, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(139, 0, 0, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(139, 0, 0, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(139, 0, 0, 0.05) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0;
+            overflow: hidden;
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 4px 6px var(--shadow-color);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 175, 55, 0.1) 2px,
+                rgba(212, 175, 55, 0.1) 4px
+            );
+            pointer-events: none;
+        }
+
+        #main-game::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #interactive-story::before {
+            background: linear-gradient(135deg, #1A1A1A, #333333);
+        }
+
+        #demo::before {
+            background: linear-gradient(135deg, #333333, #000000);
+        }
+
+        #meet-the-staff::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #about::before {
+            background: linear-gradient(135deg, #1A1A1A, #000000);
+        }
+
+        #faq::before {
+            background: linear-gradient(135deg, #333333, #1A1A1A);
+        }
+
+        #rabbit-hole::before {
+            background: linear-gradient(135deg, #000000, #1A1A1A);
+        }
+
+        #contact-us::before {
+            background: linear-gradient(135deg, #1A1A1A, #333333);
+        }
+
+        #donations::before {
+            background: linear-gradient(135deg, #333333, #000000);
+        }
+
+        /* Estilos para botones generales */
+        .buy-button, .platform-btn, .submit-button, .donation-button {
+            background-color: #000000;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            font-size: 0.85em;
+            min-width: 140px;
+            height: 45px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buy-button:hover, .platform-btn:hover, .submit-button:hover, .donation-button:hover {
+            background-color: var(--accent-gold);
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Estilos para enlaces */
+        a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--font-accent);
+            letter-spacing: 1px;
+        }
+
+        a:hover {
+            color: var(--text-secondary);
+        }
+
+        /* Estilos para la navegación */
+        .main-nav {
+            background-color: #000000;
+            padding: 2rem;
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .nav-section {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .nav-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .nav-section::after {
+            content: '';
+            position: absolute;
+            bottom: -1.5rem;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(
+                to right,
+                transparent,
+                var(--accent-gold),
+                transparent
+            );
+            opacity: 0.3;
+        }
+
+        .nav-section:last-child::after {
+            display: none;
+        }
+
+        .nav-section-title {
+            color: var(--accent-gold);
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-gold);
+        }
+
+        .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .main-nav ul li {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-nav ul li a {
+            font-family: var(--font-accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.8rem 1.2rem;
+            background-color: #000000;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 0.85em;
+            margin-top: 8px;
+            text-align: center;
+            min-width: 140px;
+            height: 45px;
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        .main-nav ul li a::after {
+            content: 'CASE FILE';
+            position: absolute;
+            top: -10px;
+            right: 5px;
+            font-size: 0.55em;
+            color: var(--accent-gold);
+            opacity: 0.7;
+            background-color: #000000;
+            padding: 0 5px;
+            letter-spacing: 1px;
+        }
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            .nav-section {
+                margin-bottom: 2.5rem;
+            }
+
+            .main-nav ul {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 0.8rem;
+            }
+
+            .main-nav ul li a {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.75em;
+                min-width: 120px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-section {
+                margin-bottom: 2rem;
+            }
+
+            .main-nav ul {
+                grid-template-columns: 1fr;
+            }
+
+            .main-nav ul li a {
+                min-width: 100%;
+                height: 45px;
+            }
+        }
+
+        /* Estilos para el encabezado */
+        .site-header {
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Estilos para el selector de idioma */
+        .language-selector {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #000000;
+            padding: 0.5rem;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .language-selector label {
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            margin-right: 0.5rem;
+        }
+
+        #lang-select {
+            background-color: #000000;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.3rem;
+            font-family: var(--font-accent);
+        }
+
+        #lang-select option {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+
+        /* Sello de clasificación */
+        .site-header::after {
+            content: 'CLASSIFIED';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-family: var(--font-accent);
+            font-size: 0.8em;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 0.2rem 0.5rem;
+            transform: rotate(-15deg);
+            background-color: #000000;
+        }
+
+        /* Estilos para el texto de la historia */
+        #story-text {
+            font-family: var(--font-body);
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Estilos para los títulos de sección */
+        .content-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 1.5em;
+            text-align: center;
+            color: var(--accent-gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .content-section h3 {
+            color: var(--text-primary);
+            font-size: 1.8em;
+            margin: 1.5em 0 1em;
+        }
+
+        /* Estilos para el texto secundario */
+        p, li {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        /* Estilos para el contenedor de imagen principal */
+        .main-image-container {
+            position: relative;
+            border: 2px solid var(--accent-gold);
+            overflow: hidden;
+        }
+
+        .main-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.4)
+            );
+            pointer-events: none;
+        }
+
+        /* Estilos para la galería de arte conceptual */
+        .concept-art-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .concept-art-gallery img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .concept-art-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contenedor de botones de plataforma */
+        .platform-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        /* Contenedor de botón de compra */
+        .buy-now-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        /* Contenedor de botones de donación */
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Estilos para el formulario */
+        .form-group label {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background-color: var(--background-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-gold);
+            outline: none;
+        }
+
+        /* Estilos para el footer */
+        .site-footer {
+            color: var(--text-primary);
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            margin: 0 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--text-secondary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            margin-top: 1rem;
+        }
+
+        /* Estilos para el contenedor de historia */
+        .story-container {
+            position: relative;
+            background-color: #000000;
+            border: 2px solid var(--accent-gold);
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+        }
+
+        .crt-frame {
+            position: relative;
+            background: #2a2a2a;
+            border: 30px solid #1a1a1a;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                inset 0 0 40px rgba(0, 0, 0, 0.9),
+                0 0 50px rgba(0, 0, 0, 0.6),
+                0 0 0 2px #333333,
+                0 0 0 4px #1a1a1a;
+            overflow: hidden;
+        }
+
+        .crt-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    45deg,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+        }
+
+        .crt-frame::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    -45deg,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+        }
+
+        .crt-screen {
+            position: relative;
+            background: #000000;
+            padding: 20px;
+            border: 2px solid #333333;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 20px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Controles del monitor */
+        .monitor-controls {
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            background: #1a1a1a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid #333333;
+        }
+
+        .monitor-control {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #333333;
+            border: 1px solid #444444;
+        }
+
+        .monitor-control.power {
+            background: #ff0000;
+        }
+
+        .crt-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .crt-screen::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* Efecto de líneas magnéticas */
+        .magnetic-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(0, 255, 0, 0.04) 1px,
+                    rgba(0, 255, 0, 0.04) 2px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0px,
+                    transparent 1px,
+                    rgba(0, 255, 0, 0.04) 1px,
+                    rgba(0, 255, 0, 0.04) 2px
+                );
+            pointer-events: none;
+            z-index: 5;
+            animation: magneticShift 16s linear infinite;
+        }
+
+        /* Efecto de líneas de escaneo */
+        .scan-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.2) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
+            pointer-events: none;
+            z-index: 6;
+            animation: scanLines 0.2s linear infinite;
+        }
+
+        /* Efecto de distorsión magnética */
+        .magnetic-distortion {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(
+                    circle at 50% 50%,
+                    transparent 0%,
+                    rgba(0, 255, 0, 0.04) 50%,
+                    transparent 100%
+                );
+            pointer-events: none;
+            z-index: 7;
+            animation: magneticDistortion 8s ease-in-out infinite;
+        }
+
+        .crt-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.4) 100%
+                );
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .crt-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #story-image-container {
+            position: relative;
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-gold);
+            padding: 1rem;
+            background-color: #000000;
+        }
+
+        #story-image {
+            width: 100%;
+            height: auto;
+            filter: grayscale(20%) sepia(20%) contrast(110%) brightness(95%);
+            transition: all 0.3s ease;
+        }
+
+        #story-text-container {
+            position: relative;
+            padding: 1.5rem;
+            background-color: #000000;
+            border: none;
+            margin-bottom: 2rem;
+            box-shadow: none;
+        }
+
+        #story-text {
+            position: relative;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            line-height: 1.6;
+            color: rgba(0, 255, 0, 0.4);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+        }
+
+        #story-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        #story-choices button {
+            background-color: #000000;
+            color: rgba(0, 255, 0, 0.4);
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+            box-shadow: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #story-choices button::before {
+            content: 'C:\\>';
+            position: absolute;
+            left: 0.8rem;
+            color: rgba(0, 255, 0, 0.4);
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        #story-choices button span {
+            margin-left: 5rem;
+            position: relative;
+        }
+
+        #story-choices button:hover {
+            background-color: rgba(0, 17, 0, 0.4);
+            color: rgba(0, 255, 0, 0.4);
+            transform: none;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+        }
+
+        #story-choices button:active {
+            transform: none;
+            background-color: rgba(0, 34, 0, 0.4);
+        }
+
+        @keyframes blink {
+            0% { opacity: 0.8; }
+            50% { opacity: 0; }
+            100% { opacity: 0.8; }
+        }
+
+        /* Efectos de aberración cromática */
+        .crt-content::before,
+        .crt-content::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .crt-content::before {
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(0, 255, 0, 0.04) 50%,
+                transparent 100%
+            );
+            animation: colorShift 3s infinite;
+        }
+
+        .crt-content::after {
+            background: linear-gradient(
+                -45deg,
+                transparent 0%,
+                rgba(0, 255, 0, 0.04) 50%,
+                transparent 100%
+            );
+            animation: colorShift 3s infinite reverse;
+        }
+
+        @keyframes colorShift {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+            100% { opacity: 0.2; }
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        @keyframes scanLines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(1px); }
+        }
+
+        @keyframes magneticShift {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(0.5px) translateY(0.5px); }
+            50% { transform: translateX(-0.5px) translateY(-0.5px); }
+            75% { transform: translateX(0.5px) translateY(-0.5px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        @keyframes magneticDistortion {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.01); opacity: 0.6; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .game-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+        }
+
+        .game-inventory {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .inventory-title {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .inventory-slots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .inventory-slot {
+            width: 30px;
+            height: 30px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 255, 0, 0.4);
+            font-size: 0.8em;
+        }
+
+        .scene-container {
+            position: relative;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+
+        .scene-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.4)
+            );
+            pointer-events: none;
+        }
+
+        .game-text {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.4);
+        }
+
+        .text-header {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.4);
+        }
+
+        .location-name {
+            color: rgba(0, 255, 0, 0.4);
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .game-choices {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .game-choice {
+            background: rgba(0, 0, 0, 0.8);
+            color: rgba(0, 255, 0, 0.4);
+            border: 1px solid rgba(0, 255, 0, 0.4);
+            padding: 10px 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .choice-prefix {
+            color: rgba(0, 255, 0, 0.4);
+            font-weight: bold;
+        }
+
+        .game-choice:hover {
+            background: rgba(0, 255, 0, 0.1);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
+        }
+
+        .game-choice:active {
+            background: rgba(0, 255, 0, 0.2);
+        }
+
+        #story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) sepia(20%) contrast(110%) brightness(95%);
+        }
+      </style>
+    </head>
+    <body>
+      <header class="site-header">
+        <nav class="main-nav">
+          <div class="nav-content">
+            <a href="#" class="logo">
+              <img src="logo.png" alt="ZimmZimmGames Logo">
+            </a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+              <a href="#game">Game</a>
+              <a href="#story">Interactive Story</a>
+              <a href="#demo">Demo</a>
+              <a href="#staff">The Staff</a>
+              <a href="#about">About Me</a>
+              <a href="#faq">FAQ</a>
+              <a href="#rabbit-hole">Rabbit Hole</a>
+              <a href="#contact">Contact</a>
+              <a href="#donations">Donations</a>
+            </div>
+          </div>
+        <div class="language-selector">
+            <label for="lang-select">Language:</label>
+          <select id="lang-select">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="ja">日本語</option>
+            <option value="ru">Русский</option>
+          </select>
+        </div>
+        </nav>
+      </header>
+
+      <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-logo">
+                            <img src="game-logo.png" alt="Where are the Alices? Logo">
+                        </div>
+                        <h1>Where are the Alices?</h1>
+                        <p class="hero-subtitle">A Psychological Horror Adventure</p>
+                        <p class="hero-description">
+                            Embark on a journey through a twisted Wonderland where nothing is as it seems. 
+                            Discover the truth behind the missing Alices in this atmospheric psychological horror game.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#demo" class="buy-button">
+                                <i class="fas fa-download"></i>
+                                Try the Demo
+                            </a>
+                            <a href="#" class="buy-button wishlist-button">
+                                <i class="fas fa-heart"></i>
+                                Add to Wishlist
+                            </a>
+                        </div>
+                        <div class="hero-platforms">
+                            <span>Available on:</span>
+                            <div class="platform-icons">
+                                <i class="fab fa-steam platform-icon"></i>
+                                <i class="fab fa-windows platform-icon"></i>
+                                <i class="fab fa-apple platform-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-media">
+                        <div class="hero-video">
+                            <video autoplay muted loop playsinline>
+                                <source src="gameplay-trailer.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="countdown-timer">
+                <div class="countdown-title">Release Date</div>
+                <div class="countdown-items">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span>Scroll to discover</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section id="main-game" class="content-section">
+          <h2 data-translate-key="main_game_title"></h2>
+          <div class="main-image-container" style="background-color: var(--background-light); min-height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 8px; border: 2px solid var(--border-color);">
+            <img src="placeholder-main-image.png" alt="Main game image" class="main-game-image">
+          </div>
+          <div class="buy-now-container">
+            <button class="buy-button" data-translate-key="buy_button"></button>
+          </div>
+          <div class="platform-buttons">
+            <button class="platform-btn">PC</button>
+         <!--   <button class="platform-btn">PS5</button>
+            <button class="platform-btn">Xbox Series X</button>
+            <button class="platform-btn">Switch</button> -->
+
+          </div>
+          <h3 data-translate-key="concept_art_title"></h3>
+          <div class="concept-art-gallery">
+            <img src="placeholder-concept-1.png" alt="Concept Art 1">
+            <img src="placeholder-concept-2.png" alt="Concept Art 2">
+            <img src="placeholder-concept-3.png" alt="Concept Art 3">
+            <img src="placeholder-concept-4.png" alt="Concept Art 4">
+          </div>
+        </section>
+
+        <!-- Interactive Story Section -->
+        <section id="interactive-story-section" class="interactive-story-section">
+            <div class="container">
+                <div class="story-container">
+                    <div class="crt-frame">
+                        <div class="crt-screen">
+                            <div class="game-header">
+                                <div class="window-controls">
+                                    <button class="window-control" aria-label="Cerrar">×</button>
+                                    <button class="window-control" aria-label="Maximizar">□</button>
+                                    <button class="window-control" aria-label="Minimizar">─</button>
+                                </div>
+                            </div>
+                            <div class="scene-container">
+                                <img id="story-image" src="assets/images/scene1.jpg" alt="Escena de la historia">
+                            </div>
+                            <div class="game-text">
+                                <div class="text-header">
+                                    <div class="location-name">La Mansión de los Espejos</div>
+                                </div>
+                                <p>Te encuentras en la entrada de una antigua mansión victoriana. El aire está cargado de misterio y los espejos que cubren las paredes reflejan tu imagen de manera inquietante. ¿Qué decides hacer?</p>
+                            </div>
+                            <div class="game-choices">
+                                <button class="game-choice">
+                                    <span class="choice-prefix">A.</span>
+                                    Explorar la sala principal
+                                </button>
+                                <button class="game-choice">
+                                    <span class="choice-prefix">B.</span>
+                                    Examinar los espejos más de cerca
+                                </button>
+                                <button class="game-choice">
+                                    <span class="choice-prefix">C.</span>
+                                    Subir por la escalera principal
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="content-section">
+          <h2 data-translate-key="demo_title"></h2>
+          <p data-translate-key="demo_intro"></p>
+          <p data-translate-key="demo_download_prompt"></p>
+          <ul>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_steam"></a></li>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_itch"></a></li>
+            <li><a href="#" class="demo-link" data-translate-key="demo_link_other"></a></li>
+          </ul>
+          <p data-translate-key="demo_outro"></p>
+        </section>
+
+        <section id="meet-the-staff" class="content-section">
+          <h2 data-translate-key="staff_title"></h2>
+          <p data-translate-key="staff_world_intro"></p>
+          <div class="staff-grid">
+            <div class="staff-member">
+              <img src="placeholder-staff-1.png" alt="Character 1 Portrait">
+              <h4 data-translate-key="staff_char1_name"></h4>
+              <p data-translate-key="staff_char1_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-2.png" alt="Character 2 Portrait">
+              <h4 data-translate-key="staff_char2_name"></h4>
+              <p data-translate-key="staff_char2_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-3.png" alt="Character 3 Portrait">
+              <h4 data-translate-key="staff_char3_name"></h4>
+              <p data-translate-key="staff_char3_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-4.png" alt="Character 4 Portrait">
+              <h4 data-translate-key="staff_char4_name"></h4>
+              <p data-translate-key="staff_char4_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-5.png" alt="Character 5 Portrait">
+              <h4 data-translate-key="staff_char5_name"></h4>
+              <p data-translate-key="staff_char5_desc"></p>
+            </div>
+            <div class="staff-member">
+              <img src="placeholder-staff-6.png" alt="Character 6 Portrait">
+              <h4 data-translate-key="staff_char6_name"></h4>
+              <p data-translate-key="staff_char6_desc"></p>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="content-section">
+          <h2 data-translate-key="about_title"></h2>
+          <p data-translate-key="about_p1"></p>
+          <p data-translate-key="about_p2"></p>
+          <p data-translate-key="about_p3"></p>
+          <p data-translate-key="about_p4"></p>
+        </section>
+
+        <section id="faq" class="content-section">
+          <h2 data-translate-key="faq_title"></h2>
+          <div class="faq-item">
+            <p><strong data-translate-key="faq_q_platforms"></strong></p>
+            <p data-translate-key="faq_a_platforms"></p>
+          </div>
+          <div class="faq-item">
+            <p><strong data-translate-key="faq_q_release"></strong></p>
+            <p data-translate-key="faq_a_release"></p>
+          </div>
+          <div class="faq-item">
+            <p><strong data-translate-key="faq_q_langs"></strong></p>
+            <p data-translate-key="faq_a_langs"></p>
+          </div>
+           <div class="faq-item">
+            <p><strong data-translate-key="faq_q_inspired"></strong></p>
+            <p data-translate-key="faq_a_inspired"></p>
+          </div>
+          <div class="faq-item">
+            <p><strong data-translate-key="faq_q_jumpscares"></strong></p>
+            <p data-translate-key="faq_a_jumpscares"></p>
+          </div>
+        </section>
+
+        <section id="rabbit-hole" class="content-section">
+          <h2 data-translate-key="rabbit_hole_title"></h2>
+          <div class="rabbit-hole-links">
+            <a href="EXTERNAL_LINK_1" target="_blank" class="rabbit-hole-link">
+              <img src="placeholder-rabbit-hole-1.png" alt="Link Image 1">
+            </a>
+            <a href="EXTERNAL_LINK_2" target="_blank" class="rabbit-hole-link">
+              <img src="placeholder-rabbit-hole-2.png" alt="Link Image 2">
+            </a>
+          </div>
+        </section>
+
+        <section id="contact-us" class="content-section">
+          <h2 data-translate-key="contact_title"></h2>
+          <p data-translate-key="contact_intro"></p>
+          <form id="contact-form" class="contact-form">
+             <div class="form-group">
+              <label for="contact-name" data-translate-key="contact_label_name"></label>
+              <input type="text" id="contact-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email" data-translate-key="contact_label_email"></label>
+              <input type="email" id="contact-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message" data-translate-key="contact_label_message"></label>
+              <textarea id="contact-message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="submit-button" data-translate-key="contact_button_send"></button>
+            </div>
+          </form>
+          <p id="contact-feedback" style="display: none; margin-top: 15px;"></p>
+        </section>
+
+        <section id="donations" class="content-section">
+          <h2 data-translate-key="donations_title"></h2>
+          <p data-translate-key="donations_intro"></p>
+          <div class="donation-options">
+            <h3 data-translate-key="donations_popular_platforms"></h3>
+            <div class="donation-grid">
+              <a href="URL_PAYPAL" target="_blank" class="donation-button paypal" data-translate-key="donations_paypal"></a>
+              <a href="URL_PATREON" target="_blank" class="donation-button patreon" data-translate-key="donations_patreon"></a>
+              <a href="URL_KOFI" target="_blank" class="donation-button kofi" data-translate-key="donations_kofi"></a>
+            </div>
+            <h3 data-translate-key="donations_direct_title"></h3>
+            <div class="direct-donation">
+              <p data-translate-key="donations_direct_intro"></p>
+              <a href="URL_DONACION_DIRECTA" target="_blank" class="donation-button direct" data-translate-key="donations_direct_button"></a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="mascot-logo">
+            <img src="placeholder-mascot.png" alt="Game/Studio Mascot">
+        </div>
+        <div class="social-links">
+          <a href="#" target="_blank">Twitter</a> |
+          <a href="#" target="_blank">Instagram</a> |
+          <a href="#" target="_blank">Discord</a> |
+          <a href="#" target="_blank">YouTube</a> |
+          <a href="#" target="_blank">Steam</a>
+        </div>
+        <p class="copyright" data-translate-key="copyright"></p>
+      </footer>
+
+      <script src="script.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
