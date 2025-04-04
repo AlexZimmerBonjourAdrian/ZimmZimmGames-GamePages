@@ -2329,6 +2329,7 @@
         </div>
 
         <!-- Después de la sección rabbit-hole-section y antes de support-section -->
+        <!--
         <section class="concept-art-section">
             <h2>Concept Art</h2>
             <div class="concept-art-grid">
@@ -2382,433 +2383,327 @@
                 </div>
             </div>
         </section>
-    </main>
+    </main>-->
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>ZimmZimm Games is your destination for exciting games and unique experiences.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#juegos">Games</a></li>
-                    <li><a href="#sobre-nosotros">About Us</a></li>
-                    <li><a href="#contacto">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <form class="newsletter-form" id="newsletterForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your name (optional)">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="gdpr-consent">I accept communications and privacy policy</label>
-                    </div>
-                    <button type="submit" class="subscribe-btn">Subscribe</button>
-                </form>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-steam"></i></a>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>ZimmZimm Games is your destination for exciting games and unique experiences.</p>
                 </div>
-                <div class="platform-links">
-                    <a href="https://gamejolt.com/@ZimmZimmGames" target="_blank" class="platform-link">Gamejolt</a>
-                    <a href="https://zimmzimmgames.itch.io/" target="_blank" class="platform-link">itch.io</a>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#juegos">Games</a></li>
+                        <li><a href="#sobre-nosotros">About Us</a></li>
+                        <li><a href="#contacto">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your name (optional)">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gdpr-consent">I accept communications and privacy policy</label>
+                        </div>
+                        <button type="submit" class="subscribe-btn">Subscribe</button>
+                    </form>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-steam"></i></a>
+                    </div>
+                    <div class="platform-links">
+                        <a href="https://gamejolt.com/@ZimmZimmGames" target="_blank" class="platform-link">Gamejolt</a>
+                        <a href="https://zimmzimmgames.itch.io/" target="_blank" class="platform-link">itch.io</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 ZimmZimmGames. All rights reserved.</p>
-        </div>
-    </footer>
+            <div class="footer-bottom">
+                <p>© 2025 ZimmZimmGames. All rights reserved.</p>
+            </div>
+        </footer>
 
 
 
 
 
-    <script>
-        // Random glitch effect on the logo
-        const logo = document.querySelector('.game-logo');
-        setInterval(() => {
-            if (Math.random() < 0.1) {
-                logo.style.filter = 'hue-rotate(90deg) brightness(1.5)';
-                setTimeout(() => {
-                    logo.style.filter = 'none';
-                }, 150);
-            }
-        }, 4000);
-
-        // Functionality of the hamburger menu
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.querySelector('.nav-toggle');
-            const menuItems = document.querySelector('.menu-items');
-            const menuOverlay = document.querySelector('.menu-overlay');
-            const body = document.body;
-
-            function toggleMenu() {
-                const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
-                toggleButton.setAttribute('aria-expanded', !isExpanded);
-                menuItems.classList.toggle('active');
-                menuOverlay.classList.toggle('active');
-                body.classList.toggle('menu-open');
-            }
-
-            // Toggle menu on button click
-            toggleButton.addEventListener('click', toggleMenu);
-
-            // Close menu when clicking on the overlay
-            menuOverlay.addEventListener('click', toggleMenu);
-
-            // Close menu when clicking on a link
-            menuItems.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    toggleMenu();
-                });
-            });
-
-            // Close menu with the Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && toggleButton.getAttribute('aria-expanded') === 'true') {
-                    toggleMenu();
-                }
-            });
-        });
-
-        // Audio elements
-        const gameAudio = {
-            menuMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-20_-_Dark_Fog_-_David_Fesliyan.mp3'),
-            gameMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-21_-_Dark_Shadows_-_David_Fesliyan.mp3'),
-            gameOverMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-22_-_Evil_Rising_-_David_Fesliyan.mp3'),
-            goodEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-23_-_Haunted_Memories_-_David_Fesliyan.mp3'),
-            badEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-24_-_Dark_Winds_Chapter_1_-_David_Fesliyan.mp3'),
-            typewriterSound: new Audio('https://www.fesliyanstudios.com/sound-effects-files/typewriter-2.mp3'),
-            buttonClick: new Audio('https://www.fesliyanstudios.com/sound-effects-files/button-click-1.mp3'),
-            pageChange: new Audio('https://www.fesliyanstudios.com/sound-effects-files/page-turn-2.mp3')
-        };
-
-        // Configure audio settings
-        Object.values(gameAudio).forEach(audio => {
-            audio.volume = 0.3;
-            if (audio !== gameAudio.typewriterSound && audio !== gameAudio.buttonClick && audio !== gameAudio.pageChange) {
-                audio.loop = true;
-            }
-        });
-        gameAudio.typewriterSound.volume = 0.1;
-
-        const storyData = {
-            start: {
-                location: "The Doll Garden",
-                text: "Mom always says we shouldn't talk to strangers... but what happens when strangers look like people we know? Juno discovered this one night while investigating Alice's disappearance. In front of her, through the garden mist, were dolls. Dozens of dolls with familiar faces, all seated in a circle around a tea table. And in the center... a white rabbit with button eyes.",
-                choices: {
-                    approach: "Approach the tea table",
-                    examine: "Observe the dolls' faces",
-                    investigate: "Investigate the surroundings"
-                }
-            },
-            investigate: {
-                location: "The Garden's Edge",
-                text: "As Juno explored the edges of the garden, she noticed something strange: the shadows seemed to move in the opposite direction to the light. And there were marks on the ground, as if someone had dragged something... or someone. Among the bushes, a metallic gleam caught her attention.",
-                choices: {
-                    check_metal: "Investigate the metallic gleam",
-                    follow_marks: "Follow the marks on the ground",
-                    return_party: "Return to the tea party"
-                }
-            },
-            check_metal: {
-                location: "The Buried Treasure",
-                text: "The gleam came from an old music box partially buried. When touched, the box began to play on its own, playing an unsettling melody. Inside, Juno found a golden key and a note written in childish handwriting: 'Buttons are the key, but also the prison'.",
-                choices: {
-                    take_key: "Take the key",
-                    return_party: "Return to the tea party",
-                    follow_music: "Follow the melody"
-                }
-            },
-            follow_music: {
-                location: "The Melody's Path",
-                text: "The music box melody resonated louder and louder, guiding Juno through the garden. The dolls seemed to follow the rhythm with their heads, and the rabbit smiled more and more widely.",
-                choices: {
-                    confront_rabbit: "Confront the rabbit",
-                    free_dolls: "Try to free the dolls",
-                    escape: "Try to escape"
-                }
-            },
-            take_key: {
-                location: "The Golden Key",
-                text: "The moment Juno took the key, all the dolls turned their heads toward her in unison. The rabbit slowly rose, its button eyes glowing with a reddish gleam. 'Ah, you've found the master key,' it said in a honeyed voice. 'Now you can open all the doors... or close them forever'.",
-                choices: {
-                    use_key: "Use the key",
-                    confront_rabbit_key: "Confront the rabbit",
-                    destroy_key: "Destroy the key"
-                }
-            },
-            destroy_key: {
-                location: "The Final Decision",
-                text: "With determination, Juno threw the key against the ground with all her might. As it broke, a golden light emerged, enveloping the entire garden. The dolls began to glow, their seams coming undone, revealing the children trapped inside. The rabbit howled in rage as its form vanished into darkness.",
-                choices: {
-                    save_children: "Guide the children to the exit",
-                    fight_rabbit: "Face the weakened rabbit",
-                    seal_garden: "Seal the garden forever"
-                }
-            },
-            examine: {
-                location: "Among the Dolls",
-                text: "Each face was disturbingly familiar. Children from missing person posters, their features perfectly recreated in porcelain. But their eyes... their eyes had been replaced with buttons, black as midnight. One doll in particular caught Juno's attention: it wore a blue dress, just like the one Alice wore the day she disappeared.",
-                choices: {
-                    touch_doll: "Touch Alice's doll",
-                    search_clues: "Look for clues",
-                    return_party: "Return to the tea party"
-                }
-            },
-            approach: {
-                location: "The Eternal Tea Table",
-                text: "'Would you like some tea, dear?' whispered the rabbit, its voice like sandpaper. Its paws held a cup that dripped something thick and dark. The dolls turned their heads in unison, their buttons gleaming in the darkness. 'Or would you prefer... to be part of our collection? Alice preferred it that way'. One of the dolls, in a stained blue dress, smiled with loose threads.",
-                choices: {
-                    accept_tea: "Accept the tea",
-                    question_alice: "Ask about Alice",
-                    refuse_tea: "Refuse the invitation"
-                }
-            },
-            accept_tea: {
-                location: "The Last Sip",
-                text: "The tea had a sweet, metallic taste. As Juno drank, she felt her eyelids grow heavy. The dolls began to sing a distorted lullaby as the world faded into darkness...",
-                choices: {
-                    game_over: "Succumb to sleep"
-                }
-            },
-            question_alice: {
-                location: "The Revealed Truth",
-                text: "The rabbit tilted its head at an impossible angle. 'Oh, Alice is here... all the Alices are here'. Its words resonated as the dolls began to sing an out-of-tune lullaby. One by one, they began to unsew their own faces, revealing underneath... more buttons.",
-                choices: {
-                    fight_rabbit: "Confront the rabbit",
-                    save_alice: "Try to save Alice",
-                    escape: "Try to escape"
-                }
-            },
-            refuse_tea: {
-                location: "The Price of Refusal",
-                text: "'I'm afraid that's not an option, detective,' said the rabbit as the dolls rose from their chairs. 'You see, once you find our little garden, you must join the party. Those are the rules.'",
-                choices: {
-                    fight_rabbit: "Confront the rabbit",
-                    run: "Try to flee",
-                    negotiate: "Try to negotiate"
-                }
-            },
-            fight_rabbit: {
-                location: "The Final Confrontation",
-                text: "The rabbit rose, its form distorting into a mass of needles and shadows. 'If you so desire to see the true face of the nightmare, so be it!'. Juno faced the horror with determination, using the key fragments as a weapon.",
-                choices: {
-                    final_strike: "Deliver the final blow",
-                    sacrifice: "Sacrifice yourself for the children",
-                    seal_garden: "Seal the garden"
-                }
-            },
-            save_children: {
-                location: "The Rescue",
-                text: "One by one, the children emerged from their porcelain prisons, disoriented but alive. Alice was among them, her eyes human again and filled with tears of joy. As Juno guided them to the exit, the garden began to crumble.",
-                choices: {
-                    true_ending: "Escape with the children"
-                }
-            },
-            true_ending: {
-                location: "The True Ending",
-                text: "The sun rose on a new day, illuminating the rescued children reunited with their families. The doll garden had disappeared, leaving only an empty plot and a distant memory of nightmare. The missing children returned home, and the white rabbit never again invited anyone to tea.",
-                choices: {
-                    restart: "Start a new investigation"
-                }
-            },
-            sacrifice: {
-                location: "The Final Sacrifice",
-                text: "Understanding that the only way to save the children was to offer a replacement, Juno stepped forward. 'Take me,' she declared. 'Free the children and take my place'. The rabbit smiled, and with a motion of his claws, the children were freed as Juno felt the threads beginning to weave her new form.",
-                choices: {
-                    sacrifice_ending: "Accept the transformation"
-                }
-            },
-            sacrifice_ending: {
-                location: "The Porcelain Guardian",
-                text: "Now there is a new doll in the garden, one that wears a small detective coat and has the saddest eyes. But thanks to her sacrifice, no other child will ever disappear again. Those who know the story say that, on full moon nights, the detective doll seems to smile, satisfied with having saved so many lives in exchange for her own.",
-                choices: {
-                    restart: "Start a new investigation"
-                }
-            },
-            game_over: {
-                location: "The Collection",
-                text: "In a dark garden, there is a new doll sitting at the tea party. It wears a detective coat and has the most beautiful button eyes. Sometimes, when the moon is high, you can hear it whisper warnings to children who get too close to the rabbit's garden. But it's too late for the doll that once was Juno: she can only watch as the rabbit's collection grows, one button at a time.",
-                choices: {
-                    restart: "Try again"
-                }
-            }
-        };
-
-        // Function to show Game Over screen
-        function showGameOver() {
-            gameAudio.gameMusic.pause();
-            gameAudio.gameOverMusic.play();
-
-            const container = document.getElementById('story-container');
-            container.style.opacity = '0';
-
-            setTimeout(() => {
-                updateScene('game_over');
-                container.style.opacity = '1';
-
-                // Add visual effect for Game Over
-                const gameOverEffect = document.createElement('div');
-                gameOverEffect.className = 'game-over-effect';
-                container.appendChild(gameOverEffect);
-            }, 500);
-        }
-
-        // Function to show good ending
-        function showGoodEnding() {
-            gameAudio.gameMusic.pause();
-            gameAudio.goodEndingMusic.play();
-            updateScene('good_ending');
-        }
-
-        // Function to show alternative ending
-        function showAlternativeEnding() {
-            gameAudio.gameMusic.pause();
-            gameAudio.badEndingMusic.play();
-            updateScene('become_nightmare');
-        }
-
-        // Improved typeWriter with sound
-        function typeWriter(element, text, speed = 30) {
-            let i = 0;
-            element.textContent = '';
-
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    if (text.charAt(i) !== ' ') {
-                        gameAudio.typewriterSound.currentTime = 0;
-                        gameAudio.typewriterSound.play();
-                    }
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Update the updateScene function to include new sound effects
-        function updateScene(scene) {
-            if (!storyData[scene]) return;
-
-            const container = document.getElementById('story-container');
-            const locationName = document.querySelector('.location-name');
-            const storyText = document.getElementById('story-text');
-            const choicesContainer = document.getElementById('choices-container');
-
-            gameAudio.pageChange.play();
-            container.style.opacity = '0';
-
-            setTimeout(() => {
-                locationName.textContent = storyData[scene].location;
-                typeWriter(storyText, storyData[scene].text);
-
-                choicesContainer.innerHTML = '';
-                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+        <script>
+            // Random glitch effect on the logo
+            const logo = document.querySelector('.game-logo');
+            setInterval(() => {
+                if (Math.random() < 0.1) {
+                    logo.style.filter = 'hue-rotate(90deg) brightness(1.5)';
                     setTimeout(() => {
-                        const button = document.createElement('button');
-                        button.className = 'choice-btn';
-                        button.style.animationDelay = `${index * 0.2}s`;
-                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
-                        button.dataset.choice = key;
-                        button.onclick = () => {
-                            gameAudio.buttonClick.play();
-                            if (key === 'game_over') {
-                                showGameOver();
-                            } else if (key === 'good_ending') {
-                                showGoodEnding();
-                            } else if (key === 'become_nightmare') {
-                                showAlternativeEnding();
-                            } else {
-                                updateScene(key);
-                            }
-                        };
-                        choicesContainer.appendChild(button);
-                    }, index * 300);
+                        logo.style.filter = 'none';
+                    }, 150);
+                }
+            }, 4000);
+
+            // Functionality of the hamburger menu
+            document.addEventListener('DOMContentLoaded', function() {
+                const toggleButton = document.querySelector('.nav-toggle');
+                const menuItems = document.querySelector('.menu-items');
+                const menuOverlay = document.querySelector('.menu-overlay');
+                const body = document.body;
+
+                function toggleMenu() {
+                    const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                    toggleButton.setAttribute('aria-expanded', !isExpanded);
+                    menuItems.classList.toggle('active');
+                    menuOverlay.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                }
+
+                // Toggle menu on button click
+                toggleButton.addEventListener('click', toggleMenu);
+
+                // Close menu when clicking on the overlay
+                menuOverlay.addEventListener('click', toggleMenu);
+
+                // Close menu when clicking on a link
+                menuItems.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        toggleMenu();
+                    });
                 });
 
-                container.style.opacity = '1';
-            }, 500);
-        }
+                // Close menu with the Escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && toggleButton.getAttribute('aria-expanded') === 'true') {
+                        toggleMenu();
+                    }
+                });
+            });
 
-        // Initialize the game with music
-        document.addEventListener('DOMContentLoaded', () => {
-            const startButton = document.querySelector('.start-game');
-            const creditsButton = document.querySelector('.show-credits');
-            const gameMenu = document.getElementById('game-menu');
-            const gameContainer = document.getElementById('game-container');
+            // Audio elements
+            const gameAudio = {
+                menuMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-20_-_Dark_Fog_-_David_Fesliyan.mp3'),
+                gameMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-21_-_Dark_Shadows_-_David_Fesliyan.mp3'),
+                gameOverMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-22_-_Evil_Rising_-_David_Fesliyan.mp3'),
+                goodEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-23_-_Haunted_Memories_-_David_Fesliyan.mp3'),
+                badEndingMusic: new Audio('https://www.fesliyanstudios.com/musicfiles/2019-04-24_-_Dark_Winds_Chapter_1_-_David_Fesliyan.mp3'),
+                typewriterSound: new Audio('https://www.fesliyanstudios.com/sound-effects-files/typewriter-2.mp3'),
+                buttonClick: new Audio('https://www.fesliyanstudios.com/sound-effects-files/button-click-1.mp3'),
+                pageChange: new Audio('https://www.fesliyanstudios.com/sound-effects-files/page-turn-2.mp3')
+            };
 
-            // Function to start the game
-            function startGame() {
-                gameAudio.menuMusic.pause();
-                gameAudio.gameMusic.currentTime = 0;
-                gameAudio.gameMusic.play();
+            // Configure audio settings
+            Object.values(gameAudio).forEach(audio => {
+                audio.volume = 0.3;
+                if (audio !== gameAudio.typewriterSound && audio !== gameAudio.buttonClick && audio !== gameAudio.pageChange) {
+                    audio.loop = true;
+                }
+            });
+            gameAudio.typewriterSound.volume = 0.1;
 
-                gameMenu.style.display = 'none';
-                gameContainer.style.display = 'block';
+            const storyData = {
+                start: {
+                    location: "The Doll Garden",
+                    text: "Mom always says we shouldn't talk to strangers... but what happens when strangers look like people we know? Juno discovered this one night while investigating Alice's disappearance. In front of her, through the garden mist, were dolls. Dozens of dolls with familiar faces, all seated in a circle around a tea table. And in the center... a white rabbit with button eyes.",
+                    choices: {
+                        approach: "Approach the tea table",
+                        examine: "Observe the dolls' faces",
+                        investigate: "Investigate the surroundings"
+                    }
+                },
+                investigate: {
+                    location: "The Garden's Edge",
+                    text: "As Juno explored the edges of the garden, she noticed something strange: the shadows seemed to move in the opposite direction to the light. And there were marks on the ground, as if someone had dragged something... or someone. Among the bushes, a metallic gleam caught her attention.",
+                    choices: {
+                        check_metal: "Investigate the metallic gleam",
+                        follow_marks: "Follow the marks on the ground",
+                        return_party: "Return to the tea party"
+                    }
+                },
+                check_metal: {
+                    location: "The Buried Treasure",
+                    text: "The gleam came from an old music box partially buried. When touched, the box began to play on its own, playing an unsettling melody. Inside, Juno found a golden key and a note written in childish handwriting: 'Buttons are the key, but also the prison'.",
+                    choices: {
+                        take_key: "Take the key",
+                        return_party: "Return to the tea party",
+                        follow_music: "Follow the melody"
+                    }
+                },
+                follow_music: {
+                    location: "The Melody's Path",
+                    text: "The music box melody resonated louder and louder, guiding Juno through the garden. The dolls seemed to follow the rhythm with their heads, and the rabbit smiled more and more widely.",
+                    choices: {
+                        confront_rabbit: "Confront the rabbit",
+                        free_dolls: "Try to free the dolls",
+                        escape: "Try to escape"
+                    }
+                },
+                take_key: {
+                    location: "The Golden Key",
+                    text: "The moment Juno took the key, all the dolls turned their heads toward her in unison. The rabbit slowly rose, its button eyes glowing with a reddish gleam. 'Ah, you've found the master key,' it said in a honeyed voice. 'Now you can open all the doors... or close them forever'.",
+                    choices: {
+                        use_key: "Use the key",
+                        confront_rabbit_key: "Confront the rabbit",
+                        destroy_key: "Destroy the key"
+                    }
+                },
+                destroy_key: {
+                    location: "The Final Decision",
+                    text: "With determination, Juno threw the key against the ground with all her might. As it broke, a golden light emerged, enveloping the entire garden. The dolls began to glow, their seams coming undone, revealing the children trapped inside. The rabbit howled in rage as its form vanished into darkness.",
+                    choices: {
+                        save_children: "Guide the children to the exit",
+                        fight_rabbit: "Face the weakened rabbit",
+                        seal_garden: "Seal the garden forever"
+                    }
+                },
+                examine: {
+                    location: "Among the Dolls",
+                    text: "Each face was disturbingly familiar. Children from missing person posters, their features perfectly recreated in porcelain. But their eyes... their eyes had been replaced with buttons, black as midnight. One doll in particular caught Juno's attention: it wore a blue dress, just like the one Alice wore the day she disappeared.",
+                    choices: {
+                        touch_doll: "Touch Alice's doll",
+                        search_clues: "Look for clues",
+                        return_party: "Return to the tea party"
+                    }
+                },
+                approach: {
+                    location: "The Eternal Tea Table",
+                    text: "'Would you like some tea, dear?' whispered the rabbit, its voice like sandpaper. Its paws held a cup that dripped something thick and dark. The dolls turned their heads in unison, their buttons gleaming in the darkness. 'Or would you prefer... to be part of our collection? Alice preferred it that way'. One of the dolls, in a stained blue dress, smiled with loose threads.",
+                    choices: {
+                        accept_tea: "Accept the tea",
+                        question_alice: "Ask about Alice",
+                        refuse_tea: "Refuse the invitation"
+                    }
+                },
+                accept_tea: {
+                    location: "The Last Sip",
+                    text: "The tea had a sweet, metallic taste. As Juno drank, she felt her eyelids grow heavy. The dolls began to sing a distorted lullaby as the world faded into darkness...",
+                    choices: {
+                        game_over: "Succumb to sleep"
+                    }
+                },
+                question_alice: {
+                    location: "The Revealed Truth",
+                    text: "The rabbit tilted its head at an impossible angle. 'Oh, Alice is here... all the Alices are here'. Its words resonated as the dolls began to sing an out-of-tune lullaby. One by one, they began to unsew their own faces, revealing underneath... more buttons.",
+                    choices: {
+                        fight_rabbit: "Confront the rabbit",
+                        save_alice: "Try to save Alice",
+                        escape: "Try to escape"
+                    }
+                },
+                refuse_tea: {
+                    location: "The Price of Refusal",
+                    text: "'I'm afraid that's not an option, detective,' said the rabbit as the dolls rose from their chairs. 'You see, once you find our little garden, you must join the party. Those are the rules.'",
+                    choices: {
+                        fight_rabbit: "Confront the rabbit",
+                        run: "Try to flee",
+                        negotiate: "Try to negotiate"
+                    }
+                },
+                fight_rabbit: {
+                    location: "The Final Confrontation",
+                    text: "The rabbit rose, its form distorting into a mass of needles and shadows. 'If you so desire to see the true face of the nightmare, so be it!'. Juno faced the horror with determination, using the key fragments as a weapon.",
+                    choices: {
+                        final_strike: "Deliver the final blow",
+                        sacrifice: "Sacrifice yourself for the children",
+                        seal_garden: "Seal the garden"
+                    }
+                },
+                save_children: {
+                    location: "The Rescue",
+                    text: "One by one, the children emerged from their porcelain prisons, disoriented but alive. Alice was among them, her eyes human again and filled with tears of joy. As Juno guided them to the exit, the garden began to crumble.",
+                    choices: {
+                        true_ending: "Escape with the children"
+                    }
+                },
+                true_ending: {
+                    location: "The True Ending",
+                    text: "The sun rose on a new day, illuminating the rescued children reunited with their families. The doll garden had disappeared, leaving only an empty plot and a distant memory of nightmare. The missing children returned home, and the white rabbit never again invited anyone to tea.",
+                    choices: {
+                        restart: "Start a new investigation"
+                    }
+                },
+                sacrifice: {
+                    location: "The Final Sacrifice",
+                    text: "Understanding that the only way to save the children was to offer a replacement, Juno stepped forward. 'Take me,' she declared. 'Free the children and take my place'. The rabbit smiled, and with a motion of his claws, the children were freed as Juno felt the threads beginning to weave her new form.",
+                    choices: {
+                        sacrifice_ending: "Accept the transformation"
+                    }
+                },
+                sacrifice_ending: {
+                    location: "The Porcelain Guardian",
+                    text: "Now there is a new doll in the garden, one that wears a small detective coat and has the saddest eyes. But thanks to her sacrifice, no other child will ever disappear again. Those who know the story say that, on full moon nights, the detective doll seems to smile, satisfied with having saved so many lives in exchange for her own.",
+                    choices: {
+                        restart: "Start a new investigation"
+                    }
+                },
+                game_over: {
+                    location: "The Collection",
+                    text: "In a dark garden, there is a new doll sitting at the tea party. It wears a detective coat and has the most beautiful button eyes. Sometimes, when the moon is high, you can hear it whisper warnings to children who get too close to the rabbit's garden. But it's too late for the doll that once was Juno: she can only watch as the rabbit's collection grows, one button at a time.",
+                    choices: {
+                        restart: "Try again"
+                    }
+                }
+            };
+
+            // Function to show Game Over screen
+            function showGameOver() {
+                gameAudio.gameMusic.pause();
+                gameAudio.gameOverMusic.play();
+
+                const container = document.getElementById('story-container');
+                container.style.opacity = '0';
 
                 setTimeout(() => {
-                    gameContainer.classList.add('active');
-                    updateScene('start');
-                }, 100);
+                    updateScene('game_over');
+                    container.style.opacity = '1';
+
+                    // Add visual effect for Game Over
+                    const gameOverEffect = document.createElement('div');
+                    gameOverEffect.className = 'game-over-effect';
+                    container.appendChild(gameOverEffect);
+                }, 500);
             }
 
-            // Function to show credits
-            function showCredits() {
-                const creditsText = `
-                    <h2>Credits</h2>
-                    <p>Where are the Alices?</p>
-                    <p>A Psychological Horror Game</p>
-                    <p>Created by ZimmZimmGames</p>
-                    <br>
-                    <button class="menu-btn back-to-menu">Back to Menu</button>
-                `;
-                gameMenu.innerHTML = creditsText;
-
-                document.querySelector('.back-to-menu').addEventListener('click', () => {
-                    location.reload();
-                });
+            // Function to show good ending
+            function showGoodEnding() {
+                gameAudio.gameMusic.pause();
+                gameAudio.goodEndingMusic.play();
+                updateScene('good_ending');
             }
 
-            // Improved function to write text
+            // Function to show alternative ending
+            function showAlternativeEnding() {
+                gameAudio.gameMusic.pause();
+                gameAudio.badEndingMusic.play();
+                updateScene('become_nightmare');
+            }
+
+            // Improved typeWriter with sound
             function typeWriter(element, text, speed = 30) {
-                return new Promise((resolve) => {
-                    let i = 0;
-                    element.textContent = '';
+                let i = 0;
+                element.textContent = '';
 
-                    function type() {
-                        if (i < text.length) {
-                            element.textContent += text.charAt(i);
-                            if (text.charAt(i) !== ' ') {
-                                gameAudio.typewriterSound.currentTime = 0;
-                                gameAudio.typewriterSound.play();
-                            }
-                            i++;
-                            setTimeout(type, speed);
-                        } else {
-                            resolve();
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        if (text.charAt(i) !== ' ') {
+                            gameAudio.typewriterSound.currentTime = 0;
+                            gameAudio.typewriterSound.play();
                         }
+                        i++;
+                        setTimeout(type, speed);
                     }
-                    type();
-                });
+                }
+                type();
             }
 
-            // Improved function to update the scene
-            async function updateScene(scene) {
+            // Update the updateScene function to include new sound effects
+            function updateScene(scene) {
                 if (!storyData[scene]) return;
 
                 const container = document.getElementById('story-container');
@@ -2819,93 +2714,199 @@
                 gameAudio.pageChange.play();
                 container.style.opacity = '0';
 
-                await new Promise(resolve => setTimeout(resolve, 500));
-
-                locationName.textContent = storyData[scene].location;
-                choicesContainer.innerHTML = '';
-                container.style.opacity = '1';
-
-                await typeWriter(storyText, storyData[scene].text);
-
-                Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
-                    setTimeout(() => {
-                        const button = document.createElement('button');
-                        button.className = 'choice-btn';
-                        button.style.animationDelay = `${index * 0.2}s`;
-                        button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
-
-                        button.onclick = () => {
-                            gameAudio.buttonClick.play();
-
-                            switch (key) {
-                                case 'game_over':
-                                    showGameOver();
-                                    break;
-                                case 'good_ending':
-                                    showGoodEnding();
-                                    break;
-                                case 'become_nightmare':
-                                    showAlternativeEnding();
-                                    break;
-                                case 'restart':
-                                    location.reload();
-                                    break;
-                                default:
-                                    updateScene(key);
-                            }
-                        };
-
-                        choicesContainer.appendChild(button);
-                    }, index * 300);
-                });
-            }
-
-            // Improved function to show Game Over
-            function showGameOver() {
-                gameAudio.gameMusic.pause();
-                gameAudio.gameOverMusic.currentTime = 0;
-                gameAudio.gameOverMusic.play();
-
-                const container = document.getElementById('story-container');
-                container.style.opacity = '0';
-
                 setTimeout(() => {
-                    updateScene('game_over');
-                    container.style.opacity = '1';
+                    locationName.textContent = storyData[scene].location;
+                    typeWriter(storyText, storyData[scene].text);
 
-                    const gameOverEffect = document.createElement('div');
-                    gameOverEffect.className = 'game-over-effect';
-                    container.appendChild(gameOverEffect);
+                    choicesContainer.innerHTML = '';
+                    Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                        setTimeout(() => {
+                            const button = document.createElement('button');
+                            button.className = 'choice-btn';
+                            button.style.animationDelay = `${index * 0.2}s`;
+                            button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+                            button.dataset.choice = key;
+                            button.onclick = () => {
+                                gameAudio.buttonClick.play();
+                                if (key === 'game_over') {
+                                    showGameOver();
+                                } else if (key === 'good_ending') {
+                                    showGoodEnding();
+                                } else if (key === 'become_nightmare') {
+                                    showAlternativeEnding();
+                                } else {
+                                    updateScene(key);
+                                }
+                            };
+                            choicesContainer.appendChild(button);
+                        }, index * 300);
+                    });
+
+                    container.style.opacity = '1';
                 }, 500);
             }
 
-            // Improved function to show good ending
-            function showGoodEnding() {
-                gameAudio.gameMusic.pause();
-                gameAudio.goodEndingMusic.currentTime = 0;
-                gameAudio.goodEndingMusic.play();
-                updateScene('good_ending');
-            }
+            // Initialize the game with music
+            document.addEventListener('DOMContentLoaded', () => {
+                const startButton = document.querySelector('.start-game');
+                const creditsButton = document.querySelector('.show-credits');
+                const gameMenu = document.getElementById('game-menu');
+                const gameContainer = document.getElementById('game-container');
 
-            // Improved function to show alternative ending
-            function showAlternativeEnding() {
-                gameAudio.gameMusic.pause();
-                gameAudio.badEndingMusic.currentTime = 0;
-                gameAudio.badEndingMusic.play();
-                updateScene('become_nightmare');
-            }
+                // Function to start the game
+                function startGame() {
+                    gameAudio.menuMusic.pause();
+                    gameAudio.gameMusic.currentTime = 0;
+                    gameAudio.gameMusic.play();
 
-            // Event Listeners
-            startButton.addEventListener('click', startGame);
-            creditsButton.addEventListener('click', showCredits);
+                    gameMenu.style.display = 'none';
+                    gameContainer.style.display = 'block';
 
-            // Play menu music on load
-            gameAudio.menuMusic.play();
-        });
+                    setTimeout(() => {
+                        gameContainer.classList.add('active');
+                        updateScene('start');
+                    }, 100);
+                }
 
-        // Add styles for Game Over screen
-        const style = document.createElement('style');
-        style.textContent = `
+                // Function to show credits
+                function showCredits() {
+                    const creditsText = `
+                    <h2>Credits</h2>
+                    <p>Where are the Alices?</p>
+                    <p>A Psychological Horror Game</p>
+                    <p>Created by ZimmZimmGames</p>
+                    <br>
+                    <button class="menu-btn back-to-menu">Back to Menu</button>
+                `;
+                    gameMenu.innerHTML = creditsText;
+
+                    document.querySelector('.back-to-menu').addEventListener('click', () => {
+                        location.reload();
+                    });
+                }
+
+                // Improved function to write text
+                function typeWriter(element, text, speed = 30) {
+                    return new Promise((resolve) => {
+                        let i = 0;
+                        element.textContent = '';
+
+                        function type() {
+                            if (i < text.length) {
+                                element.textContent += text.charAt(i);
+                                if (text.charAt(i) !== ' ') {
+                                    gameAudio.typewriterSound.currentTime = 0;
+                                    gameAudio.typewriterSound.play();
+                                }
+                                i++;
+                                setTimeout(type, speed);
+                            } else {
+                                resolve();
+                            }
+                        }
+                        type();
+                    });
+                }
+
+                // Improved function to update the scene
+                async function updateScene(scene) {
+                    if (!storyData[scene]) return;
+
+                    const container = document.getElementById('story-container');
+                    const locationName = document.querySelector('.location-name');
+                    const storyText = document.getElementById('story-text');
+                    const choicesContainer = document.getElementById('choices-container');
+
+                    gameAudio.pageChange.play();
+                    container.style.opacity = '0';
+
+                    await new Promise(resolve => setTimeout(resolve, 500));
+
+                    locationName.textContent = storyData[scene].location;
+                    choicesContainer.innerHTML = '';
+                    container.style.opacity = '1';
+
+                    await typeWriter(storyText, storyData[scene].text);
+
+                    Object.entries(storyData[scene].choices).forEach(([key, text], index) => {
+                        setTimeout(() => {
+                            const button = document.createElement('button');
+                            button.className = 'choice-btn';
+                            button.style.animationDelay = `${index * 0.2}s`;
+                            button.innerHTML = `<span class="choice-prefix">> </span>${text}`;
+
+                            button.onclick = () => {
+                                gameAudio.buttonClick.play();
+
+                                switch (key) {
+                                    case 'game_over':
+                                        showGameOver();
+                                        break;
+                                    case 'good_ending':
+                                        showGoodEnding();
+                                        break;
+                                    case 'become_nightmare':
+                                        showAlternativeEnding();
+                                        break;
+                                    case 'restart':
+                                        location.reload();
+                                        break;
+                                    default:
+                                        updateScene(key);
+                                }
+                            };
+
+                            choicesContainer.appendChild(button);
+                        }, index * 300);
+                    });
+                }
+
+                // Improved function to show Game Over
+                function showGameOver() {
+                    gameAudio.gameMusic.pause();
+                    gameAudio.gameOverMusic.currentTime = 0;
+                    gameAudio.gameOverMusic.play();
+
+                    const container = document.getElementById('story-container');
+                    container.style.opacity = '0';
+
+                    setTimeout(() => {
+                        updateScene('game_over');
+                        container.style.opacity = '1';
+
+                        const gameOverEffect = document.createElement('div');
+                        gameOverEffect.className = 'game-over-effect';
+                        container.appendChild(gameOverEffect);
+                    }, 500);
+                }
+
+                // Improved function to show good ending
+                function showGoodEnding() {
+                    gameAudio.gameMusic.pause();
+                    gameAudio.goodEndingMusic.currentTime = 0;
+                    gameAudio.goodEndingMusic.play();
+                    updateScene('good_ending');
+                }
+
+                // Improved function to show alternative ending
+                function showAlternativeEnding() {
+                    gameAudio.gameMusic.pause();
+                    gameAudio.badEndingMusic.currentTime = 0;
+                    gameAudio.badEndingMusic.play();
+                    updateScene('become_nightmare');
+                }
+
+                // Event Listeners
+                startButton.addEventListener('click', startGame);
+                creditsButton.addEventListener('click', showCredits);
+
+                // Play menu music on load
+                gameAudio.menuMusic.play();
+            });
+
+            // Add styles for Game Over screen
+            const style = document.createElement('style');
+            style.textContent = `
             .game-over-effect {
                 position: fixed;
                 top: 0;
@@ -2944,225 +2945,225 @@
                 100% { text-shadow: 0 0 5px var(--gold); }
             }
         `;
-        document.head.appendChild(style);
+            document.head.appendChild(style);
 
-        const translations = {
-            en: {
-                about: "ABOUT",
-                demo: "DEMO",
-                merch: "MERCH",
-                faq: "FAQ / CONTACT",
-                startGame: "Start Game",
-                continue: "Continue",
-                credits: "Credits",
-                downloadDemo: "Download Demo",
-                joinDiscord: "Join Discord",
-                comingSoon: "Coming Soon",
-                demoAvailable: "Demo available soon",
-                supportTitle: "Support Development",
-                supportSubtitle: "Help us bring more nightmares to reality",
-                dareToEnter: "Dare to Enter?",
-                dareText: "Enter a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.",
-                startNightmare: "Begin the Nightmare",
-                tryDemo: "Try the Demo",
-                exploreChapter: "Explore the first chapter of Where are the Alices?",
-                rabbitHoleTitle: "Enter the Rabbit Hole",
-                rabbitHoleSubtitle: "Talk to nightmares made real",
-                communityTitle: "Join the Community",
-                communitySubtitle: "Share your theories and uncover secrets with other investigators",
-                discordTitle: "Official Discord Server",
-                discordText: "Join our detective community and share your findings about the disappearances. Can you solve the mystery before it's too late?",
-                copyright: "© 2024 ZimmZimmGames. All rights reserved."
-            },
-            es: {
-                about: "SOBRE",
-                demo: "DEMO",
-                merch: "TIENDA",
-                faq: "FAQ / CONTACTO",
-                startGame: "Iniciar Juego",
-                continue: "Continuar",
-                credits: "Créditos",
-                downloadDemo: "Descargar Demo",
-                joinDiscord: "Unirse a Discord",
-                comingSoon: "Próximamente",
-                demoAvailable: "Demo disponible próximamente",
-                supportTitle: "Apoya el Desarrollo",
-                supportSubtitle: "Ayúdanos a traer más pesadillas a la realidad",
-                dareToEnter: "¿Te Atreves a Entrar?",
-                dareText: "Adéntrate en un mundo donde las pesadillas cobran vida y las muñecas guardan secretos oscuros. Descubre qué les sucedió realmente a las Alices... si te atreves.",
-                startNightmare: "Comenzar la Pesadilla",
-                tryDemo: "Prueba la Demo",
-                exploreChapter: "¡Explora el primer capítulo de Where are the Alices?",
-                rabbitHoleTitle: "Adéntrate en la Madriguera del Conejo",
-                rabbitHoleSubtitle: "Habla con las pesadillas hechas realidad",
-                communityTitle: "Únete a la Comunidad",
-                communitySubtitle: "Comparte tus teorías y descubre los secretos con otros investigadores",
-                discordTitle: "Servidor Oficial de Discord",
-                discordText: "Únete a nuestra comunidad de detectives y comparte tus descubrimientos sobre las desapariciones. ¿Podrás resolver el misterio antes de que sea demasiado tarde?",
-                copyright: "© 2024 ZimmZimmGames. Todos los derechos reservados."
-            },
-            ja: {
-                about: "概要",
-                demo: "デモ",
-                merch: "ショップ",
-                faq: "FAQ / お問い合わせ",
-                startGame: "ゲームを始める",
-                continue: "続ける",
-                credits: "クレジット",
-                downloadDemo: "デモをダウンロード",
-                joinDiscord: "Discordに参加",
-                comingSoon: "近日公開",
-                demoAvailable: "デモ版は近日公開予定",
-                supportTitle: "開発をサポート",
-                supportSubtitle: "より多くの悪夢を現実にするためにご協力ください",
-                dareToEnter: "入る勇気はありますか？",
-                dareText: "悪夢が現実となり、人形が暗い秘密を守る世界へ。アリスたちの真実を明らかにしましょう...もし勇気があれば。",
-                startNightmare: "悪夢を始める",
-                tryDemo: "デモを試す",
-                exploreChapter: "「Where are the Alices?」の第一章を体験しよう",
-                rabbitHoleTitle: "ウサギの穴へ潜入",
-                rabbitHoleSubtitle: "現実となった悪夢と会話する",
-                communityTitle: "コミュニティに参加",
-                communitySubtitle: "他の探偵たちと理論を共有し、秘密を解き明かそう",
-                discordTitle: "公式Discordサーバー",
-                discordText: "探偵コミュニティに参加して、失踪事件についての発見を共有しましょう。時間切れになる前に謎を解けますか？",
-                copyright: "© 2024 ZimmZimmGames. 全ての権利を保有"
-            },
-            ru: {
-                about: "О ИГРЕ",
-                demo: "ДЕМО",
-                merch: "МАГАЗИН",
-                faq: "FAQ / КОНТАКТЫ",
-                startGame: "Начать игру",
-                continue: "Продолжить",
-                credits: "Титры",
-                downloadDemo: "Скачать демо",
-                joinDiscord: "Присоединиться к Discord",
-                comingSoon: "Скоро",
-                demoAvailable: "Демо версия скоро будет доступна",
-                supportTitle: "Поддержать разработку",
-                supportSubtitle: "Помогите нам воплотить больше кошмаров в реальность",
-                dareToEnter: "Осмелишься войти?",
-                dareText: "Войдите в мир, где кошмары оживают, а куклы хранят темные секреты. Узнайте, что на самом деле случилось с Алисами... если осмелитесь.",
-                startNightmare: "Начать кошмар",
-                tryDemo: "Попробовать демо",
-                exploreChapter: "Исследуйте первую главу Where are the Alices?",
-                rabbitHoleTitle: "Спуститься в Кроличью Нору",
-                rabbitHoleSubtitle: "Поговорите с кошмарами, ставшими реальностью",
-                communityTitle: "Присоединиться к сообществу",
-                communitySubtitle: "Делитесь теориями и раскрывайте секреты вместе с другими исследователями",
-                discordTitle: "Официальный Discord сервер",
-                discordText: "Присоединяйтесь к нашему сообществу детективов и делитесь своими находками о исчезновениях. Сможете ли вы разгадать тайну до того, как станет слишком поздно?",
-                copyright: "© 2024 ZimmZimmGames. Все права защищены."
-            }
-        };
-
-        // Function to change language
-        function changeLanguage(lang) {
-            document.documentElement.setAttribute('lang', lang);
-
-            // Update all translatable elements
-            document.querySelectorAll('[data-translate]').forEach(element => {
-                const key = element.getAttribute('data-translate');
-                if (translations[lang][key]) {
-                    if (element.tagName.toLowerCase() === 'input' ||
-                        element.tagName.toLowerCase() === 'textarea') {
-                        element.placeholder = translations[lang][key];
-                    } else {
-                        element.textContent = translations[lang][key];
-                    }
+            const translations = {
+                en: {
+                    about: "ABOUT",
+                    demo: "DEMO",
+                    merch: "MERCH",
+                    faq: "FAQ / CONTACT",
+                    startGame: "Start Game",
+                    continue: "Continue",
+                    credits: "Credits",
+                    downloadDemo: "Download Demo",
+                    joinDiscord: "Join Discord",
+                    comingSoon: "Coming Soon",
+                    demoAvailable: "Demo available soon",
+                    supportTitle: "Support Development",
+                    supportSubtitle: "Help us bring more nightmares to reality",
+                    dareToEnter: "Dare to Enter?",
+                    dareText: "Enter a world where nightmares come to life and dolls hold dark secrets. Discover what really happened to the Alices... if you dare.",
+                    startNightmare: "Begin the Nightmare",
+                    tryDemo: "Try the Demo",
+                    exploreChapter: "Explore the first chapter of Where are the Alices?",
+                    rabbitHoleTitle: "Enter the Rabbit Hole",
+                    rabbitHoleSubtitle: "Talk to nightmares made real",
+                    communityTitle: "Join the Community",
+                    communitySubtitle: "Share your theories and uncover secrets with other investigators",
+                    discordTitle: "Official Discord Server",
+                    discordText: "Join our detective community and share your findings about the disappearances. Can you solve the mystery before it's too late?",
+                    copyright: "© 2024 ZimmZimmGames. All rights reserved."
+                },
+                es: {
+                    about: "SOBRE",
+                    demo: "DEMO",
+                    merch: "TIENDA",
+                    faq: "FAQ / CONTACTO",
+                    startGame: "Iniciar Juego",
+                    continue: "Continuar",
+                    credits: "Créditos",
+                    downloadDemo: "Descargar Demo",
+                    joinDiscord: "Unirse a Discord",
+                    comingSoon: "Próximamente",
+                    demoAvailable: "Demo disponible próximamente",
+                    supportTitle: "Apoya el Desarrollo",
+                    supportSubtitle: "Ayúdanos a traer más pesadillas a la realidad",
+                    dareToEnter: "¿Te Atreves a Entrar?",
+                    dareText: "Adéntrate en un mundo donde las pesadillas cobran vida y las muñecas guardan secretos oscuros. Descubre qué les sucedió realmente a las Alices... si te atreves.",
+                    startNightmare: "Comenzar la Pesadilla",
+                    tryDemo: "Prueba la Demo",
+                    exploreChapter: "¡Explora el primer capítulo de Where are the Alices?",
+                    rabbitHoleTitle: "Adéntrate en la Madriguera del Conejo",
+                    rabbitHoleSubtitle: "Habla con las pesadillas hechas realidad",
+                    communityTitle: "Únete a la Comunidad",
+                    communitySubtitle: "Comparte tus teorías y descubre los secretos con otros investigadores",
+                    discordTitle: "Servidor Oficial de Discord",
+                    discordText: "Únete a nuestra comunidad de detectives y comparte tus descubrimientos sobre las desapariciones. ¿Podrás resolver el misterio antes de que sea demasiado tarde?",
+                    copyright: "© 2024 ZimmZimmGames. Todos los derechos reservados."
+                },
+                ja: {
+                    about: "概要",
+                    demo: "デモ",
+                    merch: "ショップ",
+                    faq: "FAQ / お問い合わせ",
+                    startGame: "ゲームを始める",
+                    continue: "続ける",
+                    credits: "クレジット",
+                    downloadDemo: "デモをダウンロード",
+                    joinDiscord: "Discordに参加",
+                    comingSoon: "近日公開",
+                    demoAvailable: "デモ版は近日公開予定",
+                    supportTitle: "開発をサポート",
+                    supportSubtitle: "より多くの悪夢を現実にするためにご協力ください",
+                    dareToEnter: "入る勇気はありますか？",
+                    dareText: "悪夢が現実となり、人形が暗い秘密を守る世界へ。アリスたちの真実を明らかにしましょう...もし勇気があれば。",
+                    startNightmare: "悪夢を始める",
+                    tryDemo: "デモを試す",
+                    exploreChapter: "「Where are the Alices?」の第一章を体験しよう",
+                    rabbitHoleTitle: "ウサギの穴へ潜入",
+                    rabbitHoleSubtitle: "現実となった悪夢と会話する",
+                    communityTitle: "コミュニティに参加",
+                    communitySubtitle: "他の探偵たちと理論を共有し、秘密を解き明かそう",
+                    discordTitle: "公式Discordサーバー",
+                    discordText: "探偵コミュニティに参加して、失踪事件についての発見を共有しましょう。時間切れになる前に謎を解けますか？",
+                    copyright: "© 2024 ZimmZimmGames. 全ての権利を保有"
+                },
+                ru: {
+                    about: "О ИГРЕ",
+                    demo: "ДЕМО",
+                    merch: "МАГАЗИН",
+                    faq: "FAQ / КОНТАКТЫ",
+                    startGame: "Начать игру",
+                    continue: "Продолжить",
+                    credits: "Титры",
+                    downloadDemo: "Скачать демо",
+                    joinDiscord: "Присоединиться к Discord",
+                    comingSoon: "Скоро",
+                    demoAvailable: "Демо версия скоро будет доступна",
+                    supportTitle: "Поддержать разработку",
+                    supportSubtitle: "Помогите нам воплотить больше кошмаров в реальность",
+                    dareToEnter: "Осмелишься войти?",
+                    dareText: "Войдите в мир, где кошмары оживают, а куклы хранят темные секреты. Узнайте, что на самом деле случилось с Алисами... если осмелитесь.",
+                    startNightmare: "Начать кошмар",
+                    tryDemo: "Попробовать демо",
+                    exploreChapter: "Исследуйте первую главу Where are the Alices?",
+                    rabbitHoleTitle: "Спуститься в Кроличью Нору",
+                    rabbitHoleSubtitle: "Поговорите с кошмарами, ставшими реальностью",
+                    communityTitle: "Присоединиться к сообществу",
+                    communitySubtitle: "Делитесь теориями и раскрывайте секреты вместе с другими исследователями",
+                    discordTitle: "Официальный Discord сервер",
+                    discordText: "Присоединяйтесь к нашему сообществу детективов и делитесь своими находками о исчезновениях. Сможете ли вы разгадать тайну до того, как станет слишком поздно?",
+                    copyright: "© 2024 ZimmZimmGames. Все права защищены."
                 }
+            };
+
+            // Function to change language
+            function changeLanguage(lang) {
+                document.documentElement.setAttribute('lang', lang);
+
+                // Update all translatable elements
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translations[lang][key]) {
+                        if (element.tagName.toLowerCase() === 'input' ||
+                            element.tagName.toLowerCase() === 'textarea') {
+                            element.placeholder = translations[lang][key];
+                        } else {
+                            element.textContent = translations[lang][key];
+                        }
+                    }
+                });
+
+                // Update current language button
+                const currentBtn = document.querySelector('.language-btn.current');
+                currentBtn.classList.remove('current');
+                currentBtn.textContent = lang.toUpperCase();
+
+                document.querySelector(`[data-lang="${lang}"]`).classList.add('current');
+                localStorage.setItem('preferredLanguage', lang);
+            }
+
+            // Initialize language system
+            document.addEventListener('DOMContentLoaded', () => {
+                // Add data-translate attributes to elements that need translation
+                document.querySelectorAll('.menu-items a').forEach((item, index) => {
+                    const keys = ['about', 'demo', 'merch', 'faq'];
+                    item.setAttribute('data-translate', keys[index]);
+                });
+
+                // Main page elements
+                document.querySelector('.coming-soon').setAttribute('data-translate', 'comingSoon');
+                document.querySelector('.demo-available span').setAttribute('data-translate', 'demoAvailable');
+                document.querySelector('.cta-container h2').setAttribute('data-translate', 'dareToEnter');
+                document.querySelector('.cta-text').setAttribute('data-translate', 'dareText');
+                document.querySelector('.cta-btn .btn-text').setAttribute('data-translate', 'startNightmare');
+
+                // Support section
+                document.querySelector('.support-section h2').setAttribute('data-translate', 'supportTitle');
+                document.querySelector('.support-section .subtitle').setAttribute('data-translate', 'supportSubtitle');
+
+                // Demo section
+                document.querySelector('.demo-section h2').setAttribute('data-translate', 'tryDemo');
+                document.querySelector('.demo-content p').setAttribute('data-translate', 'exploreChapter');
+
+                // Rabbit hole section
+                document.querySelector('.rabbit-hole-section h2').setAttribute('data-translate', 'rabbitHoleTitle');
+                document.querySelector('.rabbit-hole-section .subtitle').setAttribute('data-translate', 'rabbitHoleSubtitle');
+
+                // Discord section
+                document.querySelector('.discord-section h2').setAttribute('data-translate', 'communityTitle');
+                document.querySelector('.discord-section .subtitle').setAttribute('data-translate', 'communitySubtitle');
+                document.querySelector('.discord-card h3').setAttribute('data-translate', 'discordTitle');
+                document.querySelector('.discord-card p').setAttribute('data-translate', 'discordText');
+
+                // Footer
+                document.querySelector('.footer p').setAttribute('data-translate', 'copyright');
+
+                // Initialize language
+                const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+                changeLanguage(preferredLanguage);
             });
 
-            // Update current language button
-            const currentBtn = document.querySelector('.language-btn.current');
-            currentBtn.classList.remove('current');
-            currentBtn.textContent = lang.toUpperCase();
+            // Add startAdventure function after audio declarations
+            function startAdventure() {
+                // Smoothly scroll to the visual adventure section
+                document.querySelector('.text-adventure-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
 
-            document.querySelector(`[data-lang="${lang}"]`).classList.add('current');
-            localStorage.setItem('preferredLanguage', lang);
-        }
-
-        // Initialize language system
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add data-translate attributes to elements that need translation
-            document.querySelectorAll('.menu-items a').forEach((item, index) => {
-                const keys = ['about', 'demo', 'merch', 'faq'];
-                item.setAttribute('data-translate', keys[index]);
-            });
-
-            // Main page elements
-            document.querySelector('.coming-soon').setAttribute('data-translate', 'comingSoon');
-            document.querySelector('.demo-available span').setAttribute('data-translate', 'demoAvailable');
-            document.querySelector('.cta-container h2').setAttribute('data-translate', 'dareToEnter');
-            document.querySelector('.cta-text').setAttribute('data-translate', 'dareText');
-            document.querySelector('.cta-btn .btn-text').setAttribute('data-translate', 'startNightmare');
-
-            // Support section
-            document.querySelector('.support-section h2').setAttribute('data-translate', 'supportTitle');
-            document.querySelector('.support-section .subtitle').setAttribute('data-translate', 'supportSubtitle');
-
-            // Demo section
-            document.querySelector('.demo-section h2').setAttribute('data-translate', 'tryDemo');
-            document.querySelector('.demo-content p').setAttribute('data-translate', 'exploreChapter');
-
-            // Rabbit hole section
-            document.querySelector('.rabbit-hole-section h2').setAttribute('data-translate', 'rabbitHoleTitle');
-            document.querySelector('.rabbit-hole-section .subtitle').setAttribute('data-translate', 'rabbitHoleSubtitle');
-
-            // Discord section
-            document.querySelector('.discord-section h2').setAttribute('data-translate', 'communityTitle');
-            document.querySelector('.discord-section .subtitle').setAttribute('data-translate', 'communitySubtitle');
-            document.querySelector('.discord-card h3').setAttribute('data-translate', 'discordTitle');
-            document.querySelector('.discord-card p').setAttribute('data-translate', 'discordText');
-
-            // Footer
-            document.querySelector('.footer p').setAttribute('data-translate', 'copyright');
-
-            // Initialize language
-            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
-            changeLanguage(preferredLanguage);
-        });
-
-        // Add startAdventure function after audio declarations
-        function startAdventure() {
-            // Smoothly scroll to the visual adventure section
-            document.querySelector('.text-adventure-section').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-
-            // Wait for the scrolling to finish before starting the game
-            setTimeout(() => {
-                // Hide game menu and show game container
-                document.getElementById('game-menu').style.display = 'none';
-                const gameContainer = document.getElementById('game-container');
-                gameContainer.style.display = 'block';
-
-                // Stop menu music and start game music
-                gameAudio.menuMusic.pause();
-                gameAudio.gameMusic.currentTime = 0;
-                gameAudio.gameMusic.play();
-
-                // Start the game with the first scene
+                // Wait for the scrolling to finish before starting the game
                 setTimeout(() => {
-                    gameContainer.classList.add('active');
-                    updateScene('start');
-                }, 100);
-            }, 1000); // Wait 1 second after scrolling
-        }
+                    // Hide game menu and show game container
+                    document.getElementById('game-menu').style.display = 'none';
+                    const gameContainer = document.getElementById('game-container');
+                    gameContainer.style.display = 'block';
 
-        // Manejo del formulario de suscripción
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
+                    // Stop menu music and start game music
+                    gameAudio.menuMusic.pause();
+                    gameAudio.gameMusic.currentTime = 0;
+                    gameAudio.gameMusic.play();
 
-            // Aquí puedes agregar la lógica para enviar el email a tu backend
-            // Por ahora, solo mostraremos un mensaje de éxito
-            alert('¡Gracias por suscribirte! Te mantendremos informado sobre nuestras novedades.');
-            this.reset();
-        });
-    </script>
+                    // Start the game with the first scene
+                    setTimeout(() => {
+                        gameContainer.classList.add('active');
+                        updateScene('start');
+                    }, 100);
+                }, 1000); // Wait 1 second after scrolling
+            }
+
+            // Manejo del formulario de suscripción
+            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+
+                // Aquí puedes agregar la lógica para enviar el email a tu backend
+                // Por ahora, solo mostraremos un mensaje de éxito
+                alert('¡Gracias por suscribirte! Te mantendremos informado sobre nuestras novedades.');
+                this.reset();
+            });
+        </script>
 </body>
 
 </html>
