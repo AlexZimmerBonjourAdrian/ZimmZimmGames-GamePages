@@ -1,0 +1,34 @@
+{
+    "name": "zimmzimmgames-gamepages",
+    "version": "1.0.0",
+    "description": "This project serves as the central hub for all ZimmZimmGames web pages.  Its primary function is to streamline the setup and deployment of both temporary and permanent web pages dedicated to our games.  Think of it as a unified platform designed to simplify the creation and navigation of all game-related online content.",
+    "main": "InteractiveStorie.js",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AlexZimmerBonjourAdrian/ZimmZimmGames-GamePages.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "bugs": {
+        "url": "https://github.com/AlexZimmerBonjourAdrian/ZimmZimmGames-GamePages/issues"
+    },
+    "homepage": "https://github.com/AlexZimmerBonjourAdrian/ZimmZimmGames-GamePages#readme",
+    "dependencies": {
+        "next": "^15.2.5",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0"
+    },
+    "devDependencies": {
+        "@types/node": "22.14.0",
+        "@types/react": "19.1.0",
+        "typescript": "5.8.3"
+    }
+}
