@@ -1,226 +1,137 @@
-// Detección de dispositivo y características
-function detectDevice() {
-    const userAgent = navigator.userAgent;
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    const isTablet = /iPad|Android/i.test(userAgent) && !isMobile;
-    const isDesktop = !isMobile && !isTablet;
-    const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    const isLandscape = window.innerWidth > window.innerHeight;
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    
-    return {
-        isMobile,
-        isTablet,
-        isDesktop,
-        hasTouch,
-        isLandscape,
-        screenWidth,
-        screenHeight,
-        deviceType: isMobile ? 'Móvil' : isTablet ? 'Tablet' : 'Escritorio'
-    };
+// Get references to HTML elements
+const storyTextElement = document.getElementById('story-text');
+const choicesElement = document.getElementById('choices');
+// Agregar referencia para la imagen de la historia
+let storyImageElement = document.getElementById('story-image');
+if (!storyImageElement) {
+    storyImageElement = document.createElement('img');
+    storyImageElement.id = 'story-image';
+    storyImageElement.style.display = 'block';
+    storyImageElement.style.margin = '0 auto 18px auto';
+    storyImageElement.style.maxWidth = '90%';
+    storyImageElement.style.maxHeight = '180px';
+    storyTextElement.parentNode.insertBefore(storyImageElement, storyTextElement);
 }
 
-// Función para mostrar información del dispositivo
-function showDeviceInfo() {
-    const device = detectDevice();
-    const deviceInfo = document.createElement('div');
-    deviceInfo.className = 'device-info';
-    deviceInfo.innerHTML = `
-        <div class="device-badge ${device.deviceType.toLowerCase()}">
-            ${device.deviceType}
-        </div>
-    `;
-    document.querySelector('.game-header').prepend(deviceInfo);
-}
-
-// Función para manejar la navegación móvil
-function setupMobileNav() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.setAttribute('aria-expanded', 
-                menuToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
-            );
-        });
-
-        // Cerrar menú al hacer clic en un enlace
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // Cerrar menú al hacer clic fuera
-        document.addEventListener('click', (e) => {
-            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
-                navLinks.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
-}
-
-// Función para manejar eventos táctiles y de ratón
-function setupInputHandlers() {
-    const device = detectDevice();
-    const choices = document.querySelectorAll('.game-choice');
-    
-    choices.forEach(choice => {
-        if (device.hasTouch) {
-            choice.addEventListener('touchstart', handleChoiceSelect, { passive: true });
-            choice.addEventListener('touchend', handleChoiceSelect, { passive: true });
-        } else {
-            choice.addEventListener('click', handleChoiceSelect);
-        }
-    });
-}
-
-// Función para manejar la selección de opciones
-function handleChoiceSelect(event) {
-    event.preventDefault();
-    const button = event.currentTarget;
-    const choiceId = button.getAttribute('data-choice');
-    const scene = storyData[currentScene];
-    const choice = scene.choices.find(c => c.id === choiceId);
-    
-    if (choice) {
-        updateScene(choice.next);
-    }
-}
-
-// Función para manejar el redimensionamiento
-function handleResize() {
-    const device = detectDevice();
-    const container = document.querySelector('.container');
-    
-    if (device.isLandscape && device.screenHeight < 600) {
-        container.classList.add('landscape-mode');
-    } else {
-        container.classList.remove('landscape-mode');
-    }
-}
-
-// Función para actualizar la escena
-function updateScene(sceneId) {
-    const scene = storyData[sceneId];
-    if (!scene) return;
-
-    currentScene = sceneId;
-    locationName.textContent = scene.location;
-    storyText.textContent = scene.text;
-    
-    // Actualizar opciones
-    choicesContainer.innerHTML = scene.choices.map(choice => `
-        <button class="game-choice" data-choice="${choice.id}">
-            <span class="choice-prefix">${String.fromCharCode(65 + scene.choices.indexOf(choice))}.</span>
-            ${choice.text}
-        </button>
-    `).join('');
-
-    // Configurar manejadores de eventos para las nuevas opciones
-    setupInputHandlers();
-}
-
-// Inicialización
-document.addEventListener('DOMContentLoaded', () => {
-    // Configurar navegación móvil
-    setupMobileNav();
-    
-    // Inicializar escena
-    updateScene('start');
-    
-    // Configurar manejadores de eventos
-    setupInputHandlers();
-    
-    // Manejar cambios de orientación y redimensionamiento
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', handleResize);
-    
-    // Prevenir el comportamiento por defecto del scroll en iOS
-    document.body.addEventListener('touchmove', (e) => {
-        if (e.target.classList.contains('game-text')) {
-            e.stopPropagation();
-        }
-    }, { passive: false });
-
-    // Prevenir el zoom en dispositivos móviles
-    document.addEventListener('gesturestart', (e) => {
-        e.preventDefault();
-    });
-});
-
-// Datos de la historia
-const storyData = {
+// Story data - easily modifiable
+const story = {
     start: {
-        location: "La Mansión de los Espejos",
-        text: "Te encuentras en la entrada de una antigua mansión victoriana. El aire está cargado de misterio y los espejos que cubren las paredes reflejan tu imagen de manera inquietante. ¿Qué decides hacer?",
+        text: "You awaken in a dark forest. The air is thick with the scent of damp earth and pine.",
+        image: "polaroid-forest.png", // Cambia por la imagen que desees
         choices: [
-            { id: "explore", text: "Explorar la sala principal", next: "mainHall" },
-            { id: "mirrors", text: "Examinar los espejos más de cerca", next: "mirrors" },
-            { id: "stairs", text: "Subir por la escalera principal", next: "stairs" }
+            { text: "Explore the forest", next: "forestPath" },
+            { text: "Examine your surroundings", next: "examineSurroundings" }
         ]
     },
-    mainHall: {
-        location: "Sala Principal",
-        text: "La sala principal es imponente, con candelabros antiguos y tapices que cuentan historias misteriosas. En el centro hay un reloj de péndulo que parece estar funcionando al revés.",
+    examineSurroundings: {
+        text: "You see a worn path leading deeper into the woods and a faint light in the distance.",
+        image: "polaroid-path.png",
         choices: [
-            { id: "clock", text: "Examinar el reloj", next: "clock" },
-            { id: "tapestry", text: "Estudiar los tapices", next: "tapestry" },
-            { id: "return", text: "Volver a la entrada", next: "start" }
+            { text: "Follow the path", next: "forestPath" },
+            { text: "Head towards the light", next: "light" }
         ]
     },
-    mirrors: {
-        location: "Galería de Espejos",
-        text: "Los espejos reflejan tu imagen de manera distorsionada. En uno de ellos, parece que tu reflejo se mueve de manera independiente.",
+    forestPath: {
+        text: "You walk along the path, the trees closing in around you.  A raven caws overhead.",
+        image: "polaroid-raven.png",
         choices: [
-            { id: "touch", text: "Tocar el espejo", next: "mirrorTouch" },
-            { id: "look", text: "Observar más detenidamente", next: "mirrorLook" },
-            { id: "return", text: "Volver a la entrada", next: "start" }
+            { text: "Continue on the path", next: "raven" },
+            { text: "Turn back", next: "start" }
         ]
     },
-    stairs: {
-        location: "Escalera Principal",
-        text: "La escalera principal se eleva hacia la oscuridad. Los peldaños crujen con cada paso y las sombras parecen moverse.",
+    raven: {
+        text: "The raven lands on a branch, its eyes fixed on you. It seems to be watching.",
+        image: "polaroid-raven-close.png",
         choices: [
-            { id: "up", text: "Subir las escaleras", next: "upstairs" },
-            { id: "down", text: "Bajar las escaleras", next: "start" },
-            { id: "look", text: "Examinar las sombras", next: "shadows" }
+            { text: "Speak to the raven", next: "speakRaven" },
+            { text: "Ignore the raven and continue", next: "continuePath" }
         ]
+    },
+    speakRaven: {
+        text: "The raven replies, 'The path is long, but the end is near.'",
+        image: "polaroid-raven-talk.png",
+        choices: [
+            { text: "Continue on the path", next: "continuePath" }
+        ],
+        effects: [
+            { index: 20, color: 'red' }, // 'p' in 'path'
+            { index: 25, size: '1.2em' } // 'i' in 'is'
+        ]
+    },
+    continuePath: {
+        text: "You continue on the path and eventually reach a clearing.",
+        image: "polaroid-clearing.png",
+        choices: []
+    },
+    light: {
+        text: "You approach the light and find a small cottage.",
+        image: "polaroid-cottage.png",
+        choices: []
     }
 };
 
-// Estado del juego
+// Current scene identifier
 let currentScene = 'start';
 
-// Elementos del DOM
-const storyImage = document.getElementById('story-image');
-const locationName = document.querySelector('.location-name');
-const storyText = document.querySelector('.game-text p');
-const choicesContainer = document.querySelector('.game-choices');
+// Function to display text with a typing effect, and apply effects
+function showText(text, element, effects = [], delay = 50) {
+    let i = 0;
+    element.textContent = ''; // Clear previous text
+    const intervalId = setInterval(() => {
+        let char = text[i];
+        let charElement = document.createElement('span');
+        charElement.textContent = char;
 
-// Funciones de control de ventana
-document.querySelectorAll('.window-control').forEach(button => {
-    button.addEventListener('click', () => {
-        const action = button.getAttribute('aria-label').toLowerCase();
-        handleWindowControl(action);
-    });
-});
+        // Apply character-specific effects
+        effects.forEach(effect => {
+            if (effect.index === i) {
+                if (effect.color) charElement.style.color = effect.color;
+                if (effect.size) charElement.style.fontSize = effect.size;
+                if (effect.animation) charElement.style.animation = effect.animation;
+                if (effect.delay) {
+                    setTimeout(() => {
+                        element.appendChild(charElement);
+                    }, effect.delay);
+                    return; // Skip appending immediately
+                }
+            }
+        });
 
-function handleWindowControl(action) {
-    switch(action) {
-        case 'cerrar':
-            // Implementar lógica de cierre
-            break;
-        case 'maximizar':
-            // Implementar lógica de maximizar
-            break;
-        case 'minimizar':
-            // Implementar lógica de minimizar
-            break;
-    }
+        element.appendChild(charElement);
+        i++;
+        if (i >= text.length) {
+            clearInterval(intervalId); // Stop when all text is displayed
+        }
+    }, delay);
 }
+
+// Function to display choices
+function showChoices(choices) {
+    choicesElement.innerHTML = ''; // Clear previous choices
+    choices.forEach(choice => {
+        const button = document.createElement('button');
+        button.textContent = choice.text;
+        button.addEventListener('click', () => {
+            currentScene = choice.next; // Update current scene
+            showScene(); // Display the new scene
+        });
+        choicesElement.appendChild(button);
+    });
+}
+
+// Function to display a scene
+function showScene() {
+    const scene = story[currentScene]; // Get the current scene data
+    // Mostrar imagen ilustrativa si existe
+    if (scene.image) {
+        storyImageElement.src = scene.image;
+        storyImageElement.style.display = 'block';
+    } else {
+        storyImageElement.style.display = 'none';
+    }
+    showText(scene.text, storyTextElement, scene.effects); // Display the scene text with effects
+    showChoices(scene.choices); // Display the scene choices
+}
+
+// Start the story
+showScene();
